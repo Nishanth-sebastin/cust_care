@@ -46,6 +46,7 @@ li {
   background-color: #fd0988;
   border-radius: 5px;
   transition: 0.3s ease;
+  height: 40px;
 }
 .menu li {
   padding: 5px 14px;
@@ -91,6 +92,50 @@ input[type="checkbox"] {
   margin: 0px 170px;
   font-weight: lighter;
   font-size: 15px;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 7px 7px;
+  background-color: #1565c0;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content .links {
+  float: none;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 .home button {
   width: 130px;
