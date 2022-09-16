@@ -1,11 +1,13 @@
-
-
-function App() {
-  return (
-    <div className="App">
-      huii
-    </div>
-  );
+import React, { Component } from 'react'
+import Routerapp from './Router/App'
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Routerapp />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App

@@ -1,0 +1,46 @@
+import React, { Component } from "react"
+import './css/index.css'
+class Testimonials extends Component {
+    render() {
+        return (
+            <div> <section className="test">
+                <div className="line"></div>
+                <h3>Testimonials</h3>
+                <div className="main-test">
+                    <h1>What Clients Say <span style={{ color: ' #fd0988' }}>.</span></h1>
+                    <p className="mainpara">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo illum
+                        voluptate magni facere saepe similique.
+                    </p>
+                    <div className="reviews">
+                        <div className="review1">
+                            <img src="" alt="Nishi" />
+                            <h5>Nishanth Sebastin</h5>
+                            <h6>Designer</h6>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                Molestias modi eos corporis vitae cupiditate omnis consequuntur
+                                quae, at repellat perspiciatis sequi! Deserunt atque illo id,
+                                accusamus ducimus repellendus vel facere.
+                            </p>
+                        </div>
+
+                        <div className="review2">
+                            <img src="" alt="Nishi" />
+                            <h5>Nishanth Sebastin</h5>
+                            <h6>Designer</h6>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                Molestias modi eos corporis vitae cupiditate omnis consequuntur
+                                quae, at repellat perspiciatis sequi! Deserunt atque illo id,
+                                accusamus ducimus repellendus vel facere.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section></div>
+        )
+    }
+}
+
+export default Testimonials
