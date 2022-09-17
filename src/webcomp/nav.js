@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import "./css/index.css"
+
 // import { AiFillCaretDown } from 'react-icons/ai'
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+//import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 class Nav extends Component {
@@ -9,7 +9,7 @@ class Nav extends Component {
 
     render() {
         return (
-            <div >
+            <div className='cont' >
                 <header className="navbar">
                     <div className="logo">
                         CustCare

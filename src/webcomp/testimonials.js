@@ -1,9 +1,9 @@
 import React, { Component } from "react"
-import './css/index.css'
+
 class Testimonials extends Component {
     render() {
         return (
-            <div> <section className="test">
+            <div className='cont'> <section className="test">
                 <div className="line"></div>
                 <h3>Testimonials</h3>
                 <div className="main-test">
@@ -14,9 +14,11 @@ class Testimonials extends Component {
                     </p>
                     <div className="reviews">
                         <div className="review1">
-                            <img src="" alt="Nishi" />
-                            <h5>Nishanth Sebastin</h5>
-                            <h6>Designer</h6>
+                            <div className="review-flex"><img src="" alt="Nishi" />
+                                <div className="review-heading"> <h5>Nishanth Sebastin</h5>
+                                    <h6>Designer</h6>
+                                </div>
+                            </div>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                                 Molestias modi eos corporis vitae cupiditate omnis consequuntur
@@ -26,9 +28,12 @@ class Testimonials extends Component {
                         </div>
 
                         <div className="review2">
-                            <img src="" alt="Nishi" />
-                            <h5>Nishanth Sebastin</h5>
-                            <h6>Designer</h6>
+                            <div className="review-flex"> <img src="" alt="Nishi" />
+                                <div className="review-heading">
+                                    <h5>Nishanth Sebastin</h5>
+                                    <h6>Designer</h6>
+                                </div>
+                            </div>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                                 Molestias modi eos corporis vitae cupiditate omnis consequuntur

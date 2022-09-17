@@ -5,6 +5,7 @@ import SIgn_img from '../SIgn_img'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "../css/index.css"
 
 const Orglogin = () => {
 
@@ -88,12 +89,12 @@ const Orglogin = () => {
                         <h3 className='text-center col-lg-6'>Sign IN</h3>
                         <Form >
 
-                            <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
+                            <Form.Group className="content" controlId="formBasicEmail">
 
                                 <Form.Control type="email" name='email' onChange={getdata} placeholder="Enter email" />
                             </Form.Group>
 
-                            <Form.Group className="mb-3 col-lg-6" controlId="formBasicPassword">
+                            <Form.Group className="content" controlId="formBasicPassword">
 
                                 <Form.Control type="password" name='password' onChange={getdata} placeholder="Password" />
                             </Form.Group>

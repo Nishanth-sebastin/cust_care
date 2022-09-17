@@ -4,7 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+.body {
   /* background-image: url("../img/man-studio-portrait-light-90764.png"); */
   background-color: #161616;
   background-size: cover;
@@ -53,6 +53,10 @@ li {
 }
 .services {
   position: relative;
+}
+
+.cont {
+  background-color: #161616;
 }
 
 .dropdown li + li {
@@ -254,8 +258,9 @@ svg {
 }
 .reviews {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 50px 130px;
+  margin: 50px 110px;
 }
 .review1,
 .review2 {
@@ -271,21 +276,36 @@ svg {
     #89216b,
     #da4453
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 400px;
+  min-height: 350px;
   width: 550px;
   border-radius: 2ch;
 }
 .review1 h5,
-h6,
-p {
+h6 {
   color: white;
 }
 .review2 h5,
-h6,
-p {
+h6 {
   color: white;
 }
-
+.review1 p,
+.review2 p {
+  color: white;
+  padding: 5px;
+}
+.review-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+.review-heading h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  padding: 5px;
+  font-size: larger;
+}
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -313,6 +333,7 @@ p {
     flex-direction: column;
     position: relative;
     bottom: 180px;
+    margin-left: 100px;
   }
   .block1,
   .block2,

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import './css/index.css'
 class Uniqueideas extends Component {
     render() {
         return (
-            <div style={{ color: 'white' }}>
+            <div style={{ color: 'white' }} className='cont'>
                 <div className="inno">
                     <h3>Why Choose Us</h3>
                     <h1>We Are Innovators</h1>

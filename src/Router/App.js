@@ -6,6 +6,9 @@ import Orglogin from "../signup/org_auth/orglogin";
 import Custlogin from "../signup/cust_auth/custlogin";
 import Orgreg from "../signup/org_auth/orgreg";
 import CustReg from "../signup/cust_auth/custreg";
+import IndexAdmin from "../layouts/admin/indexAdmin";
+import IndexCust from "../layouts/customers/indexCust";
+import IndexAgents from "../layouts/agents/indexAgents";
 class Routerapp extends React.Component {
     render() {
         return (
@@ -16,8 +19,9 @@ class Routerapp extends React.Component {
                     <Route path="/organization/register" element={<Orgreg />} />
                     <Route path="/customer/login" element={<Custlogin />} />
                     <Route path="/customer/register" element={<CustReg />} />
-                    {/*  <Route path="/custcare" element={ } />
-                    <Route path="/custcare" element={ } /> */}
+                    <Route path="/customer/main" element={<IndexCust />} />
+                    <Route path="/organization/admin/" element={<IndexAdmin />} />
+                    <Route path="/organization/agent/" element={<IndexAgents />} />
                     <Route path="*" element={<ErrBoundary />} />
                 </Routes>
             </Router>

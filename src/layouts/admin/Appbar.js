@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
-
-class Footer extends Component {
+class Appbar extends Component {
     render() {
         return (
-            <div >footer</div>
+            <div>Appbar</div>
         )
     }
 }
 
-export default Footer
+export default Appbar

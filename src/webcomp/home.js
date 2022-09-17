@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import "./css/index.css"
+import './css/home.css'
 
 export class Home extends Component {
     render() {
         return (
-            <div>
+            <div className='cont'>
                 <section className="home">
                     <h1>DIGITAL AGENCY</h1>
                     <br />

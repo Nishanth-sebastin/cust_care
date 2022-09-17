@@ -8,7 +8,7 @@ import Uniqueideas from './uniqueideas'
 class app extends Component {
     render() {
         return (
-            <div>
+            <div style={{ backgroundColor: '#161616' }}>
                 <Nav />
                 <Home />
                 <Uniqueideas />
