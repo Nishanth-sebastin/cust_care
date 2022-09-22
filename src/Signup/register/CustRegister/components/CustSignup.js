@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import { TextField } from './TextField';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import logo from '../assets/rocket.png'
 
 export const CustSignup = () => {
   const validate = Yup.object({
@@ -66,7 +67,7 @@ export const CustSignup = () => {
           </Formik>
         </div>
         <div className="col-md-7 my-auto">
-          <img className="img-fluid w-100" src='rocket.png' alt="" />
+          <img className="img-fluid  w-100" src={logo} alt="image" />
         </div>
       </div>
     </div>

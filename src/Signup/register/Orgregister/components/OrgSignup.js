@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FormControl, FormControlLabel, FormLabel, Radio } from '@mui/material';
 import { Link } from 'react-router-dom';
+import logo from '../assets/rocket.png'
 
 export const OrgSignup = () => {
   const validate = Yup.object({
@@ -74,7 +75,7 @@ export const OrgSignup = () => {
           </Formik>
         </div>
         <div className="col-md-7 my-auto">
-          <img className="img-fluid w-100" src='rocket.png' alt="" />
+          <img className="img-fluid  w-100" src={logo} alt="image" />
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { TextField } from './TextField';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import logo from '../assets/rocket.png'
 
 export const OrgLogin = () => {
   const validate = Yup.object({
@@ -23,6 +24,14 @@ export const OrgLogin = () => {
       .oneOf([Yup.ref('password'), null], 'Password must match')
       .required('Confirm password is required'),
   })
+
+  if (window.screen.width == 768) {
+    let classname = 'd-none'
+  }
+  else {
+    let className = 'col-md-7 my-auto'
+  }
+
 
   return (
 
@@ -59,7 +68,7 @@ export const OrgLogin = () => {
           </Formik>
         </div>
         <div className="col-md-7 my-auto">
-          <img className="img-fluid w-100" src='../assets/rocket.png' alt="" />
+          <img className="img-fluid  w-100" src={logo} alt="image" />
         </div>
       </div>
     </div>

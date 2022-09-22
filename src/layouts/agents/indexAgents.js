@@ -6,8 +6,9 @@ export class IndexAgents extends Component {
     render() {
         return (
             <div>
-                <AppBar />
                 <NavBar />
+                <AppBar />
+
             </div>
         )
     }

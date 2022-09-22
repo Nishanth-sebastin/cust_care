@@ -31,7 +31,6 @@ class Nav extends Component {
                                 <Button className='dropbtn' variant='contained'>Login/SignUp</Button>
                                 <div className="dropdown-content">
 
-
                                     <Link className='links' target='_blank' to='/organization/login'>Organization</Link>
                                     <Link className='links' target='_blank' to='/customer/login'>Customer</Link>
                                 </div>
