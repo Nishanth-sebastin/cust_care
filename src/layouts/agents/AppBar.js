@@ -1,4 +1,4 @@
-import { Drawer, Grid, Typography, List, ListItem, Toolbar, Divider, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import { Drawer, Grid, Typography, List, ListItem, Toolbar, Divider, ListItemButton, ListItemIcon, ListItemText, Button } from '@mui/material'
 import React, { Component } from 'react'
 import { makeStyles } from '@material-ui/core'
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
@@ -9,6 +9,11 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import AodOutlinedIcon from '@mui/icons-material/AodOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 const useStyles = makeStyles({
     drawer: {
         width: 240,
@@ -52,6 +57,19 @@ const useStyles = makeStyles({
 })
 
 function AppBar() {
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const ClickHandler = () => {
+        return (<Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/login'></Link>
+        )
+    }
 
     const style = useStyles()
     return (
@@ -110,13 +128,32 @@ function AppBar() {
                     </ListItem>
                     <ListItem className={style.list}>
 
-                        <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
+                        <ListItemButton onClick={handleClickOpen} sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
                             <ListItemIcon className={style.icons}> <LogoutOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/agent/dashboard/'>Sign Out</Link></ListItemText></ListItemButton>
+                            <ListItemText sx={{ color: 'white' }}>Sign Out </ListItemText></ListItemButton>
                     </ListItem>
                 </List>
-
-
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Sign out ? "}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            You can always access your content by signing back in
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={ClickHandler} autoFocus>
+                            Sign Out
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </Drawer>
         </Grid>
     )
