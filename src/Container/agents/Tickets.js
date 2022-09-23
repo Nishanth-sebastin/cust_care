@@ -9,12 +9,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { makeStyles } from '@material-ui/core';
-import { Box, Icon, Button, Typography } from '@mui/material'
+import { Box, Icon, Button, Typography, SpeedDialIcon } from '@mui/material'
 import { Tooltip } from '@mui/material';
 import { IconButton } from '@mui/material';
 import TuneIcon from '@mui/icons-material/Tune';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
+import { InputLabel } from '@mui/material';
+import { Select } from '@mui/material';
+import { MenuItem } from '@mui/material';
 
 
 const styles = makeStyles({
@@ -75,17 +78,35 @@ const rows = [
 function Tickets() {
 
     const style = styles()
+    const [age, setAge] = React.useState('');
+
+    const handleChange = (e) => {
+        setAge(e.target.value);
+    };
+
     return (
         <LayoutAgent>
 
             <Box className={style.Grid} >
                 <Grid container>
 
-                    <Grid item sm={12}>
+                    <Grid item sm={12}> 
                         <Typography>Your unSolved tickets</Typography><br></br>
-                        <Button variant='contained' sx={{ height: '30px' }} >
-                            Filter
-                        </Button>
+
+                        <Select sx={{ width: '200px', height: '40px', border: '1px #757575 solid' }}
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={age}
+                            label="Age"
+                            onChange={handleChange}
+                            defaultValue={"Your unSolved tickets"}
+
+                        >
+                            <MenuItem >Your unSolved tickets</MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
 
                     </Grid>
 

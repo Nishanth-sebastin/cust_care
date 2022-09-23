@@ -14,7 +14,10 @@ import Dashboard from "../Container/agents/Dashboard";
 import LayoutAgent from "../MainLayout/LayoutAgent";
 import Tickets from "../Container/agents/Tickets";
 import TicketDetails from "../Container/agents/TicketDetails";
+import Customers from "../Container/agents/Customers";
+import Profile from "../Container/agents/Profile";
 
+import Notifications from "../Container/agents/Notifications";
 
 class Routerapp extends React.Component {
     render() {
@@ -32,11 +35,11 @@ class Routerapp extends React.Component {
                     <Route path="/organization/agent/" element={<Dashboard />} />
                     <Route path='/organization/agent/dashboard/' element={<Dashboard />} />
                     <Route path='/organization/agent/tickets/' element={<Tickets />} />
-                    <Route path='/organization/agent/customers/' element={<LayoutAgent child='Customers' />} />
-                    <Route path='/organization/agent/notifications/' element={<LayoutAgent child='Notifications' />} />
-                    <Route path='/organization/agent/profile/' element={<LayoutAgent child='Profile' />} />
                     <Route path="*" element={<PageErr />} />
                     <Route path='/organization/agents/tickets/1' element={<TicketDetails />}></Route>
+                    <Route path="/organization/agent/customers/" element={<Customers />}></Route>
+                    <Route path="/organization/agent/notifications/" element={<Notifications />} />
+                    <Route path="/organization/agent/profile/" element={<Profile />}></Route>
                 </Routes>
             </Router>
         );

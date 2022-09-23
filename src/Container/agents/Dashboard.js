@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core'
 import { Card } from '@mui/material'
 import AdUnitsIcon from '@mui/icons-material/AdUnits';
 
+
 const styles = makeStyles({
 
     Grid: {
@@ -194,12 +195,12 @@ function Dashboard() {
                         <Paper>
                             <Card>
                                 <Grid item xs={12}>
-                                    <CardMedia
-                                        component="img"
-                                        height="300"
-                                        image="/static/images/cards/paella.jpg"
-                                        alt="Chart"
-                                    /> <Divider></Divider>
+                                    <Box>
+
+                                    </Box>
+
+
+                                    <Divider></Divider>
                                     <CardContent>
                                         <Typography sx={{ color: 'black', fontWeight: '50px' }}>
 
