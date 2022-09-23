@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
     tableHeaderCell: {
         fontWeight: 'bold',
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: '#0D80D8',
         color: theme.palette.getContrastText(theme.palette.primary.dark)
     },
     avatar: {
@@ -60,6 +60,7 @@ for (let i = 0; i < 14; i++) {
         name: ' Nishanth',
         email: 'whitedevil',
         phone: 8754954543,
+        probleminfo: 'My mobile phone',
         jobTitle: 'Web Designer',
         company: "tech phantoms",
         joinDate: '22-02-2003',
@@ -82,6 +83,10 @@ const styles = makeStyles({
         color: 'black'
     }
 });
+
+
+
+
 
 
 function Customers() {
@@ -107,6 +112,7 @@ function Customers() {
                         <TableHead>
                             <TableRow>
                                 <TableCell className={classes.tableHeaderCell}>User Info</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Problem Info</TableCell>
                                 <TableCell className={classes.tableHeaderCell}>Job Info</TableCell>
                                 <TableCell className={classes.tableHeaderCell}>Joining Date</TableCell>
                                 <TableCell className={classes.tableHeaderCell}>Status</TableCell>
@@ -118,7 +124,7 @@ function Customers() {
                                     <TableCell>
                                         <Grid container>
                                             <Grid item lg={2}>
-                                                <Avatar alt={row.name} src='.' className={classes.avatar} />
+                                                <Avatar alt={row.name} src='.' className={classes.avatar} alt='N' />
                                             </Grid>
                                             <Grid item lg={10}>
                                                 <Typography className={classes.name}>{row.name}</Typography>
@@ -126,6 +132,10 @@ function Customers() {
                                                 <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
                                             </Grid>
                                         </Grid>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Typography color="primary" variant="subtitle2">{row.probleminfo}</Typography>
+
                                     </TableCell>
                                     <TableCell>
                                         <Typography color="primary" variant="subtitle2">{row.jobTitle}</Typography>

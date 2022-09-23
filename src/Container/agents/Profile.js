@@ -31,11 +31,10 @@ const styles = makeStyles({
     },
     TextField: {
 
-
     },
     label: {
         position: 'relative',
-        left: '10px',
+        left: '100px',
         color: 'black',
 
     }

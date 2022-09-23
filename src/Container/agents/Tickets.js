@@ -18,6 +18,9 @@ import { Link } from 'react-router-dom';
 import { InputLabel } from '@mui/material';
 import { Select } from '@mui/material';
 import { MenuItem } from '@mui/material';
+import { Avatar } from '@mui/material';
+import { TableFooter } from '@mui/material';
+import { TablePagination } from '@mui/material';
 
 
 const styles = makeStyles({
@@ -35,43 +38,54 @@ const styles = makeStyles({
     }
 
 })
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
+
+const useStyles = makeStyles((theme) => ({
+
+    tableContainer: {
+        borderRadius: 15,
+        margin: '10px 10px',
+        width: '1200px'
     },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
+    tableHeaderCell: {
+        fontWeight: 'bold',
+        backgroundColor: '#0D80D8',
+        color: theme.palette.getContrastText(theme.palette.primary.dark)
     },
+    avatar: {
+        backgroundColor: theme.palette.primary.light,
+        color: theme.palette.getContrastText(theme.palette.primary.light)
+    },
+    name: {
+        fontWeight: 'bold',
+        color: theme.palette.secondary.dark
+    },
+    status: {
+        fontWeight: 'bold',
+        fontSize: '0.75rem',
+        color: 'white',
+        backgroundColor: 'grey',
+        borderRadius: 8,
+        padding: '3px 10px',
+        display: 'inline-block'
+    }
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0,
-    },
-}));
-
-function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number,
-) {
-    return { name, calories, fat, carbs, protein };
+let USERS = [], STATUSES = ['Low', 'Medium', 'High'];
+for (let i = 0; i < 14; i++) {
+    USERS[i] = {
+        name: ' Nishanth',
+        email: 'whitedevil',
+        phone: 8754954543,
+        probleminfo: 'My mobile phone',
+        jobTitle: 'Web Designer',
+        company: "tech phantoms",
+        joinDate: '22-02-2003',
+        status: STATUSES[Math.floor(Math.random() * STATUSES.length)]
+    }
 }
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+
+
 
 
 
@@ -84,69 +98,92 @@ function Tickets() {
         setAge(e.target.value);
     };
 
+
+    const classes = useStyles();
+    const [page, setPage] = React.useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(+event.target.value);
+        setPage(0);
+    };
+
+
     return (
         <LayoutAgent>
 
-            <Box className={style.Grid} >
-                <Grid container>
+            <Grid className={style.Grid}>
+                <TableContainer component={Paper} className={classes.tableContainer}>
+                    <Table className={classes.table} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell className={classes.tableHeaderCell}>User Info</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Problem Info</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Job Info</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Joining Date</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Status</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+                                <TableRow key={row.name}>
+                                    <TableCell>
+                                        <Grid container>
+                                            <Grid item lg={2}>
+                                                <Avatar alt={row.name} src='.' className={classes.avatar} alt='N' />
+                                            </Grid>
+                                            <Grid item lg={10}>
+                                                <Typography className={classes.name}>{row.name}</Typography>
+                                                <Typography color="textSecondary" variant="body2">{row.email}</Typography>
+                                                <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
+                                            </Grid>
+                                        </Grid>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Typography color="primary" variant="subtitle2">{row.probleminfo}</Typography>
 
-                    <Grid item sm={12}> 
-                        <Typography>Your unSolved tickets</Typography><br></br>
-
-                        <Select sx={{ width: '200px', height: '40px', border: '1px #757575 solid' }}
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={age}
-                            label="Age"
-                            onChange={handleChange}
-                            defaultValue={"Your unSolved tickets"}
-
-                        >
-                            <MenuItem >Your unSolved tickets</MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-
-                    </Grid>
-
-                    <Grid item sm={12}>
-                        <TableContainer component={Paper}>
-                            <br></br>
-                            <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                                <TableHead>
-                                    <TableRow>
-                                        <StyledTableCell>Subjects</StyledTableCell>
-                                        <StyledTableCell align="right">Requested</StyledTableCell>
-                                        <StyledTableCell align="right">Date to be Solved</StyledTableCell>
-                                        <StyledTableCell align="right">type</StyledTableCell>
-                                        <StyledTableCell align="right">Priority</StyledTableCell>
-
-
-
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {rows.map((row) => (
-                                        <StyledTableRow key={row.name}>
-
-                                            <StyledTableCell component="th" scope="row" ><Link target='_blank' className={style.link} to="/organization/agents/tickets/1">{row.name}</Link></StyledTableCell>
-                                            <StyledTableCell align="right" component="th" scope="row">
-                                                {row.calories}
-                                            </StyledTableCell>
-                                            <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                                        </StyledTableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                    </Grid>
-                </Grid>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Typography color="primary" variant="subtitle2">{row.jobTitle}</Typography>
+                                        <Typography color="textSecondary" variant="body2">{row.company}</Typography>
+                                    </TableCell>
+                                    <TableCell>{row.joinDate}</TableCell>
+                                    <TableCell>
+                                        <Typography
+                                            className={classes.status}
+                                            style={{
+                                                backgroundColor:
+                                                    ((row.status === 'Low' && 'green') ||
+                                                        (row.status === 'Medium' && 'blue') ||
+                                                        (row.status === 'High' && 'orange'))
+                                            }}
+                                        >{row.status}</Typography>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                        <TableFooter>
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10, 15]}
+                                component="div"
+                                count={USERS.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                onChangePage={handleChangePage}
+                                onChangeRowsPerPage={handleChangeRowsPerPage}
+                            />
+                        </TableFooter>
+                    </Table>
+                </TableContainer>
+            </Grid>
 
 
-            </Box>
+
+
         </LayoutAgent >
     )
 }
