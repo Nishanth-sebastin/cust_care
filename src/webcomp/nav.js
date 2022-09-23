@@ -1,13 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 // import { AiFillCaretDown } from 'react-icons/ai'
 //import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { Button } from '@mui/material'
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { useState } from "react";
+//import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
-class Nav extends Component {
-
-
-    render() {
+function Nav () {
+   
+   
+        const [anchorEl, setAnchorEl] = useState("null");
+        const open = Boolean(anchorEl);
+        const handleClick = (event) => {
+          setAnchorEl(event.currentTarget);
+        };
+        const handleClose = () => {
+          setAnchorEl(null);
+        };
+    
         return (
             <div className='cont' >
                 <header className="navbar">
@@ -27,20 +39,46 @@ class Nav extends Component {
 
                             <li><a href="/">Contact</a></li>
 
-                            <div className='dropdown'>
+                            {/* <div className='dropdown'>
                                 <Button className='dropbtn' variant='contained'>Login/SignUp</Button>
                                 <div className="dropdown-content">
 
+
                                     <Link className='links' target='_blank' to='/organization/login'>Organization</Link>
                                     <Link className='links' target='_blank' to='/customer/login'>Customer</Link>
+                                    
                                 </div>
-                            </div>
+       
+                            </div> */}
+                            <div>
+      <Button
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        Login/Signup
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button"
+        }}
+      >
+        <MenuItem onClick={handleClose}><Button><Link target='_blank' to='/organization/register'>Organization</Link></Button></MenuItem>
+        <MenuItem onClick={handleClose}><Button><Link target='_blank' to ='/customer/register'>Customer</Link></Button></MenuItem>
+      </Menu>
+    </div>
                         </div>
                     </ul>
                 </header>
             </div>
         );
     }
-}
+
 
 export default Nav

@@ -12,11 +12,17 @@ import PageErr from "../ErrorBoundary/PageErr";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Dashboard from "../Container/agents/Dashboard";
 import LayoutAgent from "../MainLayout/LayoutAgent";
+import LayoutCustomer from "../MainLayout/LayoutCustomer";
 import Tickets from "../Container/agents/Tickets";
 import TicketDetails from "../Container/agents/TicketDetails";
+import CustomerDashboard from "../Container/Customer/Dashboard"
+import CustomerSubmitQuery from "../Container/Customer/SubmitQuery/index.js"
+import CustomerTickets from "../Container/Customer/Tickets/index.js"
+import CustomerCall from "../Container/Customer/Call/index.js"
+import CustomerProfile from "../Container/Customer/Profile/index.js"
+import CustomerSignout from "../Container/Customer/SignOut/index.js"
 
-
-class Routerapp extends React.Component {
+class Routerapp extends React.Component { 
     render() {
         return (
 
@@ -32,11 +38,20 @@ class Routerapp extends React.Component {
                     <Route path="/organization/agent/" element={<Dashboard />} />
                     <Route path='/organization/agent/dashboard/' element={<Dashboard />} />
                     <Route path='/organization/agent/tickets/' element={<Tickets />} />
+                    <Route path='/customer' element={<LayoutCustomer  />} />
                     <Route path='/organization/agent/customers/' element={<LayoutAgent child='Customers' />} />
                     <Route path='/organization/agent/notifications/' element={<LayoutAgent child='Notifications' />} />
                     <Route path='/organization/agent/profile/' element={<LayoutAgent child='Profile' />} />
                     <Route path="*" element={<PageErr />} />
                     <Route path='/organization/agents/tickets/1' element={<TicketDetails />}></Route>
+                    <Route path='/customer/tickets/' element={<CustomerTickets />} />
+                    <Route path="/customer/submitquery" element={<CustomerSubmitQuery/>} /> 
+                    <Route path="/customer/dashboard" element={<CustomerDashboard/>} />
+                    <Route path='/customer/call' element={<CustomerCall />} />
+                    <Route path='/customer/profile' element={<CustomerProfile/>} />
+                    <Route path='/customer/tickets/' element={<CustomerTickets />} />
+                    <Route path='/customer/signout' element={<CustomerSignout/>} />
+
                 </Routes>
             </Router>
         );

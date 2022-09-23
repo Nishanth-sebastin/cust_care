@@ -52,7 +52,7 @@ export const CustLogin = () => {
                   <TextField label="password" name="password" type="password" />
                   <TextField label="Confirm Password" name="confirmPassword" type="password" /><br></br>
                   <h5 style={{ fontSize: '15px' }}>Create a account <a style={{ textDecoration: 'none' }}> {<Link to='/customer/register'>Click Here</Link>}</a></h5>
-                  <button className="btn btn-dark mt-3" type="submit">Register</button>
+                  <button className="btn btn-dark mt-3" type="submit">Login</button>
 
                 </Form>
               </div>
