@@ -107,6 +107,7 @@ function Customers() {
     return (
         <LayoutAgent>
             <Grid className={style.Grid}>
+                <Typography variant='h5'>Customers</Typography>
                 <TableContainer component={Paper} className={classes.tableContainer}>
                     <Table className={classes.table} aria-label="simple table">
                         <TableHead>
@@ -124,9 +125,9 @@ function Customers() {
                                     <TableCell>
                                         <Grid container>
                                             <Grid item lg={2}>
-                                                <Avatar alt={row.name} src='.' className={classes.avatar} alt='N' />
+                                                <Avatar alt={row.name} src='.' className={classes.avatar} >N</Avatar>
                                             </Grid>
-                                            <Grid item lg={10}>
+                                            <Grid item lg={10} sx={{ position: 'relative', left: '10px' }}>
                                                 <Typography className={classes.name}>{row.name}</Typography>
                                                 <Typography color="textSecondary" variant="body2">{row.email}</Typography>
                                                 <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
@@ -156,17 +157,7 @@ function Customers() {
                                 </TableRow>
                             ))}
                         </TableBody>
-                        <TableFooter>
-                            <TablePagination
-                                rowsPerPageOptions={[5, 10, 15]}
-                                component="div"
-                                count={USERS.length}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                onChangePage={handleChangePage}
-                                onChangeRowsPerPage={handleChangeRowsPerPage}
-                            />
-                        </TableFooter>
+
                     </Table>
                 </TableContainer>
             </Grid>

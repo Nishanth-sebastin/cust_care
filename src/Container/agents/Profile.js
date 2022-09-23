@@ -62,7 +62,7 @@ function Profile() {
                                 <FormLabel >
                                     <Typography className={style.label}>Username</Typography> </FormLabel>
                                 <FormControlLabel control={<TextField sx={{
-                                    border: '1px solid black', width: '400px', position: 'relative',
+                                    border: '1px solid #757575', width: '400px', position: 'relative',
                                     left: '400px',
                                 }} size='small' />}></FormControlLabel>
                             </Box>
@@ -70,7 +70,7 @@ function Profile() {
                                 <FormLabel >
                                     <Typography className={style.label}>Website</Typography> </FormLabel>
                                 <FormControlLabel control={<TextField sx={{
-                                    border: '1px solid black', width: '400px', position: 'relative',
+                                    border: '1px solid #757575', width: '400px', position: 'relative',
                                     left: '415px',
                                 }} size='small' />}></FormControlLabel>
 
@@ -80,7 +80,7 @@ function Profile() {
                                 <FormLabel >
                                     <Typography className={style.label}>Your Bio</Typography> </FormLabel>
                                 <FormControlLabel control={<TextField sx={{
-                                    border: '1px solid black', width: '400px', position: 'relative',
+                                    border: '1px solid #757575', width: '400px', position: 'relative',
                                     left: '415px',
                                 }} size='small' />}></FormControlLabel>
                             </Box>
@@ -88,14 +88,14 @@ function Profile() {
                                 <FormLabel >
                                     <Typography className={style.label}>Job title</Typography> </FormLabel>
                                 <FormControlLabel control={<TextField sx={{
-                                    border: '1px solid black', width: '400px', position: 'relative',
+                                    border: '1px solid #757575', width: '400px', position: 'relative',
                                     left: '415px',
                                 }} size='small' />}></FormControlLabel></Box>
                             <Box className={style.formAlign}>
                                 <FormLabel >
                                     <Typography className={style.label}>Email</Typography> </FormLabel>
                                 <FormControlLabel control={<TextField sx={{
-                                    border: '1px solid black', width: '400px', position: 'relative',
+                                    border: '1px solid #757575', width: '400px', position: 'relative',
                                     left: '430px',
                                 }} size='small' />}></FormControlLabel></Box>
                             <FormGroup>

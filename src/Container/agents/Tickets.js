@@ -14,14 +14,13 @@ import { Tooltip } from '@mui/material';
 import { IconButton } from '@mui/material';
 import TuneIcon from '@mui/icons-material/Tune';
 import Grid from '@mui/material/Grid';
-import { Link } from 'react-router-dom';
 import { InputLabel } from '@mui/material';
 import { Select } from '@mui/material';
 import { MenuItem } from '@mui/material';
 import { Avatar } from '@mui/material';
 import { TableFooter } from '@mui/material';
 import { TablePagination } from '@mui/material';
-
+import { Link } from 'react-router-dom';
 
 const styles = makeStyles({
     Grid: {
@@ -34,7 +33,11 @@ const styles = makeStyles({
     },
     link: {
         textDecoration: 'none',
-        color: 'black'
+        color: 'black',
+
+    },
+    links: {
+        textDecorationLine: 'none'
     }
 
 })
@@ -43,13 +46,14 @@ const useStyles = makeStyles((theme) => ({
 
     tableContainer: {
         borderRadius: 15,
-        margin: '10px 10px',
+
         width: '1200px'
     },
     tableHeaderCell: {
         fontWeight: 'bold',
         backgroundColor: '#0D80D8',
-        color: theme.palette.getContrastText(theme.palette.primary.dark)
+
+
     },
     avatar: {
         backgroundColor: theme.palette.primary.light,
@@ -117,6 +121,7 @@ function Tickets() {
         <LayoutAgent>
 
             <Grid className={style.Grid}>
+                <Typography variant='h5'>Tickets</Typography><br></br>
                 <TableContainer component={Paper} className={classes.tableContainer}>
                     <Table className={classes.table} aria-label="simple table">
                         <TableHead>
@@ -134,9 +139,9 @@ function Tickets() {
                                     <TableCell>
                                         <Grid container>
                                             <Grid item lg={2}>
-                                                <Avatar alt={row.name} src='.' className={classes.avatar} alt='N' />
+                                                <Avatar alt={row.name} src='' className={classes.avatar} >NS</Avatar>
                                             </Grid>
-                                            <Grid item lg={10}>
+                                            <Grid item sx={{ position: 'relative', left: '10px' }} lg={10}>
                                                 <Typography className={classes.name}>{row.name}</Typography>
                                                 <Typography color="textSecondary" variant="body2">{row.email}</Typography>
                                                 <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
@@ -144,7 +149,7 @@ function Tickets() {
                                         </Grid>
                                     </TableCell>
                                     <TableCell>
-                                        <Typography color="primary" variant="subtitle2">{row.probleminfo}</Typography>
+                                        <Typography color="primary" variant="subtitle2"><Link to="/organization/agents/tickets/1" target='_blank' className={style.links}>{row.probleminfo}</Link></Typography>
 
                                     </TableCell>
                                     <TableCell>
@@ -166,17 +171,7 @@ function Tickets() {
                                 </TableRow>
                             ))}
                         </TableBody>
-                        <TableFooter>
-                            <TablePagination
-                                rowsPerPageOptions={[5, 10, 15]}
-                                component="div"
-                                count={USERS.length}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                onChangePage={handleChangePage}
-                                onChangeRowsPerPage={handleChangeRowsPerPage}
-                            />
-                        </TableFooter>
+
                     </Table>
                 </TableContainer>
             </Grid>
