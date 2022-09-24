@@ -24,6 +24,12 @@ import CustomerSignout from "../Container/Customer/SignOut/index.js"
 import Customers from "../Container/agents/Customers";
 import Notifications from "../Container/agents/Notifications";
 import Profile from "../Container/agents/Profile";
+import DashboardAdmin from "../Container/admin/DashboardAdmin";
+import TicketsAdmin from "../Container/admin/TicketsAdmin";
+import AgentsAdmin from "../Container/admin/AgentsAdmin";
+import NotificationsAdmin from "../Container/admin/NotificationsAdmin";
+import OrgProfileAdmin from "../Container/admin/OrgProfileAdmin";
+import AddAgents from "../Container/admin/AddAgent/AddAgents";
 
 
 class Routerapp extends React.Component {
@@ -55,6 +61,13 @@ class Routerapp extends React.Component {
                     <Route path='/customer/profile' element={<CustomerProfile />} />
                     <Route path='/customer/tickets/' element={<CustomerTickets />} />
                     <Route path='/customer/signout' element={<CustomerSignout />} />
+                    <Route path="/organization/admin/dashboard" element={<DashboardAdmin />} />
+                    <Route path="/organization/admin/tickets" element={<TicketsAdmin />} />
+                    <Route path="/organization/admin/agents" element={<AgentsAdmin />} />
+                    <Route path="/organization/admin/notifications" element={<NotificationsAdmin />} />
+                    <Route path="/organization/admin/profile" element={<OrgProfileAdmin />} />
+                    <Route path="/organization/admin/addagents" element={<AddAgents />} />
+                    <Route path="/organization/admin/" element={<DashboardAdmin />} />
 
                 </Routes>
             </Router>

@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 
 
 
+
 const styles = makeStyles({
     Grid: {
         position: 'relative',
@@ -13,15 +14,15 @@ const styles = makeStyles({
         width: '100%',
         height: '650px',
         padding: '18px',
-  
+
     },
     link: {
         textDecoration: 'none',
         color: 'black'
     }
-  
-  })
-  
+
+})
+
 
 function Profile() {
 
@@ -34,7 +35,7 @@ function Profile() {
 
                     <Grid item sm={12}>
                         <Typography>MAke a Call</Typography><br></br>
-                        
+
                     </Grid>
                 </Grid>
 
