@@ -48,7 +48,7 @@ export const CustSignup = () => {
             {formik => (
               <div>
                 <h1 className="my-4 font-weight-bold .display-4">Register</h1>
-                <Form>
+                <Form onSubmit='GET'>
                   <TextField label="First Name" name="firstName" type="text" />
                   <TextField label="last Name" name="lastName" type="text" />
                   <TextField label="Email" name="email" type="email" />
