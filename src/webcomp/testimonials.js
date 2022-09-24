@@ -1,3 +1,4 @@
+import { Avatar } from "@mui/material"
 import React, { Component } from "react"
 
 class Testimonials extends Component {
@@ -14,7 +15,9 @@ class Testimonials extends Component {
                     </p>
                     <div className="reviews">
                         <div className="review1">
-                            <div className="review-flex"><img src="" alt="Nishi" />
+
+                            <div className="review-flex"><Avatar>N</Avatar>
+                                <br></br>
                                 <div className="review-heading"> <h5>Nishanth Sebastin</h5>
                                     <h6>Designer</h6>
                                 </div>
@@ -28,7 +31,7 @@ class Testimonials extends Component {
                         </div>
 
                         <div className="review2">
-                            <div className="review-flex"> <img src="" alt="Nishi" />
+                            <div className="review-flex"><Avatar>N</Avatar>
                                 <div className="review-heading">
                                     <h5>Nishanth Sebastin</h5>
                                     <h6>Designer</h6>
