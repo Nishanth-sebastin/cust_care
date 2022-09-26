@@ -17,7 +17,6 @@ a {
 li {
   list-style: none;
 }
-
 .navbar {
   display: flex;
   align-items: center;
@@ -53,6 +52,12 @@ li {
   list-style: none;
   text-decoration: none;
 }
+.menu li a:hover {
+  color: white;
+}
+.menu li a {
+  text-decoration: none !important;
+}
 .services {
   position: relative;
 }
@@ -60,7 +65,16 @@ li {
 .cont {
   background-color: #161616;
 }
-
+.home-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: -90px;
+}
+.home-side-hdg {
+  margin-top: 60px;
+  margin-left: -90px;
+}
 .dropdown li + li {
   margin-top: 10px;
 }
@@ -71,6 +85,10 @@ li {
 }
 .dropdown li:hover {
   background-color: #161616;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
 .services:hover .dropdown {
@@ -85,26 +103,15 @@ input[type="checkbox"] {
   user-select: none;
 }
 .home {
-  margin: 200px 50px;
+  margin: 150px 0px;
   color: white;
 }
 .home h1 {
-  font-size: 45px;
-  text-align: center;
-  font-style: normal;
-}
-.home h4 {
-  text-align: center;
-  margin: 0px 170px;
-  font-weight: lighter;
-  font-size: 15px;
+  font-size: 4.5rem;
+  margin-left: 150px;
 }
 
 /* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
 
 /* Dropdown button */
 .dropdown .dropbtn {
@@ -158,7 +165,6 @@ input[type="checkbox"] {
   font-weight: lighter;
   position: relative;
   top: 20px;
-  left: 650px;
   color: white;
 }
 .home button:hover {
@@ -395,6 +401,7 @@ h6 {
   .mainpara {
     margin-left: 100px;
     margin-right: 0px;
+    font-size: 100px;
   }
   .reviews {
     margin-left: 10px;

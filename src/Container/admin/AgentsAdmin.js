@@ -14,7 +14,7 @@ import {
     TableFooter
 } from '@material-ui/core';
 import { makeStyles, styled } from '@material-ui/core'
-import LayoutAgent from '../../MainLayout/LayoutAgent'
+import LayoutAdmin from '../../MainLayout/LayoutAdmin'
 import { Search } from '@mui/icons-material';
 import { Link } from 'react-router-dom'
 
@@ -64,7 +64,7 @@ for (let i = 0; i < 14; i++) {
         jobTitle: 'Web Designer',
         company: "tech phantoms",
         joinDate: '22-02-2003',
-        status: STATUSES[Math.floor(Math.random() * STATUSES.length)]
+        rank: '89'
     }
 }
 
@@ -105,18 +105,18 @@ function Customers() {
     };
 
     return (
-        <LayoutAgent>
+        <LayoutAdmin>
             <Grid className={style.Grid}>
-                <Typography variant='h5'>Customers</Typography>
+                <Typography variant='h5'>Agents</Typography>
                 <TableContainer component={Paper} className={classes.tableContainer}>
                     <Table className={classes.table} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell className={classes.tableHeaderCell}>User Info</TableCell>
-                                <TableCell className={classes.tableHeaderCell}>Problem Info</TableCell>
-                                <TableCell className={classes.tableHeaderCell}>Job Info</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Agent Info</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Email</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Number</TableCell>
                                 <TableCell className={classes.tableHeaderCell}>Joining Date</TableCell>
-                                <TableCell className={classes.tableHeaderCell}>Status</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Rank</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -145,14 +145,8 @@ function Customers() {
                                     <TableCell>{row.joinDate}</TableCell>
                                     <TableCell>
                                         <Typography
-                                            className={classes.status}
-                                            style={{
-                                                backgroundColor:
-                                                    ((row.status === 'Active' && 'green') ||
-                                                        (row.status === 'Pending' && 'blue') ||
-                                                        (row.status === 'Blocked' && 'orange'))
-                                            }}
-                                        >{row.status}</Typography>
+
+                                        >{row.rank}</Typography>
                                     </TableCell>
                                 </TableRow>
                             ))}
@@ -161,7 +155,7 @@ function Customers() {
                     </Table>
                 </TableContainer>
             </Grid>
-        </LayoutAgent>
+        </LayoutAdmin>
 
     );
 }

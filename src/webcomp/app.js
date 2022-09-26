@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Contact from './contact'
+import CopyRight from './footer'
 import Footer from './footer'
 import Home from './home'
 import Nav from './nav'
@@ -13,7 +15,9 @@ class app extends Component {
                 <Home />
                 <Uniqueideas />
                 <Testimonials />
-                <Footer />
+                <Contact />
+                <CopyRight />
+
             </div>
         )
     }

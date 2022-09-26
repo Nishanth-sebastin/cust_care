@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LayoutAgent from '../../MainLayout/LayoutAgent'
+import LayoutAdmin from '../../MainLayout/LayoutAdmin'
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -118,7 +118,7 @@ function Tickets() {
 
 
     return (
-        <LayoutAgent>
+        <LayoutAdmin>
 
             <Grid className={style.Grid}>
                 <Typography variant='h5'>Tickets</Typography><br></br>
@@ -179,7 +179,7 @@ function Tickets() {
 
 
 
-        </LayoutAgent >
+        </LayoutAdmin >
     )
 }
 

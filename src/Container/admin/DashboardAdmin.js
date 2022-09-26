@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import LayoutAgent from '../../MainLayout/LayoutAgent'
 import { Box } from '@mui/system'
 import { CardActionArea, CardContent, CardHeader, CardMedia, Divider, Icon, Paper, Typography } from '@mui/material'
@@ -9,7 +10,9 @@ import AdUnitsIcon from '@mui/icons-material/AdUnits';
 import { Bar } from 'react-chartjs-2'
 import { Link } from 'react-router-dom';
 import { Chart as ChartJS } from 'chart.js/auto'
-import AppMain from '../../examples'
+import AppMain from '../../examples/AdminCharts/'
+import LayoutAdmin from '../../MainLayout/LayoutAdmin'
+import AppMainLine from '../../examples/AdminCharts/LineChart'
 
 
 const styles = makeStyles({
@@ -75,20 +78,19 @@ const styles = makeStyles({
     },
     ChartGrid: {
         position: 'relative',
-
-        height: '460px',
         width: '100%',
-        padding: '20px',
+
+
     }
 
 
 })
-function Dashboard() {
+function DashboardAdmin() {
 
     const style = styles();
 
     return (
-        <LayoutAgent >
+        <LayoutAdmin >
             <Grid className={style.Grid}>
                 <Grid container>
                     <Grid item xs={3} sx={{ padding: '20px', }}>
@@ -151,7 +153,7 @@ function Dashboard() {
 
                                     </Box>
                                     <Box>
-                                        <Typography sx={{ position: 'relative', left: '70px', top: '15px', color: '#9498AD' }}>UnSolved Tickets<br></br>
+                                        <Typography sx={{ position: 'relative', left: '70px', top: '15px', color: '#9498AD' }}>Total Agents<br></br>
                                             <Typography sx={{ color: 'black' }} ><strong>281</strong></Typography></Typography>
                                     </Box>
 
@@ -160,7 +162,7 @@ function Dashboard() {
 
                                 <CardContent sx={{ marginTop: '25px' }}>
 
-                                    <Typography >55%  than lask week</Typography>
+                                    <Typography >Agents</Typography>
                                 </CardContent>
 
                             </Card>
@@ -208,25 +210,55 @@ function Dashboard() {
                                     <CardContent>
                                         <Typography sx={{ color: 'black', fontWeight: '50px' }}>
 
-                                            <strong>   Your activity over the days</strong>
+                                            <strong>Tickets Raised</strong>
 
 
                                         </Typography>
                                         <Divider></Divider>
                                         <Typography sx={{ color: '#9498AD' }}>Past 7 days</Typography>
+
+
+                                    </CardContent>
+                                </Grid>
+
+
+
+                            </Card>
+
+                        </Paper>
+                        <div></div><div></div>
+                        <Paper>
+                            <Card>
+                                <Grid item xs={12}>
+                                    <Box  >
+                                        <AppMainLine />
+                                    </Box>
+
+
+                                    <Divider></Divider>
+                                    <CardContent>
+                                        <Typography sx={{ color: 'black', fontWeight: '50px' }}>
+
+                                            <strong>Problems Solved by Agents</strong>
+
+
+                                        </Typography>
+                                        <Divider></Divider>
+                                        <Typography sx={{ color: '#9498AD' }}>Past 7 days</Typography>
+
+
                                     </CardContent>
                                 </Grid>
                             </Card>
-
                         </Paper>
                     </Grid>
                 </Grid>
             </Grid>
-        </LayoutAgent>
+        </LayoutAdmin>
 
 
     )
 
 }
 
-export default Dashboard
+export default DashboardAdmin

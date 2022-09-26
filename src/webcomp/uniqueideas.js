@@ -50,13 +50,11 @@ class Uniqueideas extends Component {
             <div style={{ color: 'white' }} className='cont'>
                 <div className="inno">
                     <h3>Why Choose Us</h3>
-                    <h1>We Are Innovators</h1>
+                    <h1>Take a quick tour</h1>
                     <br />
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius beatae
-                        illo voluptate inventore! Ratione accusantium sequi totam sapiente
-                        voluptas, assumenda earum molestiae cupiditate consequuntur!
-                        Voluptatum enim assumenda aliquid. Id, velit.
+                        The best way is to learn about CustCare is to experinnce it like a customer.
+                        See <br></br>for yourself how CustCare makes customer experience easy
                     </p>
                 </div>
                 <div className="blocks">
@@ -80,8 +78,7 @@ class Uniqueideas extends Component {
                         <BiLaptop className={this.state.lap} />
                         <h2>OnTime Deliver</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Reprehenderit, obcaecati magnam quaerat quisquam repellat nulla.
+                            To solve your complains on time <br></br>24/7, and see yourself good conversations become great experiences
                         </p>
                     </div>
 
@@ -104,8 +101,8 @@ class Uniqueideas extends Component {
                         <IoIosPhonePortrait className={this.state.App} />
                         <h2>Unique Services</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Reprehenderit, obcaecati magnam quaerat quisquam repellat nulla.
+                            The era of conversational CRM is here. Hear how our latest release
+                            can connect customer conversation across your business
                         </p>
                     </div>
                     <div className="block3">
@@ -124,8 +121,8 @@ class Uniqueideas extends Component {
                         <MdOutlineSecurity className={this.state.cyber} />
                         <h2>Worth Spending Money</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Reprehenderit, obcaecati magnam quaerat quisquam repellat nulla.
+                            Assess your company’s customer experience, find out how you stack
+                            up against the leaders, and get a<br></br> personalized report.
                         </p>
                     </div>
                 </div>
