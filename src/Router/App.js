@@ -18,12 +18,13 @@ import TicketDetails from "../Container/agents/TicketDetails";
 import CustomerDashboard from "../Container/Customer/Dashboard"
 import CustomerSubmitQuery from "../Container/Customer/SubmitQuery/index.js"
 import CustomerTickets from "../Container/Customer/Tickets/index.js"
-import CustomerCall from "../Container/Customer/Call/index.js"
+import CustomerOrganizations  from "../Container/Customer/Organization/index.js"
 import CustomerProfile from "../Container/Customer/Profile/index.js"
-import CustomerSignout from "../Container/Customer/SignOut/index.js"
 import Customers from "../Container/agents/Customers";
 import Notifications from "../Container/agents/Notifications";
 import Profile from "../Container/agents/Profile";
+import CustomerTicketStatus from "../Container/Customer/Tickets/ViewStatus"
+import CustomerChatbot from "../Container/Customer/Organization/chatbot"
 
 class Routerapp extends React.Component {
     render() {
@@ -41,7 +42,7 @@ class Routerapp extends React.Component {
                     <Route path="/organization/agent/" element={<Dashboard />} />
                     <Route path='/organization/agent/dashboard/' element={<Dashboard />} />
                     <Route path='/organization/agent/tickets/' element={<Tickets />} />
-                    <Route path='/customer' element={<LayoutCustomer />} />
+                    <Route path='/customer' element={<CustomerDashboard />} />
                     <Route path='/organization/agent/customers/' element={<Customers />} />
                     <Route path='/organization/agent/notifications/' element={<Notifications />} />
                     <Route path='/organization/agent/profile/' element={<Profile />} />
@@ -50,10 +51,12 @@ class Routerapp extends React.Component {
                     <Route path='/customer/tickets/' element={<CustomerTickets />} />
                     <Route path="/customer/submitquery" element={<CustomerSubmitQuery />} />
                     <Route path="/customer/dashboard" element={<CustomerDashboard />} />
-                    <Route path='/customer/call' element={<CustomerCall />} />
+                    <Route path='/customer/organizations' element={<CustomerOrganizations />} />
                     <Route path='/customer/profile' element={<CustomerProfile />} />
-                    <Route path='/customer/tickets/' element={<CustomerTickets />} />
-                    <Route path='/customer/signout' element={<CustomerSignout />} />
+                    <Route path='/customer/tickets/' element={<CustomerTickets />} />                   
+                    <Route path='/customer/ticketstatus' element={<CustomerTicketStatus />} />
+                    <Route path='/customer/chatbot' element={<CustomerChatbot />} />
+
 
                 </Routes>
             </Router>

@@ -4,6 +4,8 @@ import { TextField } from './TextField';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import logo from '../assets/rocket.png'
+import Axios from "axios"
+
 
 export const CustSignup = () => {
   const validate = Yup.object({
@@ -16,6 +18,8 @@ export const CustSignup = () => {
     email: Yup.string()
       .email('Email is invalid')
       .required('Email is required'),
+
+
     password: Yup.string()
       .min(6, 'Password must be at least 6 charaters')
       .required('Password is required'),
@@ -25,6 +29,23 @@ export const CustSignup = () => {
     number: Yup.number().required('Number is Required').min(10, 'Number must be atleast 10 digits'),
     region: Yup.string().required('Region is Required')
   })
+  
+
+const addCustomer = () =>{
+      Axios.post("http://localhost:3001/create",{
+        "firstName": "firstName",
+        'lastName': 'lastName',
+        'email': 'email',
+       ' password': 'password',
+       ' confirmPassword': 'confirmPassword',
+        'number': 'number',
+        'region':' region'
+        
+      }).then (() =>{
+         console.log("sucess");
+      })
+}
+
   return (
 
     <div className="container mt-3">
@@ -54,11 +75,11 @@ export const CustSignup = () => {
                   <TextField label="Email" name="email" type="email" />
                   <TextField label="password" name="password" type="password" />
                   <TextField label="Confirm Password" name="confirmPassword" type="password" />
-                  <TextField label="Phone Number" name="number" type="phone" />
+                  <TextField label="Phone Number" name="phoneNumber" type="phone" />
                   <TextField label="Region" name="region" type="region" />
                   <br></br>
                   <h5 style={{ fontSize: '15px' }}>Already Have an Account <a style={{ textDecoration: 'none' }}> {<Link to='/customer/login'>Click Here</Link>}</a></h5>
-                  <button className="btn btn-dark mt-3" type="submit">Register</button>
+                  <button className="btn btn-dark mt-3" type="submit" onClick={addCustomer()}>Register</button>
 
 
                 </Form>
