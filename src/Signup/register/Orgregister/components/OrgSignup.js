@@ -11,6 +11,7 @@ import { Grid, Paper, Avatar, Typography, Button } from '@material-ui/core'
 import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import Axios from 'axios'
 
 export const OrgSignup = () => {
 
@@ -36,6 +37,25 @@ export const OrgSignup = () => {
     }
   })
   console.log(formik.values)
+
+  const addOrg = () => {
+    Axios.post("http://localhost:8080/signuporg", {
+      orgname: formik.values.organizationName,
+      email: formik.values.email,
+      number: formik.values.phone,
+      password: formik.values.password,
+      confirmpassword: formik.values.confirmPassword,
+      street: formik.values.street,
+      city: formik.values.city,
+      region: formik.values.region,
+      zip: formik.values.zipcode,
+      website: formik.values.website,
+      gst: formik.values.gstin,
+    }).then(() => {
+      console.log('success')
+    })
+  }
+
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle}>
@@ -63,16 +83,16 @@ export const OrgSignup = () => {
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.region} name="region" fullWidth label='Region' placeholder="Enter your region name" />
           <br></br><br></br>
-          <TextField onChange={formik.handleChange} value={formik.values.website} name="zipcode" fullWidth label='Zip code' placeholder="Enter Zip code" />
+          <TextField onChange={formik.handleChange} value={formik.values.zipcode} name="zipcode" fullWidth label='Zip code' placeholder="Enter Zip code" />
           <br></br><br></br>
 
-          <TextField onChange={formik.handleChange} value={formik.values.gstin} name="website" fullWidth label='Website Link ' placeholder="Enter your Website Link" />
+          <TextField onChange={formik.handleChange} value={formik.values.website} name="website" fullWidth label='Website Link ' placeholder="Enter your Website Link" />
           <br></br><br></br>
-          <TextField onChange={formik.handleChange} value={formik.values.website} name="gstin" fullWidth label='GSTIn' placeholder="Enter GSTIn" />
+          <TextField onChange={formik.handleChange} value={formik.values.gstin} name="gstin" fullWidth label='GSTIn' placeholder="Enter GSTIn" />
           <br></br><br></br>
 
           <h5 style={{ fontSize: '15px' }}>Already Have an Account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/organization/login'>Click Here</Link>}</a></h5><br></br>
-          <Button type='submit' variant='contained' color='primary'><Link to="/"></Link>SignUp</Button>
+          <Button onClick={addOrg} variant='contained' color='primary'><Link to="/"></Link>SignUp</Button>
         </form>
       </Paper>
     </Grid>

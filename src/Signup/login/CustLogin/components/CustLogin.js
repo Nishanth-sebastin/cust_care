@@ -11,6 +11,7 @@ import { Grid, Paper, Avatar, Typography, Button } from '@material-ui/core'
 import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import Axios from 'axios'
 export const CustLogin = () => {
 
 
@@ -31,6 +32,16 @@ export const CustLogin = () => {
     }
   })
   console.log(formik.values)
+
+  const logincust = (e) => {
+    e.preventDefault();
+    Axios.post('http://localhost:8080/logincust', {
+      email: formik.values.email,
+      password: formik.values.password
+    })
+  }
+
+
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle}>
@@ -50,11 +61,11 @@ export const CustLogin = () => {
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.password} name="password" fullWidth label='Password' placeholder="Enter your password" />
           <br></br><br></br>
-          <TextField onChange={formik.handleChange} value={formik.values.confirmpass} name="confirmPassword" fullWidth label='Confirm password' placeholder="Confirm your password" />
+          <TextField onChange={formik.handleChange} value={formik.values.confirmpass} name="confirmpass" fullWidth label='Confirm password' placeholder="Confirm your password" />
           <br></br><br></br>
 
           <h5 style={{ fontSize: '15px' }}>Create a new account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/customer/register'>Click Here</Link>}</a></h5><br></br>
-          <Button type='submit' variant='contained' color='primary'><Link to="/"></Link>Login</Button>
+          <Button onClick={logincust} type='submit' variant='contained' color='primary'><Link to="/"></Link>SignUp</Button>
         </form>
       </Paper>
     </Grid>

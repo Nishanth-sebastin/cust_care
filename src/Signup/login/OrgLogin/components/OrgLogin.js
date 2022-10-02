@@ -11,6 +11,7 @@ import { Grid, Paper, Avatar, Typography, Button } from '@material-ui/core'
 import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import Axios from 'axios';
 
 export const OrgLogin = () => {
 
@@ -29,6 +30,14 @@ export const OrgLogin = () => {
       gstin: ''
     }
   })
+
+  const orglogin = (e) => {
+    e.preventDefault();
+    Axios.post('http://localhost:8080/loginorg', {
+      email: formik.values.email,
+      password: formik.values.password
+    })
+  }
   console.log(formik.values)
   return (
     <Grid>
@@ -55,7 +64,7 @@ export const OrgLogin = () => {
           <br></br><br></br>
 
           <h5 style={{ fontSize: '15px' }}>Create a new account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/organization/register'>Click Here</Link>}</a></h5><br></br>
-          <Button type='submit' variant='contained' color='primary'><Link to="/"></Link>Login</Button>
+          <Button onClick={orglogin} type='submit' variant='contained' color='primary'><Link to="/"></Link>Login</Button>
         </form>
       </Paper>
     </Grid>
