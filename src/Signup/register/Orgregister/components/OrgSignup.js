@@ -39,6 +39,7 @@ export const OrgSignup = () => {
   console.log(formik.values)
 
   const addOrg = () => {
+    console.log("hell")
     Axios.post("http://localhost:8080/signuporg", {
       orgname: formik.values.organizationName,
       email: formik.values.email,
@@ -51,8 +52,8 @@ export const OrgSignup = () => {
       zip: formik.values.zipcode,
       website: formik.values.website,
       gst: formik.values.gstin,
-    }).then(() => {
-      console.log('success')
+    }).then((response) => {
+      console.log(response)
     })
   }
 

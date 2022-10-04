@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Formik, Form, useFormik } from 'formik';
 // import { TextField } from './TextField';
 import { TextField } from '@material-ui/core';
@@ -21,6 +22,8 @@ export const OrgLogin = () => {
   const marginTop = { marginTop: 5 }
 
 
+  const [loginstatus, setLoginstatus] = useState("")
+
   const formik = useFormik({
     initialValues: {
       organizationName: '',
@@ -31,13 +34,29 @@ export const OrgLogin = () => {
     }
   })
 
+
+
   const orglogin = (e) => {
     e.preventDefault();
     Axios.post('http://localhost:8080/loginorg', {
       email: formik.values.email,
       password: formik.values.password
+    }).then((response) => {
+
+      if (response.data.message) {
+        setLoginstatus(response.data.message)
+      }
+
     })
   }
+
+  // useEffect(() => {
+  //   Axios.get("http://localhost:8080/loginorg").then((response) => {
+  //     console.log(response)
+  //   })
+  // }, [])
+
+
   console.log(formik.values)
   return (
     <Grid>
@@ -62,7 +81,7 @@ export const OrgLogin = () => {
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.gstin} name="gstin" fullWidth label='GSTIn' placeholder="Enter GSTIn" />
           <br></br><br></br>
-
+          <p style={{ color: 'red' }}>{loginstatus}</p>
           <h5 style={{ fontSize: '15px' }}>Create a new account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/organization/register'>Click Here</Link>}</a></h5><br></br>
           <Button onClick={orglogin} type='submit' variant='contained' color='primary'><Link to="/"></Link>Login</Button>
         </form>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, useFormik } from 'formik';
 // import { TextField } from './TextField';
 import { TextField } from '@material-ui/core';
@@ -20,6 +20,7 @@ export const CustLogin = () => {
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const marginTop = { marginTop: 5 }
 
+  const [loginstatus, setLoginstatus] = useState("")
 
   const formik = useFormik({
     initialValues: {
@@ -38,6 +39,11 @@ export const CustLogin = () => {
     Axios.post('http://localhost:8080/logincust', {
       email: formik.values.email,
       password: formik.values.password
+    }).then((response) => {
+
+      if (response.data.message) {
+        setLoginstatus(response.data.message)
+      }
     })
   }
 
@@ -65,6 +71,7 @@ export const CustLogin = () => {
           <br></br><br></br>
 
           <h5 style={{ fontSize: '15px' }}>Create a new account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/customer/register'>Click Here</Link>}</a></h5><br></br>
+          <p style={{ color: 'red' }}>{loginstatus}</p>
           <Button onClick={logincust} type='submit' variant='contained' color='primary'><Link to="/"></Link>SignUp</Button>
         </form>
       </Paper>
