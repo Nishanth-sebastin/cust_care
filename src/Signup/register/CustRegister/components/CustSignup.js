@@ -12,6 +12,10 @@ import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+
+
 export const CustSignup = () => {
 
   const paperStyle = { padding: '30px 20px', height: '790px', width: 1000, margin: "30px auto" }
@@ -40,9 +44,10 @@ export const CustSignup = () => {
     region: Yup.string().required('Region is Required')
   })
 
-
+  const navigate = useNavigate();
   const addCustomer = () => {
-
+    navigate("/customer/login");
+    
     Axios.post("http://localhost:8080/signupcust", {
       firstname: formik.values.firstname,
       lastname: formik.values.lastname,

@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Icon, Button, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid';
 import { makeStyles, Paper,CardActionArea, CardContent, CardHeader, CardMedia, Divider ,Card } from '@material-ui/core';
-import LayoutAgent from '../../../MainLayout/LayoutCustomer'
+import LayoutCustomer from '../../../MainLayout/LayoutCustomer'
 import { styled } from '@mui/material/styles';
 
 

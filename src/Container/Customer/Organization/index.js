@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import chatbot from '../../Customer/assets/chat.png'
 import {
     Table,
     TableBody,
@@ -7,6 +8,7 @@ import {
     TableHead,
     TableRow,
     Paper,
+    Box,
     Avatar,
     Button,
     Grid,
@@ -16,6 +18,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles, styled } from '@material-ui/core'
 import LayoutCustomer from '../../../MainLayout/LayoutCustomer'
+import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import { Search } from '@mui/icons-material';
 import { Link} from 'react-router-dom'
 
@@ -58,8 +61,8 @@ const useStyles = makeStyles((theme) => ({
 let USERS = [], STATUSES = ['View Status'];
 for (let i = 0; i < 14; i++) {
     USERS[i] = {
-        content: "I don't receive my amount",
-        date: '22-02-2003',
+        content: "Evoluer",
+        
         status: STATUSES[Math.floor(Math.random() * STATUSES.length)]
     }
 }
@@ -102,9 +105,9 @@ function Customers() {
                     <Table className={classes.table} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell className={classes.tableHeaderCell}>Queries</TableCell>
-                                <TableCell className={classes.tableHeaderCell}>Issued Date</TableCell>
-                                <TableCell className={classes.tableHeaderCell}>Status</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Companies</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Chatbot</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Call</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -120,31 +123,25 @@ function Customers() {
                                         </Grid>
                                     </TableCell>
                                     
-                                    <TableCell>{row.date}</TableCell>
+                                   
                                     <TableCell>
-                                        <Link to='/customer/ticketstatus'><Button  className={classes.status}
-                                            style={{
-                                                backgroundColor:
-                                                    ((row.status === 'View Status' && 'blue'))
-                                            }}>
-                                           {row.status}
-                                        </Button>
+                                        <Link to='/customer/chatbot'> <Box
+                                                        component="img"
+                                                       
+                                                        alt="chatbot"
+                                                        src={chatbot}
+                                                    />
+                                        </Link>
+                                      
+                                    </TableCell>
+                                    <TableCell>
+                                        <Link to='/customer/ticketstatus'><PhoneInTalkOutlinedIcon sx={{position:"relative",left:"-1px",top:"-1px"}}/>
                                         </Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
-                        {/* <TableFooter>
-                            <TablePagination
-                                rowsPerPageOptions={[5, 10, 15]}
-                                component="div"
-                                count={USERS.length}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                onChangePage={handleChangePage}
-                                onChangeRowsPerPage={handleChangeRowsPerPage}
-                            />
-                        </TableFooter> */}
+                    
                     </Table>
                 </TableContainer>
             </Grid>
