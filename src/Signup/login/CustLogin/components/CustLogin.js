@@ -43,7 +43,7 @@ export const CustLogin = () => {
     }).then((response) => {
 
 
-      localStorage.setItem('logincustname', response.data.name)
+      localStorage.setItem('custname', response.data.name)
       if (response.data.message) {
         setLoginstatus(response.data.message)
 
