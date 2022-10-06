@@ -72,6 +72,8 @@ function AppBar() {
     }
 
     const style = useStyles()
+    const admin = localStorage.getItem("orgname")
+
     return (
         <Grid>
             <Drawer
@@ -100,31 +102,31 @@ function AppBar() {
 
                         <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
                             <ListItemIcon className={style.icons}> <DashboardOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/admin/dashboard'>Dashboard</Link></ListItemText></ListItemButton>
+                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/organization/${admin}/admin/dashboard`}>Dashboard</Link></ListItemText></ListItemButton>
                     </ListItem>
                     <ListItem className={style.list}>
 
                         <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
                             <ListItemIcon className={style.icons}> <AodOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/admin/tickets/'>Tickets</Link></ListItemText></ListItemButton>
+                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/organization/${admin}/admin/tickets/`}>Tickets</Link></ListItemText></ListItemButton>
                     </ListItem>
                     <ListItem className={style.list}>
 
                         <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
                             <ListItemIcon className={style.icons}> <SportsKabaddiOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/admin/agents/'>Agents</Link></ListItemText></ListItemButton>
+                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/organization/${admin}/admin/agents/`}>Agents</Link></ListItemText></ListItemButton>
                     </ListItem>
                     <ListItem className={style.list}>
 
                         <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
                             <ListItemIcon className={style.icons}> <SportsKabaddiOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/admin/addagents/'>Add Agents</Link></ListItemText></ListItemButton>
+                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/organization/${admin}/admin/addagents/`}>Add Agents</Link></ListItemText></ListItemButton>
                     </ListItem>
                     <ListItem className={style.list}>
 
                         <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
                             <ListItemIcon className={style.icons}> <NotificationsNoneOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/admin/notifications/'>Notifications</Link></ListItemText></ListItemButton>
+                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/organization/${admin}/admin/notifications/`}>Notifications</Link></ListItemText></ListItemButton>
                     </ListItem>
                     {/* <ListItem className={style.list}>
 
