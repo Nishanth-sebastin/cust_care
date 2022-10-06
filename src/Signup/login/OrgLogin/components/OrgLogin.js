@@ -16,13 +16,14 @@ import Axios from 'axios';
 
 export const OrgLogin = () => {
 
-  const paperStyle = { padding: '30px 20px', height: '700px', width: 1000, margin: "30px auto" }
+  const paperStyle = { padding: '30px 20px', height: '750px', width: 1000, margin: "30px auto" }
   const headerStyle = { margin: 0 }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const marginTop = { marginTop: 5 }
 
 
   const [loginstatus, setLoginstatus] = useState("")
+  const [redirect, setRedirect] = useState(false)
 
   const formik = useFormik({
     initialValues: {
@@ -43,13 +44,24 @@ export const OrgLogin = () => {
       password: formik.values.password
     }).then((response) => {
 
+      localStorage.setItem('orgname', response.data.orgname)
       if (response.data.message) {
         setLoginstatus(response.data.message)
       }
+      if (loginstatus == "Correct") {
+        setRedirect(true)
+      }
+
 
     })
+
   }
 
+  useEffect(
+    () => {
+
+    }
+  )
   // useEffect(() => {
   //   Axios.get("http://localhost:8080/loginorg").then((response) => {
   //     console.log(response)
@@ -83,7 +95,12 @@ export const OrgLogin = () => {
           <br></br><br></br>
           <p style={{ color: 'red' }}>{loginstatus}</p>
           <h5 style={{ fontSize: '15px' }}>Create a new account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/organization/register'>Click Here</Link>}</a></h5><br></br>
-          <Button onClick={orglogin} type='submit' variant='contained' color='primary'><Link to="/"></Link>Login</Button>
+          <Button onClick={orglogin} type='submit' variant='contained' color='primary'>
+            {/* {
+              redirect === true ? <Link style={{ color: 'white' }} to="/organization/admin/">Login</Link> : <>Login</>
+            } */}
+            <Link target='_blank' style={{ color: 'white', textDecoration: 'none' }} to={redirect == true ? '/organization/admin/' : ''}>Login</Link>
+          </Button>
         </form>
       </Paper>
     </Grid>

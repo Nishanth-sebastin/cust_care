@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, useFormik } from 'formik';
 // import { TextField } from './TextField';
 import { TextField } from '@material-ui/core';
@@ -20,6 +20,7 @@ export const OrgSignup = () => {
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const marginTop = { marginTop: 5 }
 
+  const [loginstatus, setLoginstatus] = useState("")
 
   const formik = useFormik({
     initialValues: {
@@ -36,10 +37,10 @@ export const OrgSignup = () => {
       gstin: ''
     }
   })
-  console.log(formik.values)
+
 
   const addOrg = () => {
-    console.log("hell")
+
     Axios.post("http://localhost:8080/signuporg", {
       orgname: formik.values.organizationName,
       email: formik.values.email,
@@ -53,7 +54,9 @@ export const OrgSignup = () => {
       website: formik.values.website,
       gst: formik.values.gstin,
     }).then((response) => {
+
       console.log(response)
+      localStorage.setItem('orgname', response.data.orgname)
     })
   }
 

@@ -52,8 +52,9 @@ export const CustSignup = () => {
       number: formik.values.number,
       region: formik.values.region,
 
-    }).then(() => {
+    }).then((response) => {
       console.log('success')
+      localStorage.setItem('name', response.data.name)
     })
   }
 

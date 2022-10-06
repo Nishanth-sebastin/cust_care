@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form, useFormik } from 'formik';
 // import { TextField } from './TextField';
 import { TextField } from '@material-ui/core';
@@ -15,13 +16,13 @@ import Axios from 'axios'
 export const CustLogin = () => {
 
 
-  const paperStyle = { padding: '30px 20px', height: '650px', width: 1000, margin: "30px auto" }
+  const paperStyle = { padding: '30px 20px', height: '680px', width: 1000, margin: "30px auto" }
   const headerStyle = { margin: 0 }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const marginTop = { marginTop: 5 }
 
   const [loginstatus, setLoginstatus] = useState("")
-
+  const [redirect, setRedirect] = useState(false)
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -41,10 +42,17 @@ export const CustLogin = () => {
       password: formik.values.password
     }).then((response) => {
 
+
+      localStorage.setItem('name', response.data.name)
       if (response.data.message) {
         setLoginstatus(response.data.message)
+
+      }
+      if (loginstatus == "Correct") {
+        setRedirect(true)
       }
     })
+
   }
 
 
@@ -72,7 +80,12 @@ export const CustLogin = () => {
 
           <h5 style={{ fontSize: '15px' }}>Create a new account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/customer/register'>Click Here</Link>}</a></h5><br></br>
           <p style={{ color: 'red' }}>{loginstatus}</p>
-          <Button onClick={logincust} type='submit' variant='contained' color='primary'><Link to="/"></Link>SignUp</Button>
+          <Button onClick={logincust} type='submit' variant='contained' color='primary'>
+            {/* {
+              redirect === true ? <Link style={{ color: 'white' }} to="/organization/admin/">Login</Link> : <>Login</>
+            } */}
+            <Link target='_blank' style={{ color: 'white', textDecoration: 'none' }} to={redirect == true ? '/customer/dashboard' : ''}>Login</Link>
+          </Button>
         </form>
       </Paper>
     </Grid>
