@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, useFormik } from 'formik';
 // import { TextField } from './TextField';
 import { TextField } from '@material-ui/core';
@@ -21,6 +21,7 @@ export const OrgSignup = () => {
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const marginTop = { marginTop: 5 }
 
+  const [loginstatus, setLoginstatus] = useState("")
 
   const formik = useFormik({
     initialValues: {
@@ -55,7 +56,9 @@ export const OrgSignup = () => {
       website: formik.values.website,
       gst: formik.values.gstin,
     }).then((response) => {
+
       console.log(response)
+      localStorage.setItem('signuporgname', response.data.orgname)
     })
   }
 

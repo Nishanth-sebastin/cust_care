@@ -12,11 +12,6 @@ import Axios from 'axios'
 
 function LayoutCustomers({ children }) {
 
-    useEffect(() => {
-        Axios.get("http://localhost:8080/layoutcustomer").then((response) => {
-            console.log(response)
-        })
-    }, [])
 
     return (
         <div>

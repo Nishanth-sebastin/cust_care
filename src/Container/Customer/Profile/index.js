@@ -25,7 +25,8 @@ const styles = makeStyles({
         borderRadius: '10px',
     },
     profileForms: {
-        padding: '20px 50px'
+        padding: '20px 50px',
+        height:"600px"
     },
     formAlign: {
         margin: '20px'
@@ -55,7 +56,7 @@ function Profile() {
                         <Avatar sx={{ width: 150, height: 150, position: 'relative', left: '40px', bottom: '80px' }} src='https://dt2sdf0db8zob.cloudfront.net/wp-content/uploads/2019/12/9-Best-Online-Avatars-and-How-to-Make-Your-Own-for-Free-image1-5.png' alt='Nishanth'></Avatar>
                         
                              <Grid className={style.profileForms}>
-                        <FormControl  sx={{width:"1000px",position:"relative",top:"-50px",left:"50px"}}>
+                        <FormControl  sx={{position:"relative",top:"50px",left:"50px"}}>
                             <Box className={style.formAlign} sx={{display:"flex"}}>
                                 <FormLabel >
                                     <Typography className={style.label} sx={{width:"100px"}}>Username</Typography> </FormLabel>
@@ -110,19 +111,6 @@ function Profile() {
                       
                             </Grid></Paper>
             </Grid> 
-            {/* <div>
-                <h1 className="my-4 font-weight-bold .display-4">Login</h1>
-                <Form>
-
-                  <TextField label="Email" name="email" type="email" />
-                  <TextField label="password" name="password" type="password" />
-                  <TextField label="Confirm Password" name="confirmPassword" type="password" /><br></br>
-                 
-                  <button className="btn btn-dark mt-3" type="submit">Login</button>
-
-                </Form>
-              </div> */}
-                    {/* {/*  */}
 
                 
         </LayoutCustomer>

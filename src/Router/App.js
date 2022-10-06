@@ -44,8 +44,8 @@ class Routerapp extends React.Component {
                     <Route path="/organization/login" element={<OrgLogin />} />
                     <Route path="/customer/login" element={<CustLogin />} />
                     <Route path="/customer/register" element={<CustSignup />} />
-                    <Route path="/customer/main" element={<IndexCust />} />
-                    <Route path="/organization/admin/" element={<IndexAdmin />} />
+                    <Route path="/customer/main" element={<CustomerDashboard />} />
+                    <Route path="/organization/admin/" element={<DashboardAdmin />} />
                     <Route path="/organization/agent/" element={<Dashboard />} />
                     <Route path='/organization/agent/dashboard/' element={<Dashboard />} />
                     <Route path='/organization/agent/tickets/' element={<Tickets />} />

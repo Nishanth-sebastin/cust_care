@@ -6,11 +6,7 @@ import NavBar from '../layouts/admin/Navbar'
 
 function LayoutAdmin({ children }) {
 
-    useEffect(() => {
-        Axios.get("http://localhost:8080/layoutadmin").then((response) => {
-            console.log(response)
-        })
-    }, [])
+
 
 
     return (
