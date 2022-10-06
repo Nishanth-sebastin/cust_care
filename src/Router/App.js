@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
 import App from "../webcomp/app";
 import IndexAdmin from "../layouts/admin/indexAdmin";
 import IndexCust from "../layouts/customers/indexCust";
@@ -32,9 +32,19 @@ import OrgProfileAdmin from "../Container/admin/OrgProfileAdmin";
 import AddAgents from "../Container/admin/AddAgent/AddAgents";
 
 
+
 class Routerapp extends React.Component {
+
+
     render() {
+
+        const admin = localStorage.getItem("orgname")
+        const customer = localStorage.getItem("custname")
+        const path = `/organization/${admin}/admin/`
+
+        console.log(admin)
         return (
+
 
             <Router>
                 <Routes>
@@ -43,8 +53,8 @@ class Routerapp extends React.Component {
                     <Route path="/organization/login" element={<OrgLogin />} />
                     <Route path="/customer/login" element={<CustLogin />} />
                     <Route path="/customer/register" element={<CustSignup />} />
-                    <Route path="/customer/main" element={<CustomerDashboard />} />
-                    <Route path="/organization/admin/" element={<DashboardAdmin />} />
+                    <Route path={`/customer/${customer}/main`} element={<CustomerDashboard />} />
+                    <Route path={`/organization/${admin}/admin/`} element={<DashboardAdmin />} />
                     <Route path="/organization/agent/" element={<Dashboard />} />
                     <Route path='/organization/agent/dashboard/' element={<Dashboard />} />
                     <Route path='/organization/agent/tickets/' element={<Tickets />} />
@@ -54,20 +64,19 @@ class Routerapp extends React.Component {
                     <Route path='/organization/agent/profile/' element={<Profile />} />
                     <Route path="*" element={<PageErr />} />
                     <Route path='/organization/agents/tickets/1' element={<TicketDetails />}></Route>
-                    <Route path='/customer/tickets/' element={<CustomerTickets />} />
-                    <Route path="/customer/submitquery" element={<CustomerSubmitQuery />} />
-                    <Route path="/customer/dashboard" element={<CustomerDashboard />} />
-                    <Route path='/customer/call' element={<CustomerCall />} />
-                    <Route path='/customer/profile' element={<CustomerProfile />} />
-                    <Route path='/customer/tickets/' element={<CustomerTickets />} />
+                    <Route path={`/customer/${customer}/tickets/`} element={<CustomerTickets />} />
+                    <Route path={`/customer/${customer}/submitquery`} element={<CustomerSubmitQuery />} />
+                    <Route path={`/customer/${customer}/dashboard`} element={<CustomerDashboard />} />
+                    <Route path={`/customer/${customer}/call`} element={<CustomerCall />} />
+                    <Route path={`/customer/${customer}/profile`} element={<CustomerProfile />} />
+                    <Route path={`/customer/${customer}tickets/`} element={<CustomerTickets />} />
                     <Route path='/customer/signout' element={<CustomerSignout />} />
-                    <Route path="/organization/admin/dashboard" element={<DashboardAdmin />} />
-                    <Route path="/organization/admin/tickets" element={<TicketsAdmin />} />
-                    <Route path="/organization/admin/agents" element={<AgentsAdmin />} />
-                    <Route path="/organization/admin/notifications" element={<NotificationsAdmin />} />
-                    <Route path="/organization/admin/profile" element={<OrgProfileAdmin />} />
-                    <Route path="/organization/admin/addagents" element={<AddAgents />} />
-                    <Route path="/organization/admin/" element={<DashboardAdmin />} />
+                    <Route path={`/organization/${admin}/admin/dashboard`} element={<DashboardAdmin />} />
+                    <Route path={`/organization/${admin}/admin/tickets`} element={<TicketsAdmin />} />
+                    <Route path={`/organization/${admin}/admin/agents`} element={<AgentsAdmin />} />
+                    <Route path={`/organization/${admin}/admin/notifications`} element={<NotificationsAdmin />} />
+                    <Route path={`/organization/${admin}/admin/profile`} element={<OrgProfileAdmin />} />
+                    <Route path={`/organization/${admin}/admin/addagents`} element={<AddAgents />} />
 
                 </Routes>
             </Router>

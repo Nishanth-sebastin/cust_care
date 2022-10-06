@@ -54,7 +54,7 @@ export const CustSignup = () => {
 
     }).then((response) => {
       console.log('success')
-      localStorage.setItem('signupcustname', response.data.name)
+      localStorage.setItem('custname', response.data.name)
     })
   }
 

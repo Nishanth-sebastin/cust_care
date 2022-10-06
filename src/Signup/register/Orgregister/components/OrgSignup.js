@@ -56,7 +56,7 @@ export const OrgSignup = () => {
     }).then((response) => {
 
       console.log(response)
-      localStorage.setItem('signuporgname', response.data.orgname)
+      localStorage.setItem('orgname', response.data.orgname)
     })
   }
 
