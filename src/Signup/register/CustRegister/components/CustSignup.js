@@ -11,6 +11,7 @@ import { Grid, Paper, Avatar, Typography, Button } from '@material-ui/core'
 import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import Axios from 'axios';
 export const CustSignup = () => {
 
   const paperStyle = { padding: '30px 20px', height: '790px', width: 1000, margin: "30px auto" }
@@ -40,8 +41,21 @@ export const CustSignup = () => {
   })
 
 
-  const onSubmit = () => {
+  const addCustomer = () => {
 
+  
+    Axios.post("http://localhost:8080/signupcust", {
+      firstname: formik.values.firstname,
+      lastname: formik.values.lastname,
+      email: formik.values.email,
+      password: formik.values.password,
+      confirmpassword: formik.values.confirmpass,
+      number: formik.values.number,
+      region: formik.values.region,
+
+    }).then(() => {
+      console.log('success')
+    })
   }
 
   const formik = useFormik({
@@ -82,7 +96,7 @@ export const CustSignup = () => {
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.password} name="password" fullWidth label='Password' placeholder="Enter your password" />
           <br></br><br></br>
-          <TextField onChange={formik.handleChange} value={formik.values.confirmpass} name="confirmPassword" fullWidth label='Confirm password' placeholder="Confirm your password" />
+          <TextField onChange={formik.handleChange} value={formik.values.confirmpass} name="confirmpass" fullWidth label='Confirm password' placeholder="Confirm your password" />
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.number} name="number" fullWidth label='Number' placeholder="Enter your Number" />
           <br></br><br></br>
@@ -90,7 +104,7 @@ export const CustSignup = () => {
           <br></br><br></br>
 
           <h5 style={{ fontSize: '15px' }}>Already have a account<a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/customer/login'>Click Here</Link>}</a></h5><br></br>
-          <Button onClick={formik.handle} type='submit' variant='contained' color='primary'><Link to="/"></Link>SignUp</Button>
+          <Button onClick={addCustomer} type='submit' variant='contained' color='primary'><Link to="/"></Link>SignUp</Button>
         </form>
       </Paper>
     </Grid>

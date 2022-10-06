@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Grid } from '@mui/material'
 import AppBar from '../layouts/admin/Appbar'
+import Axios from 'axios'
 import NavBar from '../layouts/admin/Navbar'
 
 function LayoutAdmin({ children }) {
+
+    useEffect(() => {
+        Axios.get("http://localhost:8080/layoutadmin").then((response) => {
+            console.log(response)
+        })
+    }, [])
+
 
     return (
         <div>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import AppBar from '../layouts/customers/AppBar'
 import NavBar from '../layouts/customers/NavBar'
 import Dashboard from '../Container/agents/Dashboard'
@@ -7,9 +7,16 @@ import Customers from '../Container/agents/Customers'
 import Notifications from '../Container/agents/Notifications'
 import Profile from '../Container/agents/Profile'
 import { Grid } from '@mui/material'
+import Axios from 'axios'
 
 
 function LayoutCustomers({ children }) {
+
+    useEffect(() => {
+        Axios.get("http://localhost:8080/layoutcustomer").then((response) => {
+            console.log(response)
+        })
+    }, [])
 
     return (
         <div>
