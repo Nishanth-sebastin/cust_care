@@ -1,145 +1,99 @@
-import React ,{useState} from 'react';
-import { Formik, Form } from 'formik';
-import { TextField } from './TextField';
-import * as Yup from 'yup';
-import logo from '../assets/rocket.png'
-import { Link } from 'react-router-dom'
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { Box, Icon, Button, Typography } from '@mui/material'
-import Grid from '@mui/material/Grid';
-import { makeStyles } from '@material-ui/core';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Formik, Form, useFormik } from 'formik';
+// import { TextField } from './TextField';
 import LayoutCustomer from '../../../MainLayout/LayoutCustomer'
-import { styled } from '@mui/material/styles';
+import { makeStyles, TextField } from '@material-ui/core';
+import * as Yup from 'yup';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FormControl, FormControlLabel, FormLabel, Radio } from '@mui/material';
+import { Link } from 'react-router-dom';
+import logo from '../assets/rocket.png'
+import { Grid, Paper, Avatar, Typography, Button ,Box} from '@material-ui/core'
+import { AddCircleOutlineOutlined } from '@material-ui/icons';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Checkbox from '@material-ui/core/Checkbox';
+import Axios from 'axios'
 
-// import { Link } from 'react-router-dom';
+export const CustLogin = () => {
 
 
+  const paperStyle = { padding: '30px 20px', height: '620px',position:'relative',top:'70px', width: 1000, margin: "30px auto" }
+  const headerStyle = { margin: 0 }
+  const avatarStyle = { backgroundColor: '#1bbd7e' }
+  const marginTop = { marginTop: 5 }
+  const buttonStyle = {display:'flex',justifyContent :'center'}
 
-const styles = makeStyles({
-  Grid: {
-      position: 'relative',
-      top: '100px',
-      width: '1200px',
-      height: '650px',
-      padding: '18px',
+  const [loginstatus, setLoginstatus] = useState("")
+  const [redirect, setRedirect] = useState(false)
+  const formik = useFormik({
+    initialValues: {
+      name:'',
+      email: '',
+      companyname :'',
+      query:'',
+      phonenumber:'',
+      region:'',
 
-  },
-  link: {
-      textDecoration: 'none',
-      color: 'black'
-  }
-
-})
-
-const SubmitQuery = () => {
-  const validate = Yup.object({
-    firstName: Yup.string()
-      .max(15, 'Must be 15 characters or less')
-      .required('Required'),
-    lastName: Yup.string()
-      .max(20, 'Must be 20 characters or less')
-      .required('Required'),
-    email: Yup.string()
-      .email('Email is invalid')
-      .required('Email is required'),
-    password: Yup.string()
-      .min(6, 'Password must be at least 6 charaters')
-      .required('Password is required'),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Password must match')
-      .required('Confirm password is required'),
-      compnayName: Yup.string()
-    //   .max(15, 'Must be 15 characters or less')
-      .required('Required'),
-    query: Yup.string()
-    //   .max(20, 'Must be 20 characters or less')
-      .required('Required'),
-    number: Yup.number().required('Number is Required').min(10, 'Number must be atleast 10 digits'),
-    region: Yup.string().required('Region is Required')
+    }
   })
+  console.log(formik.values)
 
-//  const {firstName,setFirstName} = useState("");
-//  const {lastName,setLastName} = useState("");
-//  const {email,setEmail} = useState("");
-//  const {companyName,setCompanyName} = useState("");
-//  const {query,setQuery} = useState("");
-//  const {number,setNumber} = useState(0);
-//  const {region,setRegion} = useState("");
- 
-// const click = () =>{
-//   console.log(firstName,
-//   lastName,
-//   email,
-//   companyName,
-//   query,
-//   number,
-//   region);
-// }
-  const style = styles()
-  return (
-    <LayoutCustomer>
+  // const logincust = (e) => {
+  //   e.preventDefault();
+  //   Axios.post('http://localhost:8080/logincust', {
+  //     email: formik.values.email,
+  //     password: formik.values.password
+  //   }).then((response) => {
 
-    <Box className={style.Grid} sx={{ marginLeft: '40px' }} >
-        <Grid container>
 
-            {/* <Grid item sm={12}>
-                <Typography>Submit Your Query</Typography><br></br>
-                
-            </Grid> */}
-        </Grid>
+  //     localStorage.setItem('logincustname', response.data.name)
+  //     if (response.data.message) {
+  //       setLoginstatus(response.data.message)
 
-<Grid>
-        <div className="container mt-3">
-      <div className="row">
-        <div className="col-md-5">
-          <Formik
-            initialValues={{
-              firstName: '',
-              lastName: '',
-              email: '',
-              companyName: '',
-              query: '',
-              number: '',
-              region: ''
-            }}
-            validationSchema={validate}
-            onSubmit={values => {
-              console.log(values)
-            }}
-          >
-            {formik => (
-              <div  style={{ position:"relative", bottom:"60px"}}>
-                <h1 className="my-4 font-weight-bold .display-4">Query Form</h1>
-                <Form className>
-                  <TextField label="First Name" name="firstName" type="text"  />
-                  <TextField label="Last Name" name="lastName" type="text"  />
-                  <TextField label="Email" name="email" type="email"   />
-                  <TextField label="CompanyName" name="companyName" type="text" />
-                  <TextField label="Query" name="query" type="text" />
-                  <TextField label="Phone Number" name="number" type="phone" />
-                  <TextField label="Region" name="region" type="region"   />
-                  <br></br>
-                  <Link target='_blank' to='/customer/login/home'> <Button variant='contained' type="submit" className="button" >Submit</Button ></Link>
+  //     }
+  //     if (loginstatus == "Correct") {
+  //       setRedirect(true)
+  //     }
+  //   })
+
+  // }
+
   
-                </Form>
-              </div>
-            )}
-          </Formik>
-        </div>
-        <div className="col-md-7 my-auto">
-          <img className="img-fluid w-100" src={logo} alt="" />
-        </div>
-      </div>
-    </div>
+  return (
+    <LayoutCustomer >
+    <Grid >
+      <Paper elevation={20} style={paperStyle}>
+        <Grid align='center'>
+          <Avatar style={avatarStyle}>
+            <AddCircleOutlineOutlined />
+          </Avatar>
+          <h2 style={headerStyle}>Submit Query</h2>
+          
+        </Grid>
+        <form>
+          <TextField onChange={formik.handleChange} name="name" value={formik.values.name} fullWidth label='Name' placeholder="Enter your name" />
+          <br></br><br></br>
+          <TextField onChange={formik.handleChange} value={formik.values.email} name="email" fullWidth label='Email ' placeholder="Enter your Email " />
+          <br></br><br></br>
+          <TextField onChange={formik.handleChange} value={formik.values.companyname} name="companyname" fullWidth label='CompanyName' placeholder="Enter your companyname" />
+          <br></br><br></br>
+          <TextField onChange={formik.handleChange} value={formik.values.query} name="query" fullWidth label='Query' placeholder="Enter your Query" />
+          <br></br><br></br>
+          <TextField onChange={formik.handleChange} value={formik.values.phonenumber} name="phonenumber" fullWidth label="PhoneNumber" placeholder="Enter your Phone Number" />
+          <br></br><br></br>
+          <TextField onChange={formik.handleChange} value={formik.values.region} name="region" fullWidth label="Region" placeholder="Enter your Region" />
+          <br></br><br></br><br></br>
+         <Box style={buttonStyle}> <Button type='submit' variant='contained' color='primary' style={buttonStyle}>
+           Submit
+          </Button></Box>
+         
+        </form>
+      </Paper>
     </Grid>
-    </Box>
-
-
-</LayoutCustomer >
-
-   
+    </LayoutCustomer>
   )
 }
 
-export default SubmitQuery
+
+export default CustLogin
