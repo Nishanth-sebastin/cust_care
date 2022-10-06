@@ -11,7 +11,8 @@ import { Grid, Paper, Avatar, Typography, Button } from '@material-ui/core'
 import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
-import Axios from 'axios'
+import Axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const OrgSignup = () => {
 
@@ -37,8 +38,9 @@ export const OrgSignup = () => {
     }
   })
   console.log(formik.values)
-
+  const navigate = useNavigate();
   const addOrg = () => {
+    navigate("/organization/login");
     console.log("hell")
     Axios.post("http://localhost:8080/signuporg", {
       orgname: formik.values.organizationName,

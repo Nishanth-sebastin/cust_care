@@ -71,7 +71,7 @@ export const CustLogin = () => {
           <br></br><br></br>
 
           <h5 style={{ fontSize: '15px' }}>Create a new account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/customer/register'>Click Here</Link>}</a></h5><br></br>
-          <p style={{ color: 'red' }}>{loginstatus}</p>
+          {/* <p style={{ color: 'red' }}>{loginstatus}</p> */}
           <Button onClick={logincust} type='submit' variant='contained' color='primary'><Link to="/"></Link>SignUp</Button>
         </form>
       </Paper>

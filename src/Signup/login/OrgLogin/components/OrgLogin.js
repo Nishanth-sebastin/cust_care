@@ -81,7 +81,7 @@ export const OrgLogin = () => {
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.gstin} name="gstin" fullWidth label='GSTIn' placeholder="Enter GSTIn" />
           <br></br><br></br>
-          <p style={{ color: 'red' }}>{loginstatus}</p>
+          {/* <p style={{ color: 'red' }}>{loginstatus}</p> */}
           <h5 style={{ fontSize: '15px' }}>Create a new account <a style={{ textDecoration: 'none' }}> {<Link style={{ textDecoration: 'none' }} to='/organization/register'>Click Here</Link>}</a></h5><br></br>
           <Button onClick={orglogin} type='submit' variant='contained' color='primary'><Link to="/"></Link>Login</Button>
         </form>
