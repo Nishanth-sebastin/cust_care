@@ -44,7 +44,7 @@ export const OrgLogin = () => {
       password: formik.values.password
     }).then((response) => {
 
-      localStorage.setItem('orgname', response.data.orgname)
+      localStorage.setItem('loginorgname', response.data.orgname)
       if (response.data.message) {
         setLoginstatus(response.data.message)
       }
