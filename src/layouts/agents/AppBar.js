@@ -1,163 +1,272 @@
-import { Drawer, Grid, Typography, List, ListItem, Toolbar, Divider, ListItemButton, ListItemIcon, ListItemText, Button } from '@mui/material'
-import React, { Component } from 'react'
-import { makeStyles } from '@material-ui/core'
-import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
-import Inbox from '@mui/icons-material/Inbox'
-import { Link } from 'react-router-dom';
-import SportsKabaddiOutlinedIcon from '@mui/icons-material/SportsKabaddiOutlined';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import AodOutlinedIcon from '@mui/icons-material/AodOutlined';
-import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import {
+  Drawer,
+  Grid,
+  Typography,
+  List,
+  ListItem,
+  Toolbar,
+  Divider,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Button,
+} from "@mui/material";
+import React, { Component } from "react";
+import { makeStyles } from "@material-ui/core";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
+import Inbox from "@mui/icons-material/Inbox";
+import { Link } from "react-router-dom";
+import SportsKabaddiOutlinedIcon from "@mui/icons-material/SportsKabaddiOutlined";
+import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import AodOutlinedIcon from "@mui/icons-material/AodOutlined";
+import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 const useStyles = makeStyles({
-    drawer: {
-        width: 240,
+  drawer: {
+    width: 240,
+  },
+  drawerPaper: {
+    "&&": {
+      width: 240,
+      backgroundColor: "#222223",
     },
-    drawerPaper: {
-        "&&": {
-            width: 240,
-            backgroundColor: "#222223"
-        },
-        marginTop: '20px',
-        marginLeft: '20px'
+    marginTop: "20px",
+    marginLeft: "20px",
+  },
 
+  list: {
+    marginBottom: "20px",
+
+    "&:hover": {
+      backgroundColor: "#338CED",
+      borderRadius: "10px",
+      position: "relative",
+      width: "200px",
     },
-
-    list: {
-        marginBottom: '20px',
-
-        '&:hover': {
-            backgroundColor: '#338CED',
-            borderRadius: '10px',
-            position: 'relative',
-            width: '200px',
-
-        }
+  },
+  icon: {
+    color: "white",
+  },
+  icons: {
+    position: "relative",
+    right: "120px",
+    bottom: "30px",
+  },
+  hover: {
+    backgroundColor: "#222223",
+    "&:hover": {
+      backgroundColor: "#38383E",
     },
-    icon: {
-        color: 'white',
-
-    },
-    icons: {
-        position: 'relative',
-        right: '120px',
-        bottom: '30px'
-    },
-    hover: {
-        backgroundColor: '#222223',
-        '&:hover': {
-            backgroundColor: '#38383E'
-        }
-    }
-})
+  },
+});
 
 function AppBar() {
-    const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
-    const ClickHandler = () => {
-        return (<Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/login'></Link>
-        )
-    }
-
-    const style = useStyles()
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const ClickHandler = () => {
     return (
-        <Grid>
-            <Drawer
-                classes={{ paper: style.drawerPaper }}
-                sx={{
+      <Link
+        style={{ color: "white", textDecoration: "none" }}
+        to="/organization/login"
+      ></Link>
+    );
+  };
+  const agent = localStorage.getItem("agentname");
 
-                    width: 240,
+  const style = useStyles();
+  return (
+    <Grid>
+      <Drawer
+        classes={{ paper: style.drawerPaper }}
+        sx={{
+          width: 240,
 
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        width: 240,
-                        boxSizing: 'border-box',
-                        height: ' 740px',
-                        borderRadius: '15px'
-                    },
-                }}
-                variant="permanent"
-                anchor="left"
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: 240,
+            boxSizing: "border-box",
+            height: " 740px",
+            borderRadius: "15px",
+          },
+        }}
+        variant="permanent"
+        anchor="left"
+      >
+        <Toolbar />
+        <Divider />
+        <List sx={{ marginLeft: "20px" }}>
+          <ListItem className={style.list}>
+            <ListItemButton
+              sx={{
+                color: "white",
+                position: "relative",
+                right: "10px",
+                padding: "0px",
+              }}
             >
-
-
-                <Toolbar />
-                <Divider />
-                <List sx={{ marginLeft: '20px' }}>
-                    <ListItem className={style.list}>
-
-                        <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
-                            <ListItemIcon className={style.icons}> <DashboardOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/agent/dashboard/'>Dashboard</Link></ListItemText></ListItemButton>
-                    </ListItem>
-                    <ListItem className={style.list}>
-
-                        <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
-                            <ListItemIcon className={style.icons}> <AodOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/agent/tickets/'>Tickets</Link></ListItemText></ListItemButton>
-                    </ListItem>
-                    <ListItem className={style.list}>
-
-                        <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
-                            <ListItemIcon className={style.icons}> <SportsKabaddiOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/agent/customers/'>Customers</Link></ListItemText></ListItemButton>
-                    </ListItem>
-                    <ListItem className={style.list}>
-
-                        <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
-                            <ListItemIcon className={style.icons}> <NotificationsNoneOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/agent/notifications/'>Notifications</Link></ListItemText></ListItemButton>
-                    </ListItem>
-                    <ListItem className={style.list}>
-
-                        <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
-                            <ListItemIcon className={style.icons}> <PeopleAltOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/agent/profile/'>Profile</Link></ListItemText></ListItemButton>
-                    </ListItem>
-                    <ListItem className={style.list}>
-
-                        <ListItemButton onClick={handleClickOpen} sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
-                            <ListItemIcon className={style.icons}> <LogoutOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}>Sign Out </ListItemText></ListItemButton>
-                    </ListItem>
-                </List>
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
+              <ListItemIcon className={style.icons}>
+                {" "}
+                <DashboardOutlinedIcon className={style.icon} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "white" }}>
+                {" "}
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/agent/${agent}/dashboard/`}
                 >
-                    <DialogTitle id="alert-dialog-title">
-                        {"Sign out ? "}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            You can always access your content by signing back in
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={ClickHandler} autoFocus>
-                            Sign Out
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </Drawer>
-        </Grid>
-    )
-
+                  Dashboard
+                </Link>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem className={style.list}>
+            <ListItemButton
+              sx={{
+                color: "white",
+                position: "relative",
+                right: "10px",
+                padding: "0px",
+              }}
+            >
+              <ListItemIcon className={style.icons}>
+                {" "}
+                <AodOutlinedIcon className={style.icon} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "white" }}>
+                {" "}
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/agent/${agent}/tickets/`}
+                >
+                  Tickets
+                </Link>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem className={style.list}>
+            <ListItemButton
+              sx={{
+                color: "white",
+                position: "relative",
+                right: "10px",
+                padding: "0px",
+              }}
+            >
+              <ListItemIcon className={style.icons}>
+                {" "}
+                <SportsKabaddiOutlinedIcon className={style.icon} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "white" }}>
+                {" "}
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/agent/${agent}/customers/`}
+                >
+                  Customers
+                </Link>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem className={style.list}>
+            <ListItemButton
+              sx={{
+                color: "white",
+                position: "relative",
+                right: "10px",
+                padding: "0px",
+              }}
+            >
+              <ListItemIcon className={style.icons}>
+                {" "}
+                <NotificationsNoneOutlinedIcon className={style.icon} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "white" }}>
+                {" "}
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/agent/${agent}/notifications/`}
+                >
+                  Notifications
+                </Link>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem className={style.list}>
+            <ListItemButton
+              sx={{
+                color: "white",
+                position: "relative",
+                right: "10px",
+                padding: "0px",
+              }}
+            >
+              <ListItemIcon className={style.icons}>
+                {" "}
+                <PeopleAltOutlinedIcon className={style.icon} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "white" }}>
+                {" "}
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/agent/${agent}/profile/`}
+                >
+                  Profile
+                </Link>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem className={style.list}>
+            <ListItemButton
+              onClick={handleClickOpen}
+              sx={{
+                color: "white",
+                position: "relative",
+                right: "10px",
+                padding: "0px",
+              }}
+            >
+              <ListItemIcon className={style.icons}>
+                {" "}
+                <LogoutOutlinedIcon className={style.icon} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "white" }}>Sign Out </ListItemText>
+            </ListItemButton>
+          </ListItem>
+        </List>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Sign out ? "}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              You can always access your content by signing back in
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button onClick={ClickHandler} autoFocus>
+              Sign Out
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Drawer>
+    </Grid>
+  );
 }
 
-export default AppBar
+export default AppBar;

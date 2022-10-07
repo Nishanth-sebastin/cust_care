@@ -149,7 +149,7 @@ function Tickets() {
                                         </Grid>
                                     </TableCell>
                                     <TableCell>
-                                        <Typography color="primary" variant="subtitle2"><Link to="/organization/agents/tickets/1" target='_blank' className={style.links}>{row.probleminfo}</Link></Typography>
+                                        <Typography color="primary" variant="subtitle2"><Link to="/organization/agent/tickets/1" target='_blank' className={style.links}>{row.probleminfo}</Link></Typography>
 
                                     </TableCell>
                                     <TableCell>

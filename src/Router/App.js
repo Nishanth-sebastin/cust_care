@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 import App from "../webcomp/app";
 import IndexAdmin from "../layouts/admin/indexAdmin";
 import IndexCust from "../layouts/customers/indexCust";
@@ -15,11 +20,11 @@ import LayoutAgent from "../MainLayout/LayoutAgent";
 import LayoutCustomer from "../MainLayout/LayoutCustomer";
 import Tickets from "../Container/agents/Tickets";
 import TicketDetails from "../Container/agents/TicketDetails";
-import CustomerDashboard from "../Container/Customer/Dashboard"
-import CustomerSubmitQuery from "../Container/Customer/SubmitQuery/index.js"
-import CustomerTickets from "../Container/Customer/Tickets/index.js"
-import CustomerCall from "../Container/Customer/Call/index.js"
-import CustomerProfile from "../Container/Customer/Profile/index.js"
+import CustomerDashboard from "../Container/Customer/Dashboard";
+import CustomerSubmitQuery from "../Container/Customer/SubmitQuery/index.js";
+import CustomerTickets from "../Container/Customer/Tickets/index.js";
+import CustomerCall from "../Container/Customer/Call/index.js";
+import CustomerProfile from "../Container/Customer/Profile/index.js";
 
 import Customers from "../Container/agents/Customers";
 import Notifications from "../Container/agents/Notifications";
@@ -32,57 +37,112 @@ import OrgProfileAdmin from "../Container/admin/OrgProfileAdmin";
 import AddAgents from "../Container/admin/AddAgent/AddAgents";
 import AgentLogin from "../Signup/login/AgentLogin/AgentLogin";
 
-
-
 class Routerapp extends React.Component {
-
-
-    render() {
-
-        const admin = localStorage.getItem("orgname")
-        const customer = localStorage.getItem("custname")
-        const path = `/organization/${admin}/admin/`
-
-        console.log(admin)
-        return (
-
-
-            <Router>
-                <Routes>
-                    <Route path="/" element={<App />} />
-                    <Route path="/organization/register" element={<OrgSignup />} />
-                    <Route path="/organization/login" element={<OrgLogin />} />
-                    <Route path="/customer/login" element={<CustLogin />} />
-                    <Route path="/customer/register" element={<CustSignup />} />
-                    <Route path={`/customer/${customer}/main`} element={<CustomerDashboard />} />
-                    <Route path={`/organization/${admin}/admin/`} element={<DashboardAdmin />} />
-                    <Route path="/organization/agent/" element={<Dashboard />} />
-                    <Route path='/organization/agent/dashboard/' element={<Dashboard />} />
-                    <Route path='/organization/agent/tickets/' element={<Tickets />} />
-                    <Route path='/customer' element={<LayoutCustomer />} />
-                    <Route path="/organization/agent/login" element={<AgentLogin />} />
-                    <Route path='/organization/agent/customers/' element={<Customers />} />
-                    <Route path='/organization/agent/notifications/' element={<Notifications />} />
-                    <Route path='/organization/agent/profile/' element={<Profile />} />
-                    <Route path="*" element={<PageErr />} />
-                    <Route path='/organization/agents/tickets/1' element={<TicketDetails />}></Route>
-                    <Route path={`/customer/${customer}/tickets/`} element={<CustomerTickets />} />
-                    <Route path={`/customer/${customer}/submitquery`} element={<CustomerSubmitQuery />} />
-                    <Route path={`/customer/${customer}/dashboard`} element={<CustomerDashboard />} />
-                    <Route path={`/customer/${customer}/call`} element={<CustomerCall />} />
-                    <Route path={`/customer/${customer}/profile`} element={<CustomerProfile />} />
-                    <Route path={`/customer/${customer}tickets/`} element={<CustomerTickets />} />
-                    <Route path={`/organization/${admin}/admin/dashboard`} element={<DashboardAdmin />} />
-                    <Route path={`/organization/${admin}/admin/tickets`} element={<TicketsAdmin />} />
-                    <Route path={`/organization/${admin}/admin/agents`} element={<AgentsAdmin />} />
-                    <Route path={`/organization/${admin}/admin/notifications`} element={<NotificationsAdmin />} />
-                    <Route path={`/organization/${admin}/admin/profile`} element={<OrgProfileAdmin />} />
-                    <Route path={`/organization/${admin}/admin/addagents`} element={<AddAgents />} />
-
-                </Routes>
-            </Router>
-        );
-    }
+  render() {
+    const admin = localStorage.getItem("orgname");
+    const customer = localStorage.getItem("custname");
+    const path = `/organization/${admin}/admin/`;
+    const agent = localStorage.getItem("agentname");
+    console.log(admin);
+    return (
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/organization/register" element={<OrgSignup />} />
+          <Route path="/organization/login" element={<OrgLogin />} />
+          <Route path="/customer/login" element={<CustLogin />} />
+          <Route path="/customer/register" element={<CustSignup />} />
+          <Route
+            path={`/customer/${customer}/main`}
+            element={<CustomerDashboard />}
+          />
+          <Route
+            path={`/organization/${admin}/admin/`}
+            element={<DashboardAdmin />}
+          />
+          <Route
+            path={`/organization/agent/${agent}`}
+            element={<Dashboard />}
+          />
+          <Route
+            path={`/organization/agent/${agent}/dashboard/`}
+            element={<Dashboard />}
+          />
+          <Route
+            path={`/organization/agent/${agent}/tickets/`}
+            element={<Tickets />}
+          />
+          <Route path="/customer" element={<LayoutCustomer />} />
+          <Route path={`/organization/agent/login`} element={<AgentLogin />} />
+          <Route
+            path={`/organization/agent/${agent}/customers/`}
+            element={<Customers />}
+          />
+          <Route
+            path={`/organization/agent/${agent}/notifications/`}
+            element={<Notifications />}
+          />
+          <Route
+            path={`/organization/agent/${agent}/profile/`}
+            element={<Profile />}
+          />
+          <Route path="*" element={<PageErr />} />
+          <Route
+            path={`/organization/agent/${agent}/tickets/1`}
+            element={<TicketDetails />}
+          ></Route>
+          <Route
+            path={`/customer/${customer}/tickets/`}
+            element={<CustomerTickets />}
+          />
+          <Route
+            path={`/customer/${customer}/submitquery`}
+            element={<CustomerSubmitQuery />}
+          />
+          <Route
+            path={`/customer/${customer}/dashboard`}
+            element={<CustomerDashboard />}
+          />
+          <Route
+            path={`/customer/${customer}/call`}
+            element={<CustomerCall />}
+          />
+          <Route
+            path={`/customer/${customer}/profile`}
+            element={<CustomerProfile />}
+          />
+          <Route
+            path={`/customer/${customer}/tickets/`}
+            element={<CustomerTickets />}
+          />
+          <Route
+            path={`/organization/${admin}/admin/dashboard`}
+            element={<DashboardAdmin />}
+          />
+          <Route
+            path={`/organization/${admin}/admin/tickets`}
+            element={<TicketsAdmin />}
+          />
+          <Route
+            path={`/organization/${admin}/admin/agents`}
+            element={<AgentsAdmin />}
+          />
+          <Route
+            path={`/organization/${admin}/admin/notifications`}
+            element={<NotificationsAdmin />}
+          />
+          <Route
+            path={`/organization/${admin}/admin/profile`}
+            element={<OrgProfileAdmin />}
+          />
+          <Route
+            path={`/organization/${admin}/admin/addagents`}
+            element={<AddAgents />}
+          />
+        </Routes>
+      </Router>
+    );
+  }
 }
 
-export default Routerapp
+export default Routerapp;
