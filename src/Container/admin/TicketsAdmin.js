@@ -56,7 +56,9 @@ const useStyles = makeStyles((theme) => ({
   },
   name: {
     fontWeight: "bold",
-    color: theme.palette.secondary.dark,
+    color: "black",
+    position: "relative",
+    top: "8px",
   },
   status: {
     fontWeight: "bold",
@@ -116,23 +118,39 @@ function Tickets() {
       <Grid className={style.Grid}>
         <Typography variant="h5">Tickets</Typography>
         <br></br>
-        <TableContainer component={Paper} className={classes.tableContainer}>
+        <TableContainer
+          component={Paper}
+          elevation={5}
+          className={classes.tableContainer}
+        >
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell className={classes.tableHeaderCell}>
-                  User Info
-                </TableCell>
-                <TableCell className={classes.tableHeaderCell}>Email</TableCell>
-                <TableCell className={classes.tableHeaderCell}>
-                  Number
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    User Info
+                  </Typography>
                 </TableCell>
                 <TableCell className={classes.tableHeaderCell}>
-                  Problem Info
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Email
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.tableHeaderCell}>
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Number
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.tableHeaderCell}>
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Problem Info
+                  </Typography>
                 </TableCell>
 
                 <TableCell className={classes.tableHeaderCell}>
-                  Status
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Status
+                  </Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -165,14 +183,8 @@ function Tickets() {
                     <Typography>{row.email}</Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography color="primary" variant="subtitle2">
-                      <Link
-                        to="/organization/agents/tickets/1"
-                        target="_blank"
-                        className={style.links}
-                      >
-                        {row.phonenumber}
-                      </Link>
+                    <Typography color="black" variant="subtitle2">
+                      {row.phonenumber}
                     </Typography>
                   </TableCell>
                   <TableCell>

@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
   tableHeaderCell: {
     fontWeight: "bold",
     backgroundColor: "#0D80D8",
+    color: theme.palette.getContrastText(theme.palette.primary.dark),
   },
   avatar: {
     backgroundColor: theme.palette.primary.light,
@@ -135,19 +136,35 @@ function Tickets() {
             <TableHead>
               <TableRow>
                 <TableCell className={classes.tableHeaderCell}>
-                  User Info
-                </TableCell>
-                <TableCell className={classes.tableHeaderCell}>Email</TableCell>
-                <TableCell className={classes.tableHeaderCell}>
-                  Number
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    User Info
+                  </Typography>
                 </TableCell>
                 <TableCell className={classes.tableHeaderCell}>
-                  Problem Info
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Email
+                  </Typography>
                 </TableCell>
                 <TableCell className={classes.tableHeaderCell}>
-                  Status
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Number{" "}
+                  </Typography>
                 </TableCell>
-                <TableCell className={classes.tableHeaderCell}>Taken</TableCell>
+                <TableCell className={classes.tableHeaderCell}>
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Problem Info
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.tableHeaderCell}>
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Status
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.tableHeaderCell}>
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Taken
+                  </Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -177,13 +194,7 @@ function Tickets() {
                   </TableCell>
                   <TableCell>
                     <Typography color="primary" variant="subtitle2">
-                      <Link
-                        to="/organization/agent/tickets/1"
-                        target="_blank"
-                        className={style.links}
-                      >
-                        {row.email}
-                      </Link>
+                      {row.email}
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -191,7 +202,16 @@ function Tickets() {
                       {row.phonenumber}
                     </Typography>
                   </TableCell>
-                  <TableCell>{row.query}</TableCell>
+                  <TableCell>
+                    {" "}
+                    <Link
+                      to="/organization/agent/tickets/1"
+                      target="_blank"
+                      className={style.links}
+                    >
+                      {row.query}
+                    </Link>
+                  </TableCell>
                   <TableCell>
                     <Typography
                       className={classes.status}
