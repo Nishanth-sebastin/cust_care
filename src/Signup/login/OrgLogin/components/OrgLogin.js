@@ -13,6 +13,7 @@ import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const OrgLogin = () => {
 
@@ -24,7 +25,7 @@ export const OrgLogin = () => {
 
   const [loginstatus, setLoginstatus] = useState("")
   const [redirect, setRedirect] = useState(false)
-
+  const admin = localStorage.getItem("orgname")
   const formik = useFormik({
     initialValues: {
       organizationName: '',
@@ -35,7 +36,7 @@ export const OrgLogin = () => {
     }
   })
 
-
+  const navigate = useNavigate();
 
   const orglogin = (e) => {
     e.preventDefault();
@@ -45,6 +46,7 @@ export const OrgLogin = () => {
     }).then((response) => {
 
       localStorage.setItem('orgname', response.data.orgname)
+      navigate(`/organization/${admin}/admin/`);
       if (response.data.message) {
         setLoginstatus(response.data.message)
       }

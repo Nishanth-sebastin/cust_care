@@ -14,6 +14,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+
+const admin = localStorage.getItem("orgname")
+
 const useStyles = makeStyles({
     drawer: {
         width: 240,
@@ -118,7 +121,7 @@ function AppBar() {
 
                         <ListItemButton sx={{ color: 'white', position: 'relative', right: '10px', padding: '0px' }}>
                             <ListItemIcon className={style.icons}> <SportsKabaddiOutlinedIcon className={style.icon} /></ListItemIcon>
-                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to='/organization/admin/addagents/'>Add Agents</Link></ListItemText></ListItemButton>
+                            <ListItemText sx={{ color: 'white' }}> <Link style={{ color: 'white', textDecoration: 'none' }} to={`/organization/${admin}/admin/addagents`}>Add Agents</Link></ListItemText></ListItemButton>
                     </ListItem>
                     <ListItem className={style.list}>
 

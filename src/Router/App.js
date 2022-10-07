@@ -20,7 +20,7 @@ import CustomerSubmitQuery from "../Container/Customer/SubmitQuery/index.js"
 import CustomerTickets from "../Container/Customer/Tickets/index.js"
 import CustomerCall from "../Container/Customer/Call/index.js"
 import CustomerProfile from "../Container/Customer/Profile/index.js"
-import CustomerSignout from "../Container/Customer/SignOut/index.js"
+// import CustomerSignout from "../Container/Customer/SignOut/index.js"
 import Customers from "../Container/agents/Customers";
 import Notifications from "../Container/agents/Notifications";
 import Profile from "../Container/agents/Profile";
@@ -40,6 +40,7 @@ class Routerapp extends React.Component {
 
         const admin = localStorage.getItem("orgname")
         const customer = localStorage.getItem("custname")
+        // const submitquery = localStorage.getItem("submitquery")
         const path = `/organization/${admin}/admin/`
 
         console.log(admin)
@@ -70,7 +71,7 @@ class Routerapp extends React.Component {
                     <Route path={`/customer/${customer}/call`} element={<CustomerCall />} />
                     <Route path={`/customer/${customer}/profile`} element={<CustomerProfile />} />
                     <Route path={`/customer/${customer}tickets/`} element={<CustomerTickets />} />
-                    <Route path='/customer/signout' element={<CustomerSignout />} />
+                    {/* <Route path='/customer/signout' element={<CustomerSignout />} /> */}
                     <Route path={`/organization/${admin}/admin/dashboard`} element={<DashboardAdmin />} />
                     <Route path={`/organization/${admin}/admin/tickets`} element={<TicketsAdmin />} />
                     <Route path={`/organization/${admin}/admin/agents`} element={<AgentsAdmin />} />

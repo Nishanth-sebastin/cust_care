@@ -17,7 +17,9 @@ import {
 import { makeStyles, styled } from '@material-ui/core'
 import LayoutCustomer from '../../../MainLayout/LayoutCustomer'
 import { Search } from '@mui/icons-material';
-import { Link} from 'react-router-dom'
+import { Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Axios from 'axios';
 
 
 
@@ -95,6 +97,18 @@ function Customers() {
         setPage(0);
     };
 
+
+    // Axios.get("http://localhost:8080/fetch_submitquerycust", {
+       
+    
+    //   }).then((response) => {
+    //     console.log('success')
+       
+    //    console.log(response);
+    //    console.log(response.data);
+    //   })
+    
+
     return (
         <LayoutCustomer>
             <Grid className={style.Grid}>
@@ -134,17 +148,7 @@ function Customers() {
                                 </TableRow>
                             ))}
                         </TableBody>
-                        {/* <TableFooter>
-                            <TablePagination
-                                rowsPerPageOptions={[5, 10, 15]}
-                                component="div"
-                                count={USERS.length}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                onChangePage={handleChangePage}
-                                onChangeRowsPerPage={handleChangeRowsPerPage}
-                            />
-                        </TableFooter> */}
+                    
                     </Table>
                 </TableContainer>
             </Grid>

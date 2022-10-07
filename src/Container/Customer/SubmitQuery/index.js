@@ -13,7 +13,8 @@ import { Grid, Paper, Avatar, Typography, Button ,Box} from '@material-ui/core'
 import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
-import Axios from 'axios'
+import Axios from 'axios';
+
 
 export const CustLogin = () => {
 
@@ -25,12 +26,13 @@ export const CustLogin = () => {
   const buttonStyle = {display:'flex',justifyContent :'center'}
 
   const [loginstatus, setLoginstatus] = useState("")
+ 
   const [redirect, setRedirect] = useState(false)
   const formik = useFormik({
     initialValues: {
       name:'',
       email: '',
-      companyname :'',
+      orgname :'',
       query:'',
       phonenumber:'',
       region:'',
@@ -39,26 +41,29 @@ export const CustLogin = () => {
   })
   console.log(formik.values)
 
-  // const logincust = (e) => {
-  //   e.preventDefault();
-  //   Axios.post('http://localhost:8080/logincust', {
-  //     email: formik.values.email,
-  //     password: formik.values.password
-  //   }).then((response) => {
 
 
-  //     localStorage.setItem('logincustname', response.data.name)
-  //     if (response.data.message) {
-  //       setLoginstatus(response.data.message)
+const navigate = useNavigate();
 
-  //     }
-  //     if (loginstatus == "Correct") {
-  //       setRedirect(true)
-  //     }
-  //   })
+const submitquery = () =>{
+  Axios.post("http://localhost:8080/submitquerycust", {
+    name: formik.values.name,
+    email: formik.values.email,
+    orgname: formik.values.orgname,
+    query: formik.values.query,
+    phonenumber: formik.values.phonenumber,
+    region: formik.values.region,
 
-  // }
+  }).then((response) => {
+    console.log('success')
+   
+    localStorage.setItem('submitquerycust', response.data.name);
+    navigate(`/customer/${response.data.name}/submitquery`)
 
+  })
+
+  
+}
   
   return (
     <LayoutCustomer >
@@ -76,7 +81,7 @@ export const CustLogin = () => {
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.email} name="email" fullWidth label='Email ' placeholder="Enter your Email " />
           <br></br><br></br>
-          <TextField onChange={formik.handleChange} value={formik.values.companyname} name="companyname" fullWidth label='CompanyName' placeholder="Enter your companyname" />
+          <TextField onChange={formik.handleChange} value={formik.values.orgname} name="orgname" fullWidth label='OrgName' placeholder="Enter your orgname" />
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.query} name="query" fullWidth label='Query' placeholder="Enter your Query" />
           <br></br><br></br>
@@ -84,7 +89,7 @@ export const CustLogin = () => {
           <br></br><br></br>
           <TextField onChange={formik.handleChange} value={formik.values.region} name="region" fullWidth label="Region" placeholder="Enter your Region" />
           <br></br><br></br><br></br>
-         <Box style={buttonStyle}> <Button type='submit' variant='contained' color='primary' style={buttonStyle}>
+         <Box style={buttonStyle}> <Button type='submit' variant='contained' color='primary' style={buttonStyle} onClick={submitquery}>
            Submit
           </Button></Box>
          
