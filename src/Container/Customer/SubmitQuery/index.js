@@ -25,7 +25,7 @@ import Axios from "axios";
 export const CustLogin = () => {
   const paperStyle = {
     padding: "30px 20px",
-    height: "620px",
+    height: "580px",
     position: "relative",
     top: "70px",
     width: 1000,
@@ -42,7 +42,6 @@ export const CustLogin = () => {
   const [status, setStatus] = useState("Pending");
   const formik = useFormik({
     initialValues: {
-      name: "",
       email: "",
       orgname: "",
       query: "",
@@ -53,9 +52,10 @@ export const CustLogin = () => {
 
   const navigate = useNavigate();
 
+  const name = localStorage.getItem("custname");
   const submitquery = () => {
     Axios.post("http://localhost:8080/submitquerycust", {
-      name: formik.values.name,
+      name,
       email: formik.values.email,
       orgname: formik.values.orgname,
       query: formik.values.query,
@@ -81,16 +81,6 @@ export const CustLogin = () => {
             <h2 style={headerStyle}>Submit Query</h2>
           </Grid>
           <form>
-            <TextField
-              onChange={formik.handleChange}
-              name="name"
-              value={formik.values.name}
-              fullWidth
-              label="Name"
-              placeholder="Enter your name"
-            />
-            <br></br>
-            <br></br>
             <TextField
               onChange={formik.handleChange}
               value={formik.values.email}

@@ -109,6 +109,7 @@ class Routerapp extends React.Component {
             path={`/customer/${customer}/call`}
             element={<CustomerCall />}
           />
+          {/* <Route path={`/customer/${customer}/organizations`} element={}/> */}
           <Route
             path={`/customer/${customer}/profile`}
             element={<CustomerProfile />}
