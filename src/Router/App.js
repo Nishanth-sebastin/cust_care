@@ -26,7 +26,7 @@ import CustomerTickets from "../Container/Customer/Tickets/index.js";
 import CustomerCall from "../Container/Customer/Call/index.js";
 import CustomerProfile from "../Container/Customer/Profile/index.js";
 
-import Customers from "../Container/agents/Customers";
+import Customers from "../Container/admin/Customers";
 import Notifications from "../Container/agents/Notifications";
 import Profile from "../Container/agents/Profile";
 import DashboardAdmin from "../Container/admin/DashboardAdmin";
@@ -36,10 +36,12 @@ import NotificationsAdmin from "../Container/admin/NotificationsAdmin";
 import OrgProfileAdmin from "../Container/admin/OrgProfileAdmin";
 import AddAgents from "../Container/admin/AddAgent/AddAgents";
 import AgentLogin from "../Signup/login/AgentLogin/AgentLogin";
+import CustomersAdmin from "../Container/admin/Customers";
 
 class Routerapp extends React.Component {
   render() {
     const admin = localStorage.getItem("orgname");
+    const AgentOrgName = localStorage.getItem("AgentOrgname");
     const customer = localStorage.getItem("custname");
     const path = `/organization/${admin}/admin/`;
     const agent = localStorage.getItem("agentname");
@@ -61,34 +63,34 @@ class Routerapp extends React.Component {
             element={<DashboardAdmin />}
           />
           <Route
-            path={`/organization/agent/${agent}`}
+            path={`/${AgentOrgName}/agent/${agent}`}
             element={<Dashboard />}
           />
           <Route
-            path={`/organization/agent/${agent}/dashboard/`}
+            path={`/${AgentOrgName}/agent/${agent}/dashboard/`}
             element={<Dashboard />}
           />
           <Route
-            path={`/organization/agent/${agent}/tickets/`}
+            path={`/${AgentOrgName}/agent/${agent}/tickets/`}
             element={<Tickets />}
           />
           <Route path="/customer" element={<LayoutCustomer />} />
           <Route path={`/organization/agent/login`} element={<AgentLogin />} />
           <Route
-            path={`/organization/agent/${agent}/customers/`}
-            element={<Customers />}
+            path={`/organization/${admin}/admin/customers/`}
+            element={<CustomersAdmin />}
           />
           <Route
-            path={`/organization/agent/${agent}/notifications/`}
+            path={`/${AgentOrgName}/agent/${agent}/notifications/`}
             element={<Notifications />}
           />
           <Route
-            path={`/organization/agent/${agent}/profile/`}
+            path={`/${AgentOrgName}/agent/${agent}/profile/`}
             element={<Profile />}
           />
           <Route path="*" element={<PageErr />} />
           <Route
-            path={`/organization/agent/${agent}/tickets/1`}
+            path={`/${AgentOrgName}/agent/${agent}/tickets/1`}
             element={<TicketDetails />}
           ></Route>
           <Route

@@ -25,11 +25,9 @@ export const OrgLogin = () => {
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const marginTop = { marginTop: 5 };
 
-  const navigate = useNavigate();
-
   const [loginstatus, setLoginstatus] = useState("");
   const [redirect, setRedirect] = useState(false);
-
+  const admin = localStorage.getItem("orgname");
   const formik = useFormik({
     initialValues: {
       organizationName: "",
@@ -40,6 +38,8 @@ export const OrgLogin = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const orglogin = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:8080/loginorg", {
@@ -48,6 +48,8 @@ export const OrgLogin = () => {
     }).then((response) => {
       localStorage.setItem("orgname", response.data.orgname);
 
+      localStorage.setItem("orgname", response.data.orgname);
+      navigate(`/organization/${admin}/admin/`);
       if (response.data.message) {
         setLoginstatus(response.data.message);
       }

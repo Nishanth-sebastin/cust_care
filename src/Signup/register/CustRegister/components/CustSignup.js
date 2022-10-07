@@ -46,8 +46,8 @@ export const CustSignup = () => {
 
   const navigate = useNavigate();
   const addCustomer = () => {
+   
     navigate("/customer/login");
-    
     Axios.post("http://localhost:8080/signupcust", {
       firstname: formik.values.firstname,
       lastname: formik.values.lastname,
@@ -59,10 +59,10 @@ export const CustSignup = () => {
 
     }).then((response) => {
       console.log('success')
+     
       localStorage.setItem('custname', response.data.name)
     })
   }
-
   const formik = useFormik({
     initialValues: {
       firstname: '',

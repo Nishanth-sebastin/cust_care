@@ -84,6 +84,7 @@ function AppBar() {
     );
   };
   const agent = localStorage.getItem("agentname");
+  const AgentOrgName = localStorage.getItem("AgentOrgname");
 
   const style = useStyles();
   return (
@@ -124,7 +125,7 @@ function AppBar() {
                 {" "}
                 <Link
                   style={{ color: "white", textDecoration: "none" }}
-                  to={`/organization/agent/${agent}/dashboard/`}
+                  to={`/${AgentOrgName}/agent/${agent}/dashboard/`}
                 >
                   Dashboard
                 </Link>
@@ -148,37 +149,14 @@ function AppBar() {
                 {" "}
                 <Link
                   style={{ color: "white", textDecoration: "none" }}
-                  to={`/organization/agent/${agent}/tickets/`}
+                  to={`/${AgentOrgName}/agent/${agent}/tickets/`}
                 >
                   Tickets
                 </Link>
               </ListItemText>
             </ListItemButton>
           </ListItem>
-          <ListItem className={style.list}>
-            <ListItemButton
-              sx={{
-                color: "white",
-                position: "relative",
-                right: "10px",
-                padding: "0px",
-              }}
-            >
-              <ListItemIcon className={style.icons}>
-                {" "}
-                <SportsKabaddiOutlinedIcon className={style.icon} />
-              </ListItemIcon>
-              <ListItemText sx={{ color: "white" }}>
-                {" "}
-                <Link
-                  style={{ color: "white", textDecoration: "none" }}
-                  to={`/organization/agent/${agent}/customers/`}
-                >
-                  Customers
-                </Link>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
+
           <ListItem className={style.list}>
             <ListItemButton
               sx={{
@@ -196,7 +174,7 @@ function AppBar() {
                 {" "}
                 <Link
                   style={{ color: "white", textDecoration: "none" }}
-                  to={`/organization/agent/${agent}/notifications/`}
+                  to={`/${AgentOrgName}/agent/${agent}/notifications/`}
                 >
                   Notifications
                 </Link>
@@ -220,7 +198,7 @@ function AppBar() {
                 {" "}
                 <Link
                   style={{ color: "white", textDecoration: "none" }}
-                  to={`/organization/agent/${agent}/profile/`}
+                  to={`/${AgentOrgName}/agent/${agent}/profile/`}
                 >
                   Profile
                 </Link>

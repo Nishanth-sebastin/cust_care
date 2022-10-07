@@ -13,8 +13,10 @@ import { AddCircleOutlineOutlined } from '@material-ui/icons';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Axios from 'axios'
-export const CustLogin = () => {
 
+
+export const CustLogin = () => {
+  // /customer/${customer}/dashboard
 
   const paperStyle = { padding: '30px 20px', height: '680px', width: 1000, margin: "30px auto" }
   const headerStyle = { margin: 0 }
@@ -34,16 +36,19 @@ export const CustLogin = () => {
     }
   })
   console.log(formik.values)
-
+  const navigate = useNavigate();
+  // const customer = localStorage.getItem("custname")
   const logincust = (e) => {
     e.preventDefault();
     Axios.post('http://localhost:8080/logincust', {
       email: formik.values.email,
       password: formik.values.password
     }).then((response) => {
-
-
+     
+      console.log( response.data.name);
+      
       localStorage.setItem('custname', response.data.name)
+      navigate(`/customer/${response.data.name}/dashboard`);
       if (response.data.message) {
         setLoginstatus(response.data.message)
 

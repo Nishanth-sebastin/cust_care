@@ -44,6 +44,8 @@ export default function AgentLogin() {
       password: formik.values.password,
     }).then((response) => {
       localStorage.setItem("agentname", response.data.name);
+      localStorage.setItem("AgentOrgname", response.data.orgname);
+      console.log(response.data.orgname);
       if (response.data.message) {
         setLoginstatus(response.data.message);
       }
