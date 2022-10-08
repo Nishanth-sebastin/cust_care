@@ -20,7 +20,11 @@ import CustomerSubmitQuery from "../Container/Customer/SubmitQuery/index.js"
 import CustomerTickets from "../Container/Customer/Tickets/index.js"
 import CustomerCall from "../Container/Customer/Call/index.js"
 import CustomerProfile from "../Container/Customer/Profile/index.js"
+<<<<<<< HEAD
 // import CustomerSignout from "../Container/Customer/SignOut/index.js"
+=======
+
+>>>>>>> 5240f553772f0ee15bdf61ebc066dd8ff01fba17
 import Customers from "../Container/agents/Customers";
 import Notifications from "../Container/agents/Notifications";
 import Profile from "../Container/agents/Profile";
@@ -30,6 +34,7 @@ import AgentsAdmin from "../Container/admin/AgentsAdmin";
 import NotificationsAdmin from "../Container/admin/NotificationsAdmin";
 import OrgProfileAdmin from "../Container/admin/OrgProfileAdmin";
 import AddAgents from "../Container/admin/AddAgent/AddAgents";
+import AgentLogin from "../Signup/login/AgentLogin/AgentLogin";
 
 
 
@@ -60,6 +65,7 @@ class Routerapp extends React.Component {
                     <Route path='/organization/agent/dashboard/' element={<Dashboard />} />
                     <Route path='/organization/agent/tickets/' element={<Tickets />} />
                     <Route path='/customer' element={<LayoutCustomer />} />
+                    <Route path="/organization/agent/login" element={<AgentLogin />} />
                     <Route path='/organization/agent/customers/' element={<Customers />} />
                     <Route path='/organization/agent/notifications/' element={<Notifications />} />
                     <Route path='/organization/agent/profile/' element={<Profile />} />
@@ -71,7 +77,10 @@ class Routerapp extends React.Component {
                     <Route path={`/customer/${customer}/call`} element={<CustomerCall />} />
                     <Route path={`/customer/${customer}/profile`} element={<CustomerProfile />} />
                     <Route path={`/customer/${customer}tickets/`} element={<CustomerTickets />} />
+<<<<<<< HEAD
                     {/* <Route path='/customer/signout' element={<CustomerSignout />} /> */}
+=======
+>>>>>>> 5240f553772f0ee15bdf61ebc066dd8ff01fba17
                     <Route path={`/organization/${admin}/admin/dashboard`} element={<DashboardAdmin />} />
                     <Route path={`/organization/${admin}/admin/tickets`} element={<TicketsAdmin />} />
                     <Route path={`/organization/${admin}/admin/agents`} element={<AgentsAdmin />} />
