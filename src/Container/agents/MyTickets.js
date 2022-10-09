@@ -22,6 +22,7 @@ import { TableFooter } from "@mui/material";
 import { TablePagination } from "@mui/material";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const styles = makeStyles({
   Grid: {
@@ -140,6 +141,7 @@ function MyTickets() {
 
   return (
     <LayoutAgent>
+      <ToastContainer />
       <Grid className={style.Grid}>
         <Typography variant="h5">Tickets</Typography>
         <br></br>
@@ -165,6 +167,11 @@ function MyTickets() {
                 <TableCell className={classes.tableHeaderCell}>
                   <Typography style={{ color: "white", fontWeight: "bold" }}>
                     Problem Info
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.tableHeaderCell}>
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Status Update
                   </Typography>
                 </TableCell>
                 <TableCell className={classes.tableHeaderCell}>
@@ -234,11 +241,33 @@ function MyTickets() {
                     <Button
                       onClick={() => {
                         Axios.post(
-                          "http://localhost:8080/organization/agent/tickets/takenupdate",
+                          "http://localhost:8080/organization/agent/mytickets/statusupdate",
+                          {
+                            id: row.id,
+                            agentname: agent,
+                            orgname: AgentOrgName,
+                          }
+                        ).then((response) => {
+                          alert("Success");
+                          console.log(response);
+                        });
+                      }}
+                      variant="contained"
+                    >
+                      In Progress
+                    </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      onClick={() => {
+                        Axios.post(
+                          "http://localhost:8080/organization/agent/mytickets/solveupdate",
                           {
                             id: row.id,
                           }
-                        );
+                        ).then((response) => {
+                          console.log(response);
+                        });
                       }}
                       variant="contained"
                     >

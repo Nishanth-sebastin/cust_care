@@ -1,264 +1,301 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from "react";
 
-import LayoutAgent from '../../MainLayout/LayoutAgent'
-import { Box } from '@mui/system'
-import { CardActionArea, CardContent, CardHeader, CardMedia, Divider, Icon, Paper, Typography } from '@mui/material'
-import { Grid } from '@mui/material'
-import { makeStyles } from '@material-ui/core'
-import { Card } from '@mui/material'
-import AdUnitsIcon from '@mui/icons-material/AdUnits';
-import { Bar } from 'react-chartjs-2'
-import { Link } from 'react-router-dom';
-import { Chart as ChartJS } from 'chart.js/auto'
-import AppMain from '../../examples/AdminCharts/'
-import LayoutAdmin from '../../MainLayout/LayoutAdmin'
-import AppMainLine from '../../examples/AdminCharts/LineChart'
-
+import LayoutAgent from "../../MainLayout/LayoutAgent";
+import { Box } from "@mui/system";
+import {
+  CardActionArea,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Divider,
+  Icon,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { Grid } from "@mui/material";
+import { makeStyles } from "@material-ui/core";
+import { Card } from "@mui/material";
+import AdUnitsIcon from "@mui/icons-material/AdUnits";
+import { Bar } from "react-chartjs-2";
+import { Link } from "react-router-dom";
+import { Chart as ChartJS } from "chart.js/auto";
+import AppMain from "../../examples/AdminCharts/";
+import LayoutAdmin from "../../MainLayout/LayoutAdmin";
+import AppMainLine from "../../examples/AdminCharts/LineChart";
+import Axios from "axios";
 
 const styles = makeStyles({
+  Grid: {
+    position: "relative",
+    top: "100px",
+    width: "100%",
+    height: "650px",
 
-    Grid: {
-        position: 'relative',
-        top: '100px',
-        width: '100%',
-        height: '650px',
-
-        padding: '18px',
-
-    },
-    icon: {
-        color: 'white',
-        position: 'relative',
-        left: '18px',
-        top: '15px'
-    },
-    boxIcon1: {
-
-        width: '60px',
-        height: '60px',
-        backgroundColor: '#323237',
-        borderRadius: '10px',
-        position: 'relative',
-        top: '15px',
-        left: '20px'
-    },
-    boxIcon2: {
-
-        width: '60px',
-        height: '60px',
-        backgroundColor: '#348EED',
-        borderRadius: '10px',
-        position: 'relative',
-        top: '15px',
-        left: '20px'
-    },
-    boxIcon3: {
-
-        width: '60px',
-        height: '60px',
-        backgroundColor: '#58B05C',
-        borderRadius: '10px',
-        position: 'relative',
-        top: '15px',
-        left: '20px'
-    },
-    boxIcon4: {
-
-        width: '60px',
-        height: '60px',
-        backgroundColor: '#DD2567',
-        borderRadius: '10px',
-        position: 'relative',
-        top: '15px',
-        left: '20px'
-    },
-    boxes: {
-        display: 'flex',
-
-    },
-    ChartGrid: {
-        position: 'relative',
-        width: '100%',
-
-
-    }
-
-
-})
+    padding: "18px",
+  },
+  icon: {
+    color: "white",
+    position: "relative",
+    left: "18px",
+    top: "15px",
+  },
+  boxIcon1: {
+    width: "60px",
+    height: "60px",
+    backgroundColor: "#323237",
+    borderRadius: "10px",
+    position: "relative",
+    top: "15px",
+    left: "20px",
+  },
+  boxIcon2: {
+    width: "60px",
+    height: "60px",
+    backgroundColor: "#348EED",
+    borderRadius: "10px",
+    position: "relative",
+    top: "15px",
+    left: "20px",
+  },
+  boxIcon3: {
+    width: "60px",
+    height: "60px",
+    backgroundColor: "#58B05C",
+    borderRadius: "10px",
+    position: "relative",
+    top: "15px",
+    left: "20px",
+  },
+  boxIcon4: {
+    width: "60px",
+    height: "60px",
+    backgroundColor: "#DD2567",
+    borderRadius: "10px",
+    position: "relative",
+    top: "15px",
+    left: "20px",
+  },
+  boxes: {
+    display: "flex",
+  },
+  ChartGrid: {
+    position: "relative",
+    width: "100%",
+  },
+});
 function DashboardAdmin() {
+  const [raisedtickets, setraisedTickets] = useState(281);
+  const [solvedTickets, setsolvedTickets] = useState(281);
+  const [unSolvedTickets, setunSolvedTickets] = useState(281);
 
-    const style = styles();
+  const orgname = localStorage.getItem("orgname");
 
-    return (
-        <LayoutAdmin >
-            <Grid className={style.Grid}>
-                <Grid container>
-                    <Grid item xs={3} sx={{ padding: '20px', }}>
-                        <Paper>
-                            <Card sx={{ height: '140px' }}>
-                                <Box className={style.boxes}>
-                                    <Box className={style.boxIcon1}>
-                                        <AdUnitsIcon className={style.icon} />
+  useEffect(() => {
+    Axios.post("http://localhost:8080/admin/dashboard/raisedtickets", {
+      orgname,
+    }).then((response) => {
+      console.log(response.data.message);
+      setraisedTickets(response.data.message.length);
+    });
 
-                                    </Box>
-                                    <Box>
-                                        <Typography sx={{ position: 'relative', left: '90px', top: '15px', color: '#9498AD' }}>Raised Tickets<br></br>
-                                            <Typography sx={{ color: 'black' }} ><strong>281</strong></Typography></Typography>
-                                    </Box>
+    Axios.post("http://localhost:8080/admin/dashboard/solvedtickets", {
+      orgname,
+    }).then((response) => {
+      console.log(response.data.message);
+      setsolvedTickets(response.data.message.length);
+    });
 
-                                </Box>
-                                <Divider />
+    Axios.post("http://localhost:8080/admin/dashboard/unsolvedtickets", {
+      orgname,
+    }).then((response) => {
+      console.log(response.data.message);
+      setunSolvedTickets(response.data.message.length);
+    });
+  }, []);
 
-                                <CardContent sx={{ marginTop: '25px' }}>
+  const style = styles();
 
-                                    <Typography >55%  than lask week</Typography>
-                                </CardContent>
+  return (
+    <LayoutAdmin>
+      <Grid className={style.Grid}>
+        <Grid container>
+          <Grid item xs={3} sx={{ padding: "20px" }}>
+            <Paper>
+              <Card sx={{ height: "140px" }}>
+                <Box className={style.boxes}>
+                  <Box className={style.boxIcon1}>
+                    <AdUnitsIcon className={style.icon} />
+                  </Box>
+                  <Box>
+                    <Typography
+                      sx={{
+                        position: "relative",
+                        left: "90px",
+                        top: "15px",
+                        color: "#9498AD",
+                      }}
+                    >
+                      Raised Tickets<br></br>
+                      <Typography sx={{ color: "black" }}>
+                        <strong>{raisedtickets}</strong>
+                      </Typography>
+                    </Typography>
+                  </Box>
+                </Box>
+                <Divider />
 
-                            </Card>
-                        </Paper>
+                <CardContent sx={{ marginTop: "25px" }}>
+                  <Typography>55% than lask week</Typography>
+                </CardContent>
+              </Card>
+            </Paper>
+          </Grid>
 
-                    </Grid>
+          <Grid item xs={3} sx={{ padding: "20px" }}>
+            <Paper>
+              <Card sx={{ height: "140px" }}>
+                <Box className={style.boxes}>
+                  <Box className={style.boxIcon2}>
+                    <AdUnitsIcon className={style.icon} />
+                  </Box>
+                  <Box>
+                    <Typography
+                      sx={{
+                        position: "relative",
+                        left: "90px",
+                        top: "15px",
+                        color: "#9498AD",
+                      }}
+                    >
+                      Solved Tickets<br></br>
+                      <Typography sx={{ color: "black" }}>
+                        <strong>{solvedTickets}</strong>
+                      </Typography>
+                    </Typography>
+                  </Box>
+                </Box>
+                <Divider />
 
-                    <Grid item xs={3} sx={{ padding: '20px', }}>
-                        <Paper>
-                            <Card sx={{ height: '140px' }}>
-                                <Box className={style.boxes}>
-                                    <Box className={style.boxIcon2}>
-                                        <AdUnitsIcon className={style.icon} />
+                <CardContent sx={{ marginTop: "25px" }}>
+                  <Typography>55% than lask week</Typography>
+                </CardContent>
+              </Card>
+            </Paper>
+          </Grid>
 
-                                    </Box>
-                                    <Box>
-                                        <Typography sx={{ position: 'relative', left: '90px', top: '15px', color: '#9498AD' }}>Solved Tickets<br></br>
-                                            <Typography sx={{ color: 'black' }} ><strong>281</strong></Typography></Typography>
-                                    </Box>
+          <Grid item xs={3} sx={{ padding: "20px" }}>
+            <Paper>
+              <Card sx={{ height: "140px" }}>
+                <Box className={style.boxes}>
+                  <Box className={style.boxIcon3}>
+                    <AdUnitsIcon className={style.icon} />
+                  </Box>
+                  <Box>
+                    <Typography
+                      sx={{
+                        position: "relative",
+                        left: "70px",
+                        top: "15px",
+                        color: "#9498AD",
+                      }}
+                    >
+                      Unsolved Tickets<br></br>
+                      <Typography sx={{ color: "black" }}>
+                        <strong>{unSolvedTickets}</strong>
+                      </Typography>
+                    </Typography>
+                  </Box>
+                </Box>
+                <Divider />
 
-                                </Box>
-                                <Divider />
+                <CardContent sx={{ marginTop: "25px" }}>
+                  <Typography>Unsolved Tickets</Typography>
+                </CardContent>
+              </Card>
+            </Paper>
+          </Grid>
 
-                                <CardContent sx={{ marginTop: '25px' }}>
+          <Grid item xs={3} sx={{ padding: "20px" }}>
+            <Paper>
+              <Card sx={{ height: "140px" }}>
+                <Box className={style.boxes}>
+                  <Box className={style.boxIcon4}>
+                    <AdUnitsIcon className={style.icon} />
+                  </Box>
+                  <Box>
+                    <Typography
+                      sx={{
+                        position: "relative",
+                        left: "65px",
+                        top: "15px",
+                        color: "#9498AD",
+                      }}
+                    >
+                      Suspended Tickets<br></br>
+                      <Typography sx={{ color: "black" }}>
+                        <strong>281</strong>
+                      </Typography>
+                    </Typography>
+                  </Box>
+                </Box>
+                <Divider />
 
-                                    <Typography >55%  than lask week</Typography>
-                                </CardContent>
+                <CardContent sx={{ marginTop: "25px" }}>
+                  <Typography>55% than lask week</Typography>
+                </CardContent>
+              </Card>
+            </Paper>
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item className={style.ChartGrid}>
+            <Paper>
+              <Card>
+                <Grid item xs={12}>
+                  <Box>
+                    <AppMain />
+                  </Box>
 
-                            </Card>
-                        </Paper>
-                    </Grid>
-
-                    <Grid item xs={3} sx={{ padding: '20px', }}>
-                        <Paper>
-                            <Card sx={{ height: '140px' }}>
-                                <Box className={style.boxes}>
-                                    <Box className={style.boxIcon3}>
-                                        <AdUnitsIcon className={style.icon} />
-
-                                    </Box>
-                                    <Box>
-                                        <Typography sx={{ position: 'relative', left: '70px', top: '15px', color: '#9498AD' }}>Total Agents<br></br>
-                                            <Typography sx={{ color: 'black' }} ><strong>281</strong></Typography></Typography>
-                                    </Box>
-
-                                </Box>
-                                <Divider />
-
-                                <CardContent sx={{ marginTop: '25px' }}>
-
-                                    <Typography >Agents</Typography>
-                                </CardContent>
-
-                            </Card>
-                        </Paper>
-
-                    </Grid>
-
-
-                    <Grid item xs={3} sx={{ padding: '20px', }}>
-                        <Paper>
-                            <Card sx={{ height: '140px' }}>
-                                <Box className={style.boxes}>
-                                    <Box className={style.boxIcon4}>
-                                        <AdUnitsIcon className={style.icon} />
-
-                                    </Box>
-                                    <Box>
-                                        <Typography sx={{ position: 'relative', left: '65px', top: '15px', color: '#9498AD' }}>Suspended Tickets<br></br>
-                                            <Typography sx={{ color: 'black' }} ><strong>281</strong></Typography></Typography>
-                                    </Box>
-
-                                </Box>
-                                <Divider />
-
-                                <CardContent sx={{ marginTop: '25px' }}>
-
-                                    <Typography >55%  than lask week</Typography>
-                                </CardContent>
-
-                            </Card>
-                        </Paper>
-                    </Grid>
+                  <Divider></Divider>
+                  <CardContent>
+                    <Typography sx={{ color: "black", fontWeight: "50px" }}>
+                      <strong>Tickets Raised</strong>
+                    </Typography>
+                    <Divider></Divider>
+                    <Typography sx={{ color: "#9498AD" }}>
+                      Past 7 days
+                    </Typography>
+                  </CardContent>
                 </Grid>
-                <Grid container>
-                    <Grid item className={style.ChartGrid}>
-                        <Paper>
-                            <Card>
-                                <Grid item xs={12}>
-                                    <Box  >
-                                        <AppMain />
-                                    </Box>
+              </Card>
+            </Paper>
+            <div></div>
+            <div></div>
+            <Paper>
+              <Card>
+                <Grid item xs={12}>
+                  <Box>
+                    <AppMainLine />
+                  </Box>
 
-
-                                    <Divider></Divider>
-                                    <CardContent>
-                                        <Typography sx={{ color: 'black', fontWeight: '50px' }}>
-
-                                            <strong>Tickets Raised</strong>
-
-
-                                        </Typography>
-                                        <Divider></Divider>
-                                        <Typography sx={{ color: '#9498AD' }}>Past 7 days</Typography>
-
-
-                                    </CardContent>
-                                </Grid>
-
-
-
-                            </Card>
-
-                        </Paper>
-                        <div></div><div></div>
-                        <Paper>
-                            <Card>
-                                <Grid item xs={12}>
-                                    <Box  >
-                                        <AppMainLine />
-                                    </Box>
-
-
-                                    <Divider></Divider>
-                                    <CardContent>
-                                        <Typography sx={{ color: 'black', fontWeight: '50px' }}>
-
-                                            <strong>Problems Solved by Agents</strong>
-
-
-                                        </Typography>
-                                        <Divider></Divider>
-                                        <Typography sx={{ color: '#9498AD' }}>Past 7 days</Typography>
-
-
-                                    </CardContent>
-                                </Grid>
-                            </Card>
-                        </Paper>
-                    </Grid>
+                  <Divider></Divider>
+                  <CardContent>
+                    <Typography sx={{ color: "black", fontWeight: "50px" }}>
+                      <strong>Problems Solved by Agents</strong>
+                    </Typography>
+                    <Divider></Divider>
+                    <Typography sx={{ color: "#9498AD" }}>
+                      Past 7 days
+                    </Typography>
+                  </CardContent>
                 </Grid>
-            </Grid>
-        </LayoutAdmin>
-
-
-    )
-
+              </Card>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Grid>
+    </LayoutAdmin>
+  );
 }
 
-export default DashboardAdmin
+export default DashboardAdmin;
