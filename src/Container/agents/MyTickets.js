@@ -85,7 +85,7 @@ for (let i = 0; i < 14; i++) {
   };
 }
 
-function Tickets() {
+function MyTickets() {
   const style = styles();
   const [age, setAge] = React.useState("");
 
@@ -110,11 +110,13 @@ function Tickets() {
       taken: "NOT_TAKEN",
     },
   ]);
+  const AgentOrgName = localStorage.getItem("AgentOrgname");
+  const agent = localStorage.getItem("agentname");
 
-  const orgAgentName = localStorage.getItem("AgentOrgname");
   useEffect(() => {
-    Axios.post("http://localhost:8080/organization/agent/tickets", {
-      orgname: orgAgentName,
+    Axios.post("http://localhost:8080/organization/agent/mytickets", {
+      agentname: agent,
+      orgname: AgentOrgName,
     }).then((response) => {
       console.log(
         response.data.message.map((row) => {
@@ -123,7 +125,7 @@ function Tickets() {
       );
       setTicketsData(response.data.message);
     });
-  });
+  }, []);
 
   // const takeHandler = () => {
   //   Axios.post("http://localhost:8080/organization/agent/tickets/takenupdate",{
@@ -135,8 +137,6 @@ function Tickets() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  const AgentOrgName = localStorage.getItem("AgentOrgname");
-  const agent = localStorage.getItem("agentname");
 
   return (
     <LayoutAgent>
@@ -169,7 +169,7 @@ function Tickets() {
                 </TableCell>
                 <TableCell className={classes.tableHeaderCell}>
                   <Typography style={{ color: "white", fontWeight: "bold" }}>
-                    Take This
+                    Solve
                   </Typography>
                 </TableCell>
                 {/* <TableCell className={classes.tableHeaderCell}>
@@ -237,13 +237,12 @@ function Tickets() {
                           "http://localhost:8080/organization/agent/tickets/takenupdate",
                           {
                             id: row.id,
-                            agentname: agent,
                           }
                         );
                       }}
                       variant="contained"
                     >
-                      Take this
+                      Click to Solve
                     </Button>
                   </TableCell>
 
@@ -275,4 +274,4 @@ function Tickets() {
   );
 }
 
-export default Tickets;
+export default MyTickets;

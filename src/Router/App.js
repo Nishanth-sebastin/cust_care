@@ -37,6 +37,7 @@ import OrgProfileAdmin from "../Container/admin/OrgProfileAdmin";
 import AddAgents from "../Container/admin/AddAgent/AddAgents";
 import AgentLogin from "../Signup/login/AgentLogin/AgentLogin";
 import CustomersAdmin from "../Container/admin/Customers";
+import MyTickets from "../Container/agents/MyTickets";
 
 class Routerapp extends React.Component {
   render() {
@@ -46,6 +47,7 @@ class Routerapp extends React.Component {
     const path = `/organization/${admin}/admin/`;
     const agent = localStorage.getItem("agentname");
     console.log(admin);
+
     return (
       <Router>
         <Routes>
@@ -74,6 +76,10 @@ class Routerapp extends React.Component {
             path={`/${AgentOrgName}/agent/${agent}/tickets/`}
             element={<Tickets />}
           />
+          <Route
+            path={`/${AgentOrgName}/agent/${agent}/mytickets`}
+            element={<MyTickets />}
+          />
           <Route path="/customer" element={<LayoutCustomer />} />
           <Route path={`/organization/agent/login`} element={<AgentLogin />} />
           <Route
@@ -90,7 +96,7 @@ class Routerapp extends React.Component {
           />
           <Route path="*" element={<PageErr />} />
           <Route
-            path={`/${AgentOrgName}/agent/${agent}/tickets/1`}
+            path={`/${AgentOrgName}/agent/${agent}/tickets/:id`}
             element={<TicketDetails />}
           ></Route>
           <Route
