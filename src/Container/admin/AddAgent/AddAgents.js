@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, useFormik } from "formik";
-// import { TextField } from './TextField';
-<<<<<<< HEAD
 import { TextField } from '@material-ui/core';
-import * as Yup from 'yup';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { FormControl, FormControlLabel, FormLabel, Radio } from '@mui/material';
-import { Link } from 'react-router-dom';
 import logo from '../assets/rocket.png'
 import { Grid, Paper, Avatar, Typography, Button } from '@material-ui/core'
 import { AddCircleOutlineOutlined } from '@material-ui/icons';
@@ -14,23 +8,11 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Axios from 'axios'
 import LayoutAdmin from '../../../MainLayout/LayoutAdmin'
-
-import img from '../assets/rocket.png'
-=======
-import { TextField } from "@material-ui/core";
-import * as Yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FormControl, FormControlLabel, FormLabel, Radio } from "@mui/material";
 import { Link } from "react-router-dom";
-import logo from "../assets/rocket.png";
-import { Grid, Paper, Avatar, Typography, Button } from "@material-ui/core";
-import { AddCircleOutlineOutlined } from "@material-ui/icons";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Checkbox from "@material-ui/core/Checkbox";
-import Axios from "axios";
-import LayoutAdmin from "../../../MainLayout/LayoutAdmin";
 import img from "../assets/rocket.png";
->>>>>>> 5240f553772f0ee15bdf61ebc066dd8ff01fba17
+
 
 // import { Link } from 'react-router-dom';
 

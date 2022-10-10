@@ -8,17 +8,16 @@ import {
   TableRow,
   Paper,
   Avatar,
-  Button,
   Grid,
   Typography,
   TablePagination,
   TableFooter,
 } from "@material-ui/core";
 import { makeStyles, styled } from "@material-ui/core";
-import LayoutCustomer from "../../../MainLayout/LayoutCustomer";
+import LayoutAgent from "../../MainLayout/LayoutAgent";
 import { Search } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import LayoutAdmin from "../../MainLayout/LayoutAdmin";
 import Axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,11 +54,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 let USERS = [],
-  STATUSES = ["View Status"];
+  STATUSES = ["Active", "Pending", "Blocked"];
 for (let i = 0; i < 14; i++) {
   USERS[i] = {
-    content: "I don't receive my amount",
-    date: "22-02-2003",
+    name: " Nishanth",
+    email: "whitedevil",
+    phone: 8754954543,
+    probleminfo: "My mobile phone",
+    jobTitle: "Web Designer",
+    company: "tech phantoms",
+    joinDate: "22-02-2003",
     status: STATUSES[Math.floor(Math.random() * STATUSES.length)],
   };
 }
@@ -79,19 +83,21 @@ const styles = makeStyles({
   },
 });
 
-function Customers() {
+function CustomersAdmin() {
   const style = styles();
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const customername = localStorage.getItem("custname");
-  const [ticketData, setTicketData] = useState([
+  const [customerdata, setCustomerData] = useState([
     {
-      query: "Phone Problem",
-      timestamp: "",
+      name: "Nishanth",
+      email: "abc@gmail.com",
+      phonenumber: "1234567890",
+      region: "India",
     },
   ]);
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -101,74 +107,80 @@ function Customers() {
     setPage(0);
   };
 
+  const orgname = localStorage.getItem("orgname");
+
   useEffect(() => {
-    Axios.post("http://localhost:8080/customer/tickets", {
-      customername,
+    Axios.post("http://localhost:8080/admin/customers", {
+      orgname,
     }).then((response) => {
-      console.log(response);
-      setTicketData(response.data.message);
+      setCustomerData(response.data.message);
     });
   });
 
-  // Axios.get("http://localhost:8080/fetch_submitquerycust", {
-
-  //   }).then((response) => {
-  //     console.log('success')
-
-  //    console.log(response);
-  //    console.log(response.data);
-  //   })
-
   return (
-    <LayoutCustomer>
+    <LayoutAdmin>
       <Grid className={style.Grid}>
+        <Typography variant="h5">Customers</Typography>
         <TableContainer component={Paper} className={classes.tableContainer}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell className={classes.tableHeaderCell}>
-                  Queries
+                  UserName
+                </TableCell>
+                <TableCell className={classes.tableHeaderCell}>Email</TableCell>
+                <TableCell className={classes.tableHeaderCell}>
+                  Phone Number
                 </TableCell>
                 <TableCell className={classes.tableHeaderCell}>
-                  Issued Date
-                </TableCell>
-                <TableCell className={classes.tableHeaderCell}>
-                  Status
+                  Region
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {ticketData.map((row) => (
+              {customerdata.map((row) => (
                 <TableRow key={row.name}>
                   <TableCell>
                     <Grid container>
-                      <Grid item lg={10}>
-                        <Typography className={classes.content}>
-                          {row.query}dhfjfvjf
+                      <Grid item lg={2}>
+                        <Avatar
+                          alt={row.name}
+                          src="."
+                          className={classes.avatar}
+                        >
+                          N
+                        </Avatar>
+                      </Grid>
+                      <Grid
+                        item
+                        lg={10}
+                        sx={{ position: "relative", left: "10px" }}
+                      >
+                        <Typography className={classes.name}>
+                          {row.name}
                         </Typography>
                       </Grid>
                     </Grid>
                   </TableCell>
-
-                  <TableCell>{row.timestamp}</TableCell>
                   <TableCell>
-                    <Button
-                      className={classes.status}
-                      style={{
-                        backgroundColor: "blue",
-                      }}
-                    >
-                      View Status
-                    </Button>
+                    <Typography color="primary" variant="subtitle2">
+                      {row.email}
+                    </Typography>
                   </TableCell>
+                  <TableCell>
+                    <Typography color="primary" variant="subtitle2">
+                      {row.phonenumber}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>{row.region}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       </Grid>
-    </LayoutCustomer>
+    </LayoutAdmin>
   );
 }
 
-export default Customers;
+export default CustomersAdmin;

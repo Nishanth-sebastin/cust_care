@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 // import { AiFillCaretDown } from 'react-icons/ai'
 //import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -7,10 +7,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 //import { Button } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 function Nav() {
-
-
   const [anchorEl, setAnchorEl] = useState("null");
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,34 +19,62 @@ function Nav() {
   };
 
   return (
-    <div className='cont' >
+    <div className="cont">
       <header className="navbar">
-        <div className="logo">
-          CustCare
-        </div>
+        <div className="logo">CustCare</div>
         <ul className="nav-links">
-          <input style={{ cursor: 'pointer' }} type="checkbox" id="checkbox_toggle" />
-          <label for="checkbox_toggle" className="hamburger">&#9776;</label>
+          <input
+            style={{ cursor: "pointer" }}
+            type="checkbox"
+            id="checkbox_toggle"
+          />
+          <label for="checkbox_toggle" className="hamburger">
+            &#9776;
+          </label>
           <div className="menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/a">About</a></li>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/a">About</a>
+            </li>
             <li>
               <a href="/">Services</a>
             </li>
-            <li><a href="/">Projects</a></li>
+            <li>
+              <a href="/">Projects</a>
+            </li>
 
-            <li><a href="/">Contact</a></li>
+            <li>
+              <a href="/">Contact</a>
+            </li>
 
-            <div className='dropdown'>
-              <Button className='dropbtn' variant='contained'>Login/SignUp</Button>
+            <div className="dropdown">
+              <Button className="dropbtn" variant="contained">
+                Login/SignUp
+              </Button>
               <div className="dropdown-content">
+                <di classname="dropbtn">
+                  <Link
+                    className="links"
+                    target="_blank"
+                    to="/organization/login"
+                  >
+                    Organization
+                  </Link>
+                  <Link
+                    className="links"
+                    target="_blank"
+                    to="/organization/agent/login/"
+                  >
+                    Organization Agent
+                  </Link>
+                </di>
 
-
-                <Link className='links' target='_blank' to='/organization/login'>Organization</Link>
-                <Link className='links' target='_blank' to='/customer/login'>Customer</Link>
-
+                <Link className="links" target="_blank" to="/customer/login">
+                  Customer
+                </Link>
               </div>
-
             </div>
             {/* <div>
               <Button
@@ -80,5 +106,4 @@ function Nav() {
   );
 }
 
-
-export default Nav
+export default Nav;
