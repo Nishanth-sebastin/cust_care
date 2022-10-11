@@ -58,7 +58,10 @@ const useStyles = makeStyles((theme) => ({
   },
   name: {
     fontWeight: "bold",
-    color: theme.palette.secondary.dark,
+    color: "black",
+    position: "relative",
+    left: "15px",
+    top: "10px",
   },
   status: {
     fontWeight: "bold",
@@ -265,8 +268,16 @@ function MyTickets() {
                           {
                             id: row.id,
                           }
+                        );
+                        Axios.post(
+                          "http://localhost:8080/organization/agent/tickets/solvedemailupdate",
+                          {
+                            id: row.id,
+                            agentname: agent,
+                          }
                         ).then((response) => {
-                          console.log(response);
+                          alert(response.data.message);
+                          console.log(response.data.message);
                         });
                       }}
                       variant="contained"

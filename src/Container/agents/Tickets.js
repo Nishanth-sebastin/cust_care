@@ -123,7 +123,7 @@ function Tickets() {
       );
       setTicketsData(response.data.message);
     });
-  });
+  }, []);
 
   // const takeHandler = () => {
   //   Axios.post("http://localhost:8080/organization/agent/tickets/takenupdate",{
@@ -200,7 +200,7 @@ function Tickets() {
                       </Grid>
                       <Grid
                         item
-                        sx={{ position: "relative", left: "10px" }}
+                        sx={{ position: "relative", left: "20px", top: "5px" }}
                         lg={10}
                       >
                         <Typography className={classes.name}>
@@ -240,6 +240,16 @@ function Tickets() {
                             agentname: agent,
                           }
                         );
+                        Axios.post(
+                          "http://localhost:8080/organization/agent/tickets/takenemailupdate",
+                          {
+                            id: row.id,
+                            agentname: agent,
+                          }
+                        ).then((response) => {
+                          alert(response.data.message);
+                          console.log(response.data.message);
+                        });
                       }}
                       variant="contained"
                     >
