@@ -22,7 +22,7 @@ import { TableFooter } from "@mui/material";
 import { TablePagination } from "@mui/material";
 import { Link } from "react-router-dom";
 import Axios from "axios";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 const styles = makeStyles({
   Grid: {
     position: "relative",
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
 function Tickets() {
   const style = styles();
   const [age, setAge] = React.useState("");
-
+  const classes = useStyles();
   const handleChange = (e) => {
     setAge(e.target.value);
   };
@@ -86,7 +86,19 @@ function Tickets() {
       orgname,
     }).then((response) => {
       console.log(response);
-      setTicketsData(response.data.message);
+      if (response) {
+        setTicketsData(response.data.message);
+      } else {
+        setTicketsData([
+          {
+            name: "Nishanth",
+            email: "abc@gmail.com",
+            query: "Phone",
+            phonenumber: 8754933442,
+            status: "pending",
+          },
+        ]);
+      }
     });
   });
 
@@ -100,7 +112,6 @@ function Tickets() {
     },
   ]);
 
-  const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -162,10 +173,10 @@ function Tickets() {
                       <Grid item lg={2}>
                         <Avatar
                           alt={row.name}
-                          src=""
+                          src="."
                           className={classes.avatar}
                         >
-                          NS
+                          N
                         </Avatar>
                       </Grid>
                       <Grid
@@ -173,7 +184,10 @@ function Tickets() {
                         sx={{ position: "relative", left: "10px" }}
                         lg={10}
                       >
-                        <Typography className={classes.name}>
+                        <Typography
+                          style={{ position: "relative", left: "7px" }}
+                          className={classes.name}
+                        >
                           {row.name}
                         </Typography>
                       </Grid>
@@ -188,21 +202,13 @@ function Tickets() {
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography color="primary" variant="subtitle2">
+                    <Typography color="black" variant="subtitle2">
                       {row.query}
                     </Typography>
                   </TableCell>
 
                   <TableCell>
-                    <Typography
-                      className={classes.status}
-                      style={{
-                        backgroundColor:
-                          (row.status === "Completed" && "green") ||
-                          (row.status === "Medium" && "blue") ||
-                          (row.status === "Pending" && "orange"),
-                      }}
-                    >
+                    <Typography className={classes.status} variant="button">
                       {row.status}
                     </Typography>
                   </TableCell>

@@ -27,7 +27,7 @@ export const OrgLogin = () => {
 
   const [loginstatus, setLoginstatus] = useState("");
   const [redirect, setRedirect] = useState(false);
-  const admin = localStorage.getItem("orgname");
+
   const formik = useFormik({
     initialValues: {
       organizationName: "",
@@ -47,9 +47,8 @@ export const OrgLogin = () => {
       password: formik.values.password,
     }).then((response) => {
       localStorage.setItem("orgname", response.data.orgname);
-
-      localStorage.setItem("orgname", response.data.orgname);
-      navigate(`/organization/${admin}/admin/`);
+      const admin = localStorage.getItem("orgname");
+      navigate(`/organization/${admin}/admin/dashboard`);
       if (response.data.message) {
         setLoginstatus(response.data.message);
       }

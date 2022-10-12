@@ -242,8 +242,8 @@ function MyTickets() {
                   </TableCell>
                   <TableCell>
                     <Button
-                      onClick={() => {
-                        Axios.post(
+                      onClick={async () => {
+                        await Axios.post(
                           "http://localhost:8080/organization/agent/mytickets/statusupdate",
                           {
                             id: row.id,
@@ -262,14 +262,14 @@ function MyTickets() {
                   </TableCell>
                   <TableCell>
                     <Button
-                      onClick={() => {
-                        Axios.post(
+                      onClick={async () => {
+                        await Axios.post(
                           "http://localhost:8080/organization/agent/mytickets/solveupdate",
                           {
                             id: row.id,
                           }
                         );
-                        Axios.post(
+                        await Axios.post(
                           "http://localhost:8080/organization/agent/tickets/solvedemailupdate",
                           {
                             id: row.id,

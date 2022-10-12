@@ -35,6 +35,7 @@ export default function AgentLogin() {
       confirmpass: "",
     },
   });
+  const navigate = useNavigate();
   console.log(formik.values);
 
   const loginagent = (e) => {
@@ -45,6 +46,9 @@ export default function AgentLogin() {
     }).then((response) => {
       localStorage.setItem("agentname", response.data.name);
       localStorage.setItem("AgentOrgname", response.data.orgname);
+      const agentname = localStorage.getItem("agentname");
+      const agentOrgname = localStorage.getItem("AgentOrgname");
+      navigate(`/${agentOrgname}/agent/${agentname}/dashboard`);
       console.log(response.data.orgname);
       if (response.data.message) {
         setLoginstatus(response.data.message);

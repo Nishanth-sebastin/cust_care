@@ -115,7 +115,7 @@ function Dashboard() {
       console.log(response.data.message);
       setunSolvedTickets(response.data.message.length);
     });
-  }, []);
+  });
 
   const style = styles();
 

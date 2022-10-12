@@ -156,19 +156,40 @@ function Customers() {
                         lg={10}
                         sx={{ position: "relative", left: "10px" }}
                       >
-                        <Typography className={classes.name}>
+                        <Typography
+                          variant="subtitle1"
+                          style={{
+                            color: "black",
+                            fontWeight: "100",
+                            position: "relative",
+                            top: "3px",
+                          }}
+                          className={classes.name}
+                        >
                           {row.firstname + " " + row.lastname}
                         </Typography>
                       </Grid>
                     </Grid>
                   </TableCell>
                   <TableCell>
-                    <Typography color="primary" variant="subtitle2">
+                    <Typography
+                      style={{
+                        color: "black",
+                        fontWeight: "100",
+                      }}
+                      variant="subtitle2"
+                    >
                       {row.email}
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography color="primary" variant="subtitle2">
+                    <Typography
+                      style={{
+                        color: "black",
+                        fontWeight: "100",
+                      }}
+                      variant="subtitle2"
+                    >
                       {row.number}
                     </Typography>
                   </TableCell>

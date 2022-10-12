@@ -123,7 +123,7 @@ function Tickets() {
       );
       setTicketsData(response.data.message);
     });
-  }, []);
+  });
 
   // const takeHandler = () => {
   //   Axios.post("http://localhost:8080/organization/agent/tickets/takenupdate",{
@@ -232,15 +232,16 @@ function Tickets() {
                   </TableCell>
                   <TableCell>
                     <Button
-                      onClick={() => {
-                        Axios.post(
+                      onClick={async () => {
+                        await Axios.post(
                           "http://localhost:8080/organization/agent/tickets/takenupdate",
                           {
                             id: row.id,
                             agentname: agent,
                           }
                         );
-                        Axios.post(
+
+                        await Axios.post(
                           "http://localhost:8080/organization/agent/tickets/takenemailupdate",
                           {
                             id: row.id,

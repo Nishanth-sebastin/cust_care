@@ -91,10 +91,10 @@ function CustomersAdmin() {
 
   const [customerdata, setCustomerData] = useState([
     {
-      name: "Nishanth",
-      email: "abc@gmail.com",
-      phonenumber: "1234567890",
-      region: "India",
+      name: "Empty",
+      email: "Empty@gmail.com",
+      phonenumber: "Empty",
+      region: "Empty",
     },
   ]);
 
@@ -156,19 +156,23 @@ function CustomersAdmin() {
                         lg={10}
                         sx={{ position: "relative", left: "10px" }}
                       >
-                        <Typography className={classes.name}>
+                        <Typography
+                          variant="subtitle2"
+                          style={{ color: "black", fontWeight: "100" }}
+                          className={classes.name}
+                        >
                           {row.name}
                         </Typography>
                       </Grid>
                     </Grid>
                   </TableCell>
                   <TableCell>
-                    <Typography color="primary" variant="subtitle2">
+                    <Typography style={{ color: "black" }} variant="subtitle2">
                       {row.email}
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography color="primary" variant="subtitle2">
+                    <Typography style={{ color: "black" }} variant="subtitle2">
                       {row.phonenumber}
                     </Typography>
                   </TableCell>
