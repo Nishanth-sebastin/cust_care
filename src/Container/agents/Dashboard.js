@@ -94,7 +94,6 @@ function Dashboard() {
   useEffect(() => {
     Axios.post("http://localhost:8080/agent/dashboard/raisedtickets", {
       orgname,
-      agentname,
     }).then((response) => {
       console.log(response.data.message);
       setraisedTickets(response.data.message.length);

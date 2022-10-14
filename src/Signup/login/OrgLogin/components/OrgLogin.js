@@ -49,6 +49,7 @@ export const OrgLogin = () => {
       localStorage.setItem("orgname", response.data.orgname);
       const admin = localStorage.getItem("orgname");
       navigate(`/organization/${admin}/admin/dashboard`);
+      navigate(0);
       if (response.data.message) {
         setLoginstatus(response.data.message);
       }

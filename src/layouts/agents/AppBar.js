@@ -15,7 +15,7 @@ import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import Inbox from "@mui/icons-material/Inbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SportsKabaddiOutlinedIcon from "@mui/icons-material/SportsKabaddiOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import AodOutlinedIcon from "@mui/icons-material/AodOutlined";
@@ -72,16 +72,14 @@ function AppBar() {
     setOpen(true);
   };
 
+  const navigate = useNavigate();
   const handleClose = () => {
     setOpen(false);
   };
   const ClickHandler = () => {
-    return (
-      <Link
-        style={{ color: "white", textDecoration: "none" }}
-        to="/organization/login"
-      ></Link>
-    );
+    localStorage.removeItem("AgentOrgname");
+    localStorage.removeItem("agentname");
+    navigate("/organization/agent/login/");
   };
   const agent = localStorage.getItem("agentname");
   const AgentOrgName = localStorage.getItem("AgentOrgname");
@@ -206,7 +204,7 @@ function AppBar() {
               </ListItemText>
             </ListItemButton>
           </ListItem>
-          <ListItem className={style.list}>
+          {/* <ListItem className={style.list}>
             <ListItemButton
               sx={{
                 color: "white",
@@ -229,7 +227,7 @@ function AppBar() {
                 </Link>
               </ListItemText>
             </ListItemButton>
-          </ListItem>
+          </ListItem> */}
           <ListItem className={style.list}>
             <ListItemButton
               onClick={handleClickOpen}

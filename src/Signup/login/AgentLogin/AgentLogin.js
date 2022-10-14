@@ -49,6 +49,7 @@ export default function AgentLogin() {
       const agentname = localStorage.getItem("agentname");
       const agentOrgname = localStorage.getItem("AgentOrgname");
       navigate(`/${agentOrgname}/agent/${agentname}/dashboard`);
+      navigate(0);
       console.log(response.data.orgname);
       if (response.data.message) {
         setLoginstatus(response.data.message);

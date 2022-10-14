@@ -59,6 +59,7 @@ export const OrgSignup = () => {
       gst: formik.values.gstin,
     }).then((response) => {
       navigate("/organization/login");
+      navigate(0);
       console.log(response);
       localStorage.setItem("orgname", response.data.orgname);
     });

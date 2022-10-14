@@ -15,7 +15,7 @@ import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import Inbox from "@mui/icons-material/Inbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SportsKabaddiOutlinedIcon from "@mui/icons-material/SportsKabaddiOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import AodOutlinedIcon from "@mui/icons-material/AodOutlined";
@@ -73,6 +73,7 @@ const useStyles = makeStyles({
 function AppBar() {
   const [open, setOpen] = React.useState(false);
 
+  const navigate = useNavigate();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -83,12 +84,8 @@ function AppBar() {
     setOpen(false);
   };
   const ClickHandler = () => {
-    return (
-      <Link
-        style={{ color: "white", textDecoration: "none" }}
-        to="/organization/login"
-      ></Link>
-    );
+    localStorage.removeItem("custname");
+    navigate("/customer/login");
   };
   const style = useStyles();
   return (
