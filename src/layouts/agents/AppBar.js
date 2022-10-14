@@ -168,6 +168,31 @@ function AppBar() {
             >
               <ListItemIcon className={style.icons}>
                 {" "}
+                <AodOutlinedIcon className={style.icon} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "white" }}>
+                {" "}
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/${AgentOrgName}/agent/${agent}/mytickets/`}
+                >
+                  My Tickets
+                </Link>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem className={style.list}>
+            <ListItemButton
+              sx={{
+                color: "white",
+                position: "relative",
+                right: "10px",
+                padding: "0px",
+              }}
+            >
+              <ListItemIcon className={style.icons}>
+                {" "}
                 <NotificationsNoneOutlinedIcon className={style.icon} />
               </ListItemIcon>
               <ListItemText sx={{ color: "white" }}>

@@ -183,6 +183,7 @@ function App() {
     let owner2 = [
       "Who's Treasure|who's Treasure|Who is Treasure|who is Treasure",
     ];
+    
     let words10 = new RegExp(owner2);
     if (words10.test(document.querySelector("#input").value)) {
       getBotMessage.innerText = "Typing...";

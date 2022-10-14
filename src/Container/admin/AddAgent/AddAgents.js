@@ -27,6 +27,7 @@ const AddAgents = () => {
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const marginTop = { marginTop: 30 };
 
+  const [clear,setClear]=useState(false)
   const [addStatus, setAddStatus] = useState("");
   const [redirect, setRedirect] = useState(false);
   const formik = useFormik({
@@ -57,6 +58,8 @@ const AddAgents = () => {
         setAddStatus(response.data.message);
       }
     });
+
+    setClear(true);
   };
 
   return (
@@ -78,7 +81,7 @@ const AddAgents = () => {
             <TextField
               onChange={formik.handleChange}
               name="firstname"
-              value={formik.values.firstname}
+              value= {clear ? "" : formik.values.firstname}
               fullWidth
               label="First Name"
               placeholder="Enter first name"
@@ -87,7 +90,7 @@ const AddAgents = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.lastname}
+              value={clear ? "" : formik.values.lastname}
               name="lastname"
               fullWidth
               label="Last Name"
@@ -97,7 +100,7 @@ const AddAgents = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.number}
+              value={clear ? "" : formik.values.number}
               name="number"
               fullWidth
               label="Number"
@@ -107,7 +110,7 @@ const AddAgents = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.email}
+              value={clear ? "" : formik.values.email}
               name="email"
               fullWidth
               label="Email "
@@ -117,7 +120,7 @@ const AddAgents = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.password}
+              value={clear ? "" : formik.values.password}
               name="password"
               fullWidth
               label="Password"

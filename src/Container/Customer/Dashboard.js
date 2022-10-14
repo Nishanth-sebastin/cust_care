@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,useState,useEffect} from 'react'
 import LayoutAgent from '../../MainLayout/LayoutCustomer'
 import { Box } from '@mui/system'
 import { CardActionArea, CardContent, CardHeader, CardMedia, Divider, Icon, Paper, Typography } from '@mui/material'
@@ -6,6 +6,7 @@ import { Grid } from '@mui/material'
 import { makeStyles } from '@material-ui/core'
 import { Card } from '@mui/material'
 import AdUnitsIcon from '@mui/icons-material/AdUnits';
+import Axios from "axios"
 
 const styles = makeStyles({
 
@@ -80,7 +81,40 @@ const styles = makeStyles({
 })
 function Dashboard() {
 
+
+    const custname = localStorage.getItem("custname");
+
+    const [raisedtickets, setraisedTickets] = useState(281);
+    const [solvedTickets, setsolvedTickets] = useState(281);
+    const [unSolvedTickets, setunSolvedTickets] = useState(281);
+
     const style = styles();
+
+    useEffect(() => {
+    Axios.post("http://localhost:8080/customer/dashboard/raisedtickets", {
+        custname,
+    }).then((response) => {
+      console.log(response.data.message);
+      setraisedTickets(response.data.message.length);
+    });
+
+    Axios.post("http://localhost:8080/customer/dashboard/solvedtickets", {
+        custname,
+    }).then((response) => {
+      console.log(response.data.message);
+      setsolvedTickets(response.data.message.length);
+    });
+
+    Axios.post("http://localhost:8080/customer/dashboard/unsolvedtickets", {
+        custname,
+    }).then((response) => {
+      console.log(response.data.message);
+      setunSolvedTickets(response.data.message.length);
+    });
+  }, []);
+
+
+
 
     return (
         <LayoutAgent >
@@ -96,7 +130,7 @@ function Dashboard() {
                                     </Box>
                                     <Box>
                                         <Typography sx={{ position: 'relative', left: '90px', top: '15px', color: '#9498AD' }}>Raised Tickets<br></br>
-                                            <Typography sx={{ color: 'black' }} ><strong>281</strong></Typography></Typography>
+                                            <Typography sx={{ color: 'black' }} ><strong>{raisedtickets}</strong></Typography></Typography>
                                     </Box>
 
                                 </Box>
@@ -122,7 +156,7 @@ function Dashboard() {
                                     </Box>
                                     <Box>
                                         <Typography sx={{ position: 'relative', left: '90px', top: '15px', color: '#9498AD' }}>Solved Tickets<br></br>
-                                            <Typography sx={{ color: 'black' }} ><strong>281</strong></Typography></Typography>
+                                            <Typography sx={{ color: 'black' }} ><strong>{solvedTickets}</strong></Typography></Typography>
                                     </Box>
 
                                 </Box>
@@ -147,7 +181,7 @@ function Dashboard() {
                                     </Box>
                                     <Box>
                                         <Typography sx={{ position: 'relative', left: '70px', top: '15px', color: '#9498AD' }}>UnSolved Tickets<br></br>
-                                            <Typography sx={{ color: 'black' }} ><strong>281</strong></Typography></Typography>
+                                            <Typography sx={{ color: 'black' }} ><strong>{unSolvedTickets}</strong></Typography></Typography>
                                     </Box>
 
                                 </Box>
@@ -189,7 +223,7 @@ function Dashboard() {
                         </Paper>
                     </Grid>
                 </Grid>
-                <Grid container>
+                {/* <Grid container>
                     <Grid item className={style.ChartGrid}>
                         <Paper>
                             <Card>
@@ -215,7 +249,7 @@ function Dashboard() {
 
                         </Paper>
                     </Grid>
-                </Grid>
+                </Grid> */}
             </Grid>
         </LayoutAgent>
 

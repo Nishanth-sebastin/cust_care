@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Formik, Form, useFormik } from "formik";
 // import { TextField } from './TextField';
 import LayoutCustomer from "../../../MainLayout/LayoutCustomer";
@@ -40,6 +39,7 @@ export const CustLogin = () => {
 
   const [redirect, setRedirect] = useState(false);
   const [status, setStatus] = useState("Pending");
+  const [clear,setClear]=useState(false)
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -48,12 +48,17 @@ export const CustLogin = () => {
       phonenumber: "",
       region: "",
     },
+
+
+
   });
 
-  const navigate = useNavigate();
+ 
 
   const name = localStorage.getItem("custname");
+
   const submitquery = () => {
+
     Axios.post("http://localhost:8080/submitquerycust", {
       name,
       email: formik.values.email,
@@ -65,9 +70,14 @@ export const CustLogin = () => {
       taken: "NOT_TAKEN",
     }).then((response) => {
       console.log("success");
-
+       setClear(true)
       localStorage.setItem("submitquerycust", response.data.name);
+
+
     });
+
+
+
   };
 
   return (
@@ -80,10 +90,14 @@ export const CustLogin = () => {
             </Avatar>
             <h2 style={headerStyle}>Submit Query</h2>
           </Grid>
-          <form>
+          
+           
+
+          <form onSubmit={formik.handleSubmit}>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.email}
+              value={clear ? "":formik.values.email }
+              // value={formik.values.email}
               name="email"
               fullWidth
               label="Email "
@@ -93,7 +107,7 @@ export const CustLogin = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.orgname}
+              value={clear ? "":formik.values.orgname }
               name="orgname"
               fullWidth
               label="OrgName"
@@ -103,7 +117,7 @@ export const CustLogin = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.query}
+              value={clear ? "":formik.values.query}
               name="query"
               fullWidth
               label="Query"
@@ -113,7 +127,7 @@ export const CustLogin = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.phonenumber}
+              value={clear ? "":formik.values.phonenumber }
               name="phonenumber"
               fullWidth
               label="PhoneNumber"
@@ -123,7 +137,7 @@ export const CustLogin = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={formik.values.region}
+              value={clear ? "":formik.values.region}
               name="region"
               fullWidth
               label="Region"
@@ -139,11 +153,14 @@ export const CustLogin = () => {
                 color="primary"
                 style={buttonStyle}
                 onClick={submitquery}
+                type="submit"
               >
                 Submit
               </Button>
             </Box>
           </form>
+             
+         
         </Paper>
       </Grid>
     </LayoutCustomer>

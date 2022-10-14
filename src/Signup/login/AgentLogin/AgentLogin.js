@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Formik, Form, useFormik } from "formik";
 // import { TextField } from './TextField';
 import { TextField } from "@material-ui/core";
@@ -12,6 +12,7 @@ import { AddCircleOutlineOutlined } from "@material-ui/icons";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Checkbox from "@material-ui/core/Checkbox";
 import Axios from "axios";
+
 
 export default function AgentLogin() {
   const paperStyle = {
@@ -36,16 +37,22 @@ export default function AgentLogin() {
     },
   });
   console.log(formik.values);
-
+  const navigate = useNavigate();
   const loginagent = (e) => {
     e.preventDefault();
+
+
     Axios.post("http://localhost:8080/loginagent", {
       email: formik.values.email,
       password: formik.values.password,
-    }).then((response) => {
+    })
+    .then((response) => {
       localStorage.setItem("agentname", response.data.name);
       localStorage.setItem("AgentOrgname", response.data.orgname);
       console.log(response.data.orgname);
+      navigate(`/${response.data.orgname}/agent/${response.data.name}/dashboard/`)
+      
+
       if (response.data.message) {
         setLoginstatus(response.data.message);
       }

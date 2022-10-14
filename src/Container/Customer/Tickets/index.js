@@ -14,6 +14,10 @@ import {
   TablePagination,
   TableFooter,
 } from "@material-ui/core";
+import { Card } from '@mui/material'
+import AdUnitsIcon from '@mui/icons-material/AdUnits';
+import { Box } from '@mui/system'
+import { CardActionArea, CardContent, CardHeader, CardMedia, Divider, Icon} from '@mui/material'
 import { makeStyles, styled } from "@material-ui/core";
 import LayoutCustomer from "../../../MainLayout/LayoutCustomer";
 import { Search } from "@mui/icons-material";
@@ -65,18 +69,97 @@ for (let i = 0; i < 14; i++) {
 }
 
 const styles = makeStyles({
-  Grid: {
+
+ 
+    content: {
+        position: 'relative',
+        top: '100px',
+        width: '100%',        
+        padding: '18px',
+       display : "flex",
+
+    },
+   
+    container:{
+     position:"relative",
+     left:"29px"
+    },
+
+    icon: {
+        color: 'white',
+        position: 'relative',
+        left: '18px',
+        top: '15px'
+    },
+    boxIcon1: {
+
+        width: '60px',
+        height: '60px',
+        backgroundColor: '#323237',
+        borderRadius: '60px',
+        position: 'relative',
+        top: '15px',
+        left: '20px'
+    },
+    boxIcon2: {
+
+        width: '60px',
+        height: '60px',
+        backgroundColor: '#348EED',
+        borderRadius: '10px',
+        position: 'relative',
+        top: '15px',
+        left: '20px'
+    },
+    boxIcon3: {
+
+        width: '60px',
+        height: '60px',
+        backgroundColor: '#58B05C',
+        borderRadius: '10px',
+        position: 'relative',
+        top: '15px',
+        left: '20px'
+    },
+    boxIcon4: {
+
+        width: '60px',
+        height: '60px',
+        borderRadius: '10px',
+        position: 'relative',
+        top: '15px',
+        left: '20px'
+    },
+    boxes: {
+        display: 'flex',
+      
+
+    },
+   
+  Grid1: {
     position: "relative",
     top: "100px",
     width: "100%",
     height: "650px",
-
-    padding: "18px",
+    padding: "0px",
+    left :"17px"
   },
+
   link: {
     textDecoration: "none",
     color: "black",
   },
+
+  tickets:{
+    position: 'relative',
+    left: '100px',
+    top: '15px', 
+    color: '#9498AD'
+  },
+
+  tickets_count:{
+    color:"black"
+  }
 });
 
 function Customers() {
@@ -109,25 +192,122 @@ function Customers() {
       setTicketData(response.data.message);
     });
   });
+  const custname = localStorage.getItem("custname");
 
-  // Axios.get("http://localhost:8080/fetch_submitquerycust", {
+  const [raisedtickets, setraisedTickets] = useState(281);
+  const [solvedTickets, setsolvedTickets] = useState(281);
+  const [unSolvedTickets, setunSolvedTickets] = useState(281);
 
-  //   }).then((response) => {
-  //     console.log('success')
+ 
 
-  //    console.log(response);
-  //    console.log(response.data);
-  //   })
+  useEffect(() => {
+  Axios.post("http://localhost:8080/customer/dashboard/raisedtickets", {
+      custname,
+  }).then((response) => {
+    console.log(response.data.message);
+    setraisedTickets(response.data.message.length);
+  });
+
+  Axios.post("http://localhost:8080/customer/dashboard/solvedtickets", {
+      custname,
+  }).then((response) => {
+    console.log(response.data.message);
+    setsolvedTickets(response.data.message.length);
+  });
+
+  Axios.post("http://localhost:8080/customer/dashboard/unsolvedtickets", {
+      custname,
+  }).then((response) => {
+    console.log(response.data.message);
+    setunSolvedTickets(response.data.message.length);
+  });
+}, []);
+
+
+
 
   return (
     <LayoutCustomer>
-      <Grid className={style.Grid}>
+
+                  <Grid className={style.content}>
+                <Grid container className={style.container} >
+                    <Grid item xs={4} sx={{ padding: '0px' }}>
+                        
+                            <Card  sx={{ height: '100px',width:'350px' }}>
+                            <Box className={style.boxes}>
+                                    <Box className={style.boxIcon1}>
+                                        <AdUnitsIcon className={style.icon} />
+
+                                    </Box>
+                                    <Box>
+                                        <Typography className={style.tickets}>Raised Tickets<br></br>
+                                            <Typography className={style.tickets_count}  ><strong>{raisedtickets}</strong></Typography></Typography>
+                                    </Box>
+
+                                </Box>
+                                <Divider />
+
+                               
+                            </Card>
+                        
+
+                    </Grid>
+
+                    <Grid item xs={4} sx={{ padding: '20px', }}>
+                     
+                            <Card sx={{ height: '100px',width:'350px' }}>
+                                <Box className={style.boxes}>
+                                    <Box className={style.boxIcon2}>
+                                        <AdUnitsIcon className={style.icon} />
+
+                                    </Box>
+                                    <Box>
+                                        <Typography className={style.tickets}>Solved Tickets<br></br>
+                                            <Typography className={style.tickets_count}   ><strong>{solvedTickets}</strong></Typography></Typography>
+                                    </Box>
+
+                                </Box>
+                                <Divider />
+
+                                
+
+                            </Card>
+                       
+                    </Grid>
+
+                    <Grid item xs={4} sx={{ padding: '20px', }}>
+                      
+                            <Card sx={{ height: '100px',width:'350px' }}>
+                                <Box className={style.boxes}>
+                                    <Box className={style.boxIcon3}>
+                                        <AdUnitsIcon className={style.icon} />
+
+                                    </Box>
+                                    <Box>
+                                        <Typography className={style.tickets}>UnSolved Tickets<br></br>
+                                            <Typography className={style.tickets_count}  ><strong>{unSolvedTickets}</strong></Typography></Typography>
+                                    </Box>
+
+                                </Box>  
+                                <Divider />
+
+                                
+
+                            </Card>
+                       
+
+                    </Grid>
+                    </Grid>
+                    </Grid>
+
+
+      <Grid className={style.Grid1}>
         <TableContainer component={Paper} className={classes.tableContainer}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell className={classes.tableHeaderCell}>
-                  Queries
+                 Tickets
                 </TableCell>
                 <TableCell className={classes.tableHeaderCell}>
                   Issued Date
@@ -144,7 +324,7 @@ function Customers() {
                     <Grid container>
                       <Grid item lg={10}>
                         <Typography className={classes.content}>
-                          {row.query}dhfjfvjf
+                          {row.query}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -158,7 +338,7 @@ function Customers() {
                         backgroundColor: "blue",
                       }}
                     >
-                      View Status
+                     {row.status}
                     </Button>
                   </TableCell>
                 </TableRow>

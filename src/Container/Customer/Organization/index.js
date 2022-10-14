@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect,useState } from 'react'
 import chatbot from '../../Customer/assets/chat.png'
 import {
     Table,
@@ -21,9 +21,10 @@ import LayoutCustomer from '../../../MainLayout/LayoutCustomer'
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import { Search } from '@mui/icons-material';
 import { Link} from 'react-router-dom'
+import Axios  from 'axios';
 
 
-
+const customer = localStorage.getItem("custname");
 
 const useStyles = makeStyles((theme) => ({
     table: {
@@ -58,19 +59,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-let USERS = [], STATUSES = ['View Status'];
-for (let i = 0; i < 14; i++) {
-    USERS[i] = {
-        content: "Evoluer",
-        
-        status: STATUSES[Math.floor(Math.random() * STATUSES.length)]
-    }
-}
+
 
 const styles = makeStyles({
     Grid: {
         position: 'relative',
         top: '100px',
+
         width: '100%',
         height: '650px',
 
@@ -98,6 +93,26 @@ function Customers() {
         setPage(0);
     };
 
+
+
+    const [data,setData] = useState([
+        {
+            org_name:"Kishor",
+            region:"India"
+        }
+    ]);
+
+    useEffect (()=>{
+        Axios.post("http://localhost:8080/organizations").then((response) => {
+            console.log(response.data.message);
+            setData(response.data.message);
+          });
+        },[]);
+      
+    function local (){
+        localStorage.setItem("botorg_name","kishorkumarr")
+    }
+
     return (
         <LayoutCustomer>
             <Grid className={style.Grid}>
@@ -106,39 +121,53 @@ function Customers() {
                         <TableHead>
                             <TableRow>
                                 <TableCell className={classes.tableHeaderCell}>Companies</TableCell>
+                                <TableCell className={classes.tableHeaderCell}>Region</TableCell>
                                 <TableCell className={classes.tableHeaderCell}>Chatbot</TableCell>
-                                <TableCell className={classes.tableHeaderCell}>Call</TableCell>
+                               
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+                           
+                            {/* {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => ( */}
+                            {data.map((row) => (
+                           
                                 <TableRow key={row.name}>
                                     <TableCell>
                                         <Grid container>
                                            
                                             <Grid item lg={10}>
-                                                <Typography className={classes.content}>{row.content}</Typography>
+                                                <Typography className={classes.content}>{row.org_name}</Typography>
                                                 
                                             </Grid>
                                         </Grid>
                                     </TableCell>
                                     
-                                   
                                     <TableCell>
-                                        <Link to='/customer/chatbot'> <Box
+                                    <Grid container>
+                                           
+                                           <Grid item lg={10}>
+                                               <Typography className={classes.content}>{row.region}</Typography>
+                                               
+                                           </Grid>
+                                       </Grid>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Link to={`/customer/${customer}/organizations/${row.org_name}/chatbot`}> <Box
                                                         component="img"
                                                        
                                                         alt="chatbot"
                                                         src={chatbot}
+                                                        onClick={() => {
+                                                            console.log("clicked");
+                                                            localStorage.setItem("botorg_name",row.org_name)
+                                                          }}
                                                     />
                                         </Link>
                                       
                                     </TableCell>
-                                    <TableCell>
-                                        <Link to='/customer/ticketstatus'><PhoneInTalkOutlinedIcon sx={{position:"relative",left:"-1px",top:"-1px"}}/>
-                                        </Link>
-                                    </TableCell>
+                                    
                                 </TableRow>
+                                
                             ))}
                         </TableBody>
                     
@@ -147,7 +176,6 @@ function Customers() {
             </Grid>
         </LayoutCustomer>
 
-    );
+    );       
 }
-
 export default Customers;

@@ -113,54 +113,8 @@ function AppBar() {
         <Toolbar />
         <Divider />
         <List sx={{ marginLeft: "20px" }}>
-          <ListItem className={style.list}>
-            <ListItemButton
-              sx={{
-                color: "white",
-                position: "relative",
-                right: "10px",
-                padding: "0px",
-              }}
-            >
-              <ListItemIcon className={style.icons}>
-                {" "}
-                <DashboardOutlinedIcon className={style.icon} />
-              </ListItemIcon>
-              <ListItemText sx={{ color: "white" }}>
-                {" "}
-                <Link
-                  style={{ color: "white", textDecoration: "none" }}
-                  to={`/customer/${customer}/dashboard`}
-                >
-                  Dashboard
-                </Link>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-          <ListItem className={style.list}>
-            <ListItemButton
-              sx={{
-                color: "white",
-                position: "relative",
-                right: "10px",
-                padding: "0px",
-              }}
-            >
-              <ListItemIcon className={style.icons}>
-                {" "}
-                <RateReviewOutlinedIcon className={style.icon} />
-              </ListItemIcon>
-              <ListItemText sx={{ color: "white" }}>
-                {" "}
-                <Link
-                  style={{ color: "white", textDecoration: "none" }}
-                  to={`/customer/${customer}/submitquery`}
-                >
-                  Submit Query
-                </Link>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
+         
+          
           <ListItem className={style.list}>
             <ListItemButton
               sx={{
@@ -185,6 +139,33 @@ function AppBar() {
               </ListItemText>
             </ListItemButton>
           </ListItem>
+
+
+          <ListItem className={style.list}>
+            <ListItemButton
+              sx={{
+                color: "white",
+                position: "relative",
+                right: "10px",
+                padding: "0px",
+              }}
+            >
+              <ListItemIcon className={style.icons}>
+                {" "}
+                <RateReviewOutlinedIcon className={style.icon} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "white" }}>
+                {" "}
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/customer/${customer}/submitquery`}
+                >
+                  Submit Tickets
+                </Link>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+
           <ListItem className={style.list}>
             <ListItemButton
               sx={{
