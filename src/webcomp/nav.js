@@ -50,7 +50,13 @@ function Nav() {
             </li>
 
             <div className="dropdown">
-              <Button className="dropbtn" variant="contained">
+              <Button
+                sx={{
+                  backgroundColor: "#DC143C",
+                  "&:hover": { backgroundColor: "#DC143C" },
+                }}
+                variant="contained"
+              >
                 Login/SignUp
               </Button>
               <div className="dropdown-content">

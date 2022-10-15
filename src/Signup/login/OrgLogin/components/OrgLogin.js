@@ -46,24 +46,23 @@ export const OrgLogin = () => {
       email: formik.values.email,
       password: formik.values.password,
     }).then((response) => {
-      localStorage.setItem("orgname", response.data.orgname);
-      const admin = localStorage.getItem("orgname");
-      navigate(`/organization/${admin}/admin/dashboard`);
-      navigate(0);
-      if (response.data.message) {
-        setLoginstatus(response.data.message);
+      if (response.data.message == "Correct") {
+        localStorage.setItem("orgname", response.data.orgname);
+        const admin = localStorage.getItem("orgname");
+        navigate(`/organization/${admin}/admin/dashboard`);
+        navigate(0);
+      } else if (response.data.message == []) {
+        console.log("not connected");
       }
     });
   };
 
-  useEffect(() => {});
   // useEffect(() => {
   //   Axios.get("http://localhost:8080/loginorg").then((response) => {
   //     console.log(response)
   //   })
   // }, [])
 
-  console.log(formik.values);
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle}>

@@ -47,16 +47,12 @@ export const CustLogin = () => {
       email: formik.values.email,
       password: formik.values.password,
     }).then((response) => {
-      console.log(response.data.name);
-
-      localStorage.setItem("custname", response.data.name);
-      navigate(`/customer/${response.data.name}/dashboard`);
-      navigate(0);
-      if (response.data.message) {
-        setLoginstatus(response.data.message);
-      }
-      if (loginstatus == "Correct") {
-        setRedirect(true);
+      if (response.data.message == "Correct") {
+        localStorage.setItem("custname", response.data.name);
+        navigate(`/customer/${response.data.name}/dashboard`);
+        navigate(0);
+      } else if (response.data.message == []) {
+        console.log("not connected");
       }
     });
   };

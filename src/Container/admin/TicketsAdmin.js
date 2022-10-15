@@ -85,7 +85,6 @@ function Tickets() {
     Axios.post("http://localhost:8080/organization/admin/tickets", {
       orgname,
     }).then((response) => {
-      console.log(response);
       if (response) {
         setTicketsData(response.data.message);
       } else {
@@ -175,8 +174,9 @@ function Tickets() {
                           alt={row.name}
                           src="."
                           className={classes.avatar}
+                          sx={{ bgcolor: "#0D80D8" }}
                         >
-                          N
+                          {row.name.charAt(0)}
                         </Avatar>
                       </Grid>
                       <Grid
@@ -208,7 +208,11 @@ function Tickets() {
                   </TableCell>
 
                   <TableCell>
-                    <Typography className={classes.status} variant="button">
+                    <Typography
+                      className={classes.status}
+                      sx={{ bgcolor: "#0D80D8" }}
+                      variant="button"
+                    >
                       {row.status}
                     </Typography>
                   </TableCell>

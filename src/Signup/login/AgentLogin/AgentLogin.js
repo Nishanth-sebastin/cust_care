@@ -44,13 +44,16 @@ export default function AgentLogin() {
       email: formik.values.email,
       password: formik.values.password,
     }).then((response) => {
-      localStorage.setItem("agentname", response.data.name);
-      localStorage.setItem("AgentOrgname", response.data.orgname);
-      const agentname = localStorage.getItem("agentname");
-      const agentOrgname = localStorage.getItem("AgentOrgname");
-      navigate(`/${agentOrgname}/agent/${agentname}/dashboard`);
-      navigate(0);
-      console.log(response.data.orgname);
+      if (response.data.message == "Correct") {
+        localStorage.setItem("agentname", response.data.name);
+        localStorage.setItem("AgentOrgname", response.data.orgname);
+        const agentname = localStorage.getItem("agentname");
+        const agentOrgname = localStorage.getItem("AgentOrgname");
+        navigate(`/${agentOrgname}/agent/${agentname}/dashboard`);
+        navigate(0);
+      } else if (response.data.message == []) {
+        console.log("not connected");
+      }
       if (response.data.message) {
         setLoginstatus(response.data.message);
       }

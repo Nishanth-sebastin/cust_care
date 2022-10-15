@@ -17,11 +17,14 @@ import Grid from "@mui/material/Grid";
 import { InputLabel } from "@mui/material";
 import { Select } from "@mui/material";
 import { MenuItem } from "@mui/material";
+import {} from "@mui/material";
+import { Person } from "@material-ui/icons";
 import { Avatar } from "@mui/material";
 import { TableFooter } from "@mui/material";
 import { TablePagination } from "@mui/material";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import Person2Icon from "@mui/icons-material/Person2";
 
 const styles = makeStyles({
   Grid: {
@@ -116,11 +119,6 @@ function Tickets() {
     Axios.post("http://localhost:8080/organization/agent/tickets", {
       orgname: orgAgentName,
     }).then((response) => {
-      console.log(
-        response.data.message.map((row) => {
-          return row.id;
-        })
-      );
       setTicketsData(response.data.message);
     });
   });
@@ -190,12 +188,8 @@ function Tickets() {
                   <TableCell>
                     <Grid container>
                       <Grid item lg={2}>
-                        <Avatar
-                          alt={row.name}
-                          src=""
-                          className={classes.avatar}
-                        >
-                          NS
+                        <Avatar sx={{ bgcolor: "#0D80D8" }}>
+                          {row.name.charAt(0)}
                         </Avatar>
                       </Grid>
                       <Grid
@@ -203,7 +197,10 @@ function Tickets() {
                         sx={{ position: "relative", left: "20px", top: "5px" }}
                         lg={10}
                       >
-                        <Typography className={classes.name}>
+                        <Typography
+                          className={classes.name}
+                          sx={{ color: "black" }}
+                        >
                           {row.name}
                         </Typography>
                       </Grid>
@@ -249,7 +246,6 @@ function Tickets() {
                           }
                         ).then((response) => {
                           alert(response.data.message);
-                          console.log(response.data.message);
                         });
                       }}
                       variant="contained"

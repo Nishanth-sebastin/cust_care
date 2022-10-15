@@ -20,7 +20,9 @@ import { Link } from "react-router-dom";
 import { Chart as ChartJS } from "chart.js/auto";
 import AppMain from "../../examples";
 import Axios from "axios";
-
+import DoneAllIcon from "@mui/icons-material/DoneAll";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 const styles = makeStyles({
   Grid: {
     position: "relative",
@@ -95,7 +97,6 @@ function Dashboard() {
     Axios.post("http://localhost:8080/agent/dashboard/raisedtickets", {
       orgname,
     }).then((response) => {
-      console.log(response.data.message);
       setraisedTickets(response.data.message.length);
     });
 
@@ -103,7 +104,6 @@ function Dashboard() {
       orgname,
       agentname,
     }).then((response) => {
-      console.log(response.data.message);
       setsolvedTickets(response.data.message.length);
     });
 
@@ -111,7 +111,6 @@ function Dashboard() {
       orgname,
       agentname,
     }).then((response) => {
-      console.log(response.data.message);
       setunSolvedTickets(response.data.message.length);
     });
   });
@@ -122,9 +121,9 @@ function Dashboard() {
     <LayoutAgent>
       <Grid className={style.Grid}>
         <Grid container>
-          <Grid item xs={3} sx={{ padding: "20px" }}>
+          <Grid item xs={4} sx={{ padding: "20px" }}>
             <Paper>
-              <Card sx={{ height: "140px" }}>
+              <Card sx={{ height: "110px" }}>
                 <Box className={style.boxes}>
                   <Box className={style.boxIcon1}>
                     <AdUnitsIcon className={style.icon} />
@@ -133,9 +132,9 @@ function Dashboard() {
                     <Typography
                       sx={{
                         position: "relative",
-                        left: "90px",
+                        left: "50px",
                         top: "15px",
-                        color: "#9498AD",
+                        color: "black",
                       }}
                     >
                       Raised Tickets<br></br>
@@ -147,27 +146,27 @@ function Dashboard() {
                 </Box>
                 <Divider />
 
-                <CardContent sx={{ marginTop: "25px" }}>
+                {/* <CardContent sx={{ marginTop: "25px" }}>
                   <Typography>55% than lask week</Typography>
-                </CardContent>
+                </CardContent> */}
               </Card>
             </Paper>
           </Grid>
 
-          <Grid item xs={3} sx={{ padding: "20px" }}>
+          <Grid item xs={4} sx={{ padding: "20px" }}>
             <Paper>
-              <Card sx={{ height: "140px" }}>
+              <Card sx={{ height: "110px" }}>
                 <Box className={style.boxes}>
                   <Box className={style.boxIcon2}>
-                    <AdUnitsIcon className={style.icon} />
+                    <DoneAllIcon className={style.icon} />
                   </Box>
                   <Box>
                     <Typography
                       sx={{
                         position: "relative",
-                        left: "90px",
+                        left: "50px",
                         top: "15px",
-                        color: "#9498AD",
+                        color: "black",
                       }}
                     >
                       Solved Tickets<br></br>
@@ -179,30 +178,30 @@ function Dashboard() {
                 </Box>
                 <Divider />
 
-                <CardContent sx={{ marginTop: "25px" }}>
+                {/* <CardContent sx={{ marginTop: "25px" }}>
                   <Typography>55% than lask week</Typography>
-                </CardContent>
+                </CardContent> */}
               </Card>
             </Paper>
           </Grid>
 
-          <Grid item xs={3} sx={{ padding: "20px" }}>
+          <Grid item xs={4} sx={{ padding: "20px" }}>
             <Paper>
-              <Card sx={{ height: "140px" }}>
+              <Card sx={{ height: "110px" }}>
                 <Box className={style.boxes}>
                   <Box className={style.boxIcon3}>
-                    <AdUnitsIcon className={style.icon} />
+                    <HourglassTopIcon className={style.icon} />
                   </Box>
                   <Box>
                     <Typography
                       sx={{
                         position: "relative",
-                        left: "70px",
+                        left: "50px",
                         top: "15px",
-                        color: "#9498AD",
+                        color: "black",
                       }}
                     >
-                      UnSolved Tickets<br></br>
+                      Pending Tickets<br></br>
                       <Typography sx={{ color: "black" }}>
                         <strong>{unSolvedTickets}</strong>
                       </Typography>
@@ -211,14 +210,14 @@ function Dashboard() {
                 </Box>
                 <Divider />
 
-                <CardContent sx={{ marginTop: "25px" }}>
+                {/* <CardContent sx={{ marginTop: "25px" }}>
                   <Typography>55% than lask week</Typography>
-                </CardContent>
+                </CardContent> */}
               </Card>
             </Paper>
           </Grid>
 
-          <Grid item xs={3} sx={{ padding: "20px" }}>
+          {/* <Grid item xs={3} sx={{ padding: "20px" }}>
             <Paper>
               <Card sx={{ height: "140px" }}>
                 <Box className={style.boxes}>
@@ -248,7 +247,7 @@ function Dashboard() {
                 </CardContent>
               </Card>
             </Paper>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid container>
           <Grid item className={style.ChartGrid}>

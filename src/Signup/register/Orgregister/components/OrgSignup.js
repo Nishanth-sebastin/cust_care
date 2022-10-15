@@ -60,7 +60,7 @@ export const OrgSignup = () => {
     }).then((response) => {
       navigate("/organization/login");
       navigate(0);
-      console.log(response);
+
       localStorage.setItem("orgname", response.data.orgname);
     });
   };

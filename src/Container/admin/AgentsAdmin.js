@@ -7,12 +7,12 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Avatar,
   Grid,
   Typography,
   TablePagination,
   TableFooter,
 } from "@material-ui/core";
+import { Avatar } from "@mui/material";
 import { makeStyles, styled } from "@material-ui/core";
 import LayoutAdmin from "../../MainLayout/LayoutAdmin";
 import { Search } from "@mui/icons-material";
@@ -115,7 +115,6 @@ function Customers() {
     Axios.post("http://localhost:8080/organization/admin/agents", {
       orgname,
     }).then((response) => {
-      console.log(response.data.message);
       setAgentsData(response.data.message);
     });
   });
@@ -147,8 +146,13 @@ function Customers() {
                   <TableCell>
                     <Grid container>
                       <Grid item lg={2}>
-                        <Avatar alt="N" src="." className={classes.avatar}>
-                          N
+                        <Avatar
+                          alt="N"
+                          src="."
+                          className={classes.avatar}
+                          sx={{ bgcolor: "#0D80D8" }}
+                        >
+                          {row.firstname.charAt(0)}
                         </Avatar>
                       </Grid>
                       <Grid
