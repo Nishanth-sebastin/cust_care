@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Formik, Form, useFormik } from "formik";
+import { Formik, Form, useFormik, ErrorMessage } from "formik";
 // import { TextField } from './TextField';
 import { TextField } from "@material-ui/core";
 import * as Yup from "yup";
@@ -21,12 +21,44 @@ export const OrgSignup = () => {
     width: 1000,
     margin: "30px auto",
   };
+
+  const inputerrors = {};
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const marginTop = { marginTop: 5 };
 
   const [loginstatus, setLoginstatus] = useState("");
-
+  const passwordrules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+  const validate = Yup.object({
+    organizationName: Yup.string()
+      .min(3, "Organization name is too short")
+      .max(20, "Organization is too long")
+      .required("Required"),
+    email: Yup.string()
+      .email("Please enter a valid email")
+      .required("Required"),
+    password: Yup.string()
+      .min(5)
+      .matches(passwordrules, { message: "Please create a strong password" })
+      .required("Required"),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref("password"), null],
+      "Password not match"
+    ),
+    phone: Yup.number()
+      .min(10, "Please enter a valid number")
+      .required("Required"),
+    street: Yup.string()
+      .max(20, "Street address is too large")
+      .required("Required"),
+    city: Yup.string()
+      .max(20, "City address is too large")
+      .required("Required"),
+    region: Yup.string().max(20, "Region address is too large"),
+    zipcode: Yup.number().max(8, "Enter a valid zipcode"),
+    website: Yup.string().url().required("Required"),
+    gstin: Yup.number().required("Required"),
+  });
   const formik = useFormik({
     initialValues: {
       organizationName: "",
@@ -41,8 +73,10 @@ export const OrgSignup = () => {
       website: "",
       gstin: "",
     },
+    validationSchema: validate,
   });
-  console.log(formik.values);
+
+  console.log(formik.errors);
   const navigate = useNavigate();
   const addOrg = () => {
     Axios.post("http://localhost:8080/signuporg", {
@@ -90,6 +124,21 @@ export const OrgSignup = () => {
           />
           <br></br>
           <br></br>
+          {/* {formik.errors.organizationName ? (
+            <Typography
+              style={{
+                color: "red",
+                fontSize: "13px",
+
+                padding: "0",
+                margin: "0px 0px 20px 0px",
+              }}
+            >
+              {formik.errors.organizationName}
+            </Typography>
+          ) : (
+            ""
+          )} */}
           <TextField
             onChange={formik.handleChange}
             value={formik.values.email}
@@ -97,9 +146,28 @@ export const OrgSignup = () => {
             fullWidth
             label="Email"
             placeholder="Enter your email"
+            className={
+              formik.errors.email && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
+          {/* {formik.errors.email ? (
+            <Typography
+              style={{
+                color: "red",
+                fontSize: "13px",
+                margin: "0",
+                padding: "0",
+              }}
+            >
+              {formik.errors.email}
+            </Typography>
+          ) : (
+            ""
+          )} */}
           <TextField
             onChange={formik.handleChange}
             value={formik.values.phone}
@@ -107,26 +175,43 @@ export const OrgSignup = () => {
             fullWidth
             label="Phone Number"
             placeholder="Enter your phone number"
-          />
+            className={
+              formik.errors.phone && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
+          />{" "}
           <br></br>
           <br></br>
           <TextField
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.password}
             name="password"
             fullWidth
             label="Password"
             placeholder="Enter your password"
+            className={
+              formik.errors.password && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
           <TextField
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.confirmPassword}
             name="confirmPassword"
             fullWidth
             label="Confirm password"
             placeholder="Confirm your password"
+            className={
+              formik.errors.confirmPassword && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
@@ -137,6 +222,11 @@ export const OrgSignup = () => {
             fullWidth
             label="Street"
             placeholder="Enter your street name"
+            className={
+              formik.errors.street && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
@@ -147,6 +237,11 @@ export const OrgSignup = () => {
             fullWidth
             label="City"
             placeholder="Enter your city name"
+            className={
+              formik.errors.city && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
@@ -157,6 +252,11 @@ export const OrgSignup = () => {
             fullWidth
             label="Region"
             placeholder="Enter your region name"
+            className={
+              formik.errors.region && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
@@ -167,10 +267,14 @@ export const OrgSignup = () => {
             fullWidth
             label="Zip code"
             placeholder="Enter Zip code"
+            className={
+              formik.errors.zipcode && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
-
           <TextField
             onChange={formik.handleChange}
             value={formik.values.website}
@@ -178,6 +282,11 @@ export const OrgSignup = () => {
             fullWidth
             label="Website Link "
             placeholder="Enter your Website Link"
+            className={
+              formik.errors.website && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
@@ -188,10 +297,14 @@ export const OrgSignup = () => {
             fullWidth
             label="GSTIn"
             placeholder="Enter GSTIn"
+            className={
+              formik.errors.gstin && formik.touched.organizationName
+                ? "input-error"
+                : ""
+            }
           />
           <br></br>
           <br></br>
-
           <h5 style={{ fontSize: "15px" }}>
             Already Have an Account{" "}
             <a style={{ textDecoration: "none" }}>

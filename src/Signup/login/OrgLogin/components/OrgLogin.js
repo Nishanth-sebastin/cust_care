@@ -17,9 +17,9 @@ import Axios from "axios";
 export const OrgLogin = () => {
   const paperStyle = {
     padding: "30px 20px",
-    height: "750px",
+    height: "420px",
     width: 1000,
-    margin: "30px auto",
+    margin: "150px auto",
   };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
@@ -72,22 +72,12 @@ export const OrgLogin = () => {
           </Avatar>
           <h2 style={headerStyle}>Organization Login</h2>
           <Typography variant="caption" gutterBottom>
-            Please fill this form to create an account !
+            Please fill this form !
           </Typography>
           <br></br>
           <br></br>
         </Grid>
         <form>
-          <TextField
-            onChange={formik.handleChange}
-            name="organizationName"
-            value={formik.values.organizationName}
-            fullWidth
-            label="Organization name"
-            placeholder="Enter Organization name"
-          />
-          <br></br>
-          <br></br>
           <TextField
             onChange={formik.handleChange}
             value={formik.values.email}
@@ -96,16 +86,7 @@ export const OrgLogin = () => {
             label="Email"
             placeholder="Enter your email"
           />
-          <br></br>
-          <br></br>
-          <TextField
-            onChange={formik.handleChange}
-            value={formik.values.phone}
-            name="phone"
-            fullWidth
-            label="Phone Number"
-            placeholder="Enter your phone number"
-          />
+
           <br></br>
           <br></br>
           <TextField
@@ -114,27 +95,8 @@ export const OrgLogin = () => {
             name="password"
             fullWidth
             label="Password"
+            type="password"
             placeholder="Enter your password"
-          />
-          <br></br>
-          <br></br>
-          <TextField
-            onChange={formik.handleChange}
-            value={formik.values.confirmPassword}
-            name="confirmPassword"
-            fullWidth
-            label="Confirm password"
-            placeholder="Confirm your password"
-          />
-          <br></br>
-          <br></br>
-          <TextField
-            onChange={formik.handleChange}
-            value={formik.values.gstin}
-            name="gstin"
-            fullWidth
-            label="GSTIn"
-            placeholder="Enter GSTIn"
           />
           <br></br>
           <br></br>

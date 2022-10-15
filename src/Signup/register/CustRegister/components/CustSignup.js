@@ -129,6 +129,7 @@ export const CustSignup = () => {
           <br></br>
           <br></br>
           <TextField
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.password}
             name="password"
@@ -139,6 +140,7 @@ export const CustSignup = () => {
           <br></br>
           <br></br>
           <TextField
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.confirmpass}
             name="confirmpass"

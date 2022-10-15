@@ -91,6 +91,7 @@ export default function AgentLogin() {
           <TextField
             onChange={formik.handleChange}
             value={formik.values.password}
+            type="password"
             name="password"
             fullWidth
             label="Password"
