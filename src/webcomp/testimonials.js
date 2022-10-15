@@ -11,7 +11,7 @@ class Testimonials extends Component {
           <h3>Testimonials</h3>
           <div className="main-test">
             <h1>
-              What Clients Say <span style={{ color: " #fd0988" }}>.</span>
+              What Clients Say <span style={{ color: " #3187E4" }}>.</span>
             </h1>
             <p className="mainpara">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo illum

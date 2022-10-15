@@ -41,7 +41,7 @@ li {
   gap: 1em;
 }
 .menu li:hover {
-  background-color: #dc143c;
+  background-color: #3187e4;
   border-radius: 5px;
   transition: 0.3s ease;
   height: 40px;
@@ -163,7 +163,7 @@ input[type="checkbox"] {
   width: 130px;
   padding: 10px 5px;
   border-radius: 0em;
-  background-color: #dc143c;
+  background-color: #3187e4;
   border-style: none;
   font-weight: lighter;
   position: relative;
@@ -180,11 +180,11 @@ input[type="checkbox"] {
 }
 .inno h3 {
   font-size: 25px;
-  color: #dc143c;
+  color: #3187e4;
 }
 .inno h1 {
   font-size: 40px;
-  color: #dc143c;
+  color: #3187e4;
 }
 .inno p {
   text-align: center;
@@ -237,15 +237,15 @@ svg {
 .block1:hover,
 .block2:hover,
 .block3:hover {
-  background: #dc143c;
+  background: #3187e4;
   transition: ease 0.5s all;
   transform: scale(1.03);
   box-shadow: 16px 12px 6px rgba(0, 0, 0, 0.2),
     12px 8px 12px rgba(0, 0, 0, 0.14), 4px 4px 4px rgba(0, 0, 0, 0.12);
 }
 .line {
-  background-color: #dc143c;
-  border: 1px #dc143c solid;
+  background-color: #3187e4;
+  border: 1px #3187e4 solid;
   width: 100px;
   position: relative;
   left: 100px;
@@ -283,33 +283,24 @@ svg {
 }
 .review1,
 .review2 {
-  border: 2px red solid;
+  border: 2px #3187e4 solid;
   background: #da4453; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #89216b,
-    #da4453
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #89216b,
-    #da4453
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
   min-height: 350px;
   width: 550px;
   border-radius: 2ch;
 }
 .review1 h5,
 h6 {
-  color: white;
+  color: black;
 }
 .review2 h5,
 h6 {
-  color: white;
+  color: black;
 }
 .review1 p,
 .review2 p {
-  color: white;
+  color: black;
   padding: 20px;
 }
 .review-flex {
@@ -434,7 +425,7 @@ h6 {
     width: 130px;
     padding: 10px 5px;
     border-radius: 0em;
-    background-color: #dc143c;
+    background-color: #3187e4;
     border-style: none;
     font-weight: lighter;
     position: relative;

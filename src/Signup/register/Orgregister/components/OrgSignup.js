@@ -13,6 +13,9 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Checkbox from "@material-ui/core/Checkbox";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { InputAdornment, IconButton } from "@material-ui/core";
 
 export const OrgSignup = () => {
   const paperStyle = {
@@ -75,7 +78,12 @@ export const OrgSignup = () => {
     },
     validationSchema: validate,
   });
-
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
+  const handleClickShowPassword = () => setShowPassword1(!showPassword1);
+  const handleMouseDownPassword = () => setShowPassword1(!showPassword1);
+  const handleClickShowPasswordConfirm = () => setShowPassword2(!showPassword2);
+  const handleMouseDownPasswordConfirm = () => setShowPassword2(!showPassword2);
   console.log(formik.errors);
   const navigate = useNavigate();
   const addOrg = () => {
@@ -184,9 +192,9 @@ export const OrgSignup = () => {
           <br></br>
           <br></br>
           <TextField
-            type="password"
             onChange={formik.handleChange}
             value={formik.values.password}
+            type={showPassword1 ? "text" : "password"}
             name="password"
             fullWidth
             label="Password"
@@ -196,11 +204,33 @@ export const OrgSignup = () => {
                 ? "input-error"
                 : ""
             }
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="start"
+                  style={{
+                    position: "relative",
+                    right: "130px",
+                    bottom: "35px",
+                  }}
+                >
+                  <IconButton
+                    disableRipple
+                    style={{ boxShadow: "none" }}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword1 ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <br></br>
           <br></br>
           <TextField
-            type="password"
+            type={showPassword2 ? "text" : "password"}
             onChange={formik.handleChange}
             value={formik.values.confirmPassword}
             name="confirmPassword"
@@ -212,6 +242,28 @@ export const OrgSignup = () => {
                 ? "input-error"
                 : ""
             }
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="start"
+                  style={{
+                    position: "relative",
+                    right: "130px",
+                    bottom: "35px",
+                  }}
+                >
+                  <IconButton
+                    disableRipple
+                    style={{ boxShadow: "none" }}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPasswordConfirm}
+                    onMouseDown={handleMouseDownPasswordConfirm}
+                  >
+                    {showPassword2 ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <br></br>
           <br></br>

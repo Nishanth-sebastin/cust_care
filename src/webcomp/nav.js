@@ -41,9 +41,6 @@ function Nav() {
             <li>
               <a href="/">Services</a>
             </li>
-            <li>
-              <a href="/">Projects</a>
-            </li>
 
             <li>
               <a href="/">Contact</a>
@@ -52,8 +49,8 @@ function Nav() {
             <div className="dropdown">
               <Button
                 sx={{
-                  backgroundColor: "#DC143C",
-                  "&:hover": { backgroundColor: "#DC143C" },
+                  backgroundColor: "#3187E4",
+                  "&:hover": { backgroundColor: "#3187E4" },
                 }}
                 variant="contained"
               >

@@ -17,20 +17,17 @@ class Contact extends React.Component {
           <p className="coninfo">
             You’ll called for yielding male, so lights Stars abundantly, is
             their.
-          </p>{" "}
-          <br></br>
-          <br></br>
-          <h1>27,Queen St,Avinashi,Thirupur</h1> <br></br> <br></br>
-          <h1>
-            {" "}
-            <BsTelephone /> +91 8754954543
-          </h1>
-          <br></br>
-          <br></br>
-          <p className="gmail">
-            {" "}
-            <CgMail className="mail" /> NishanthSebastinj24cseb@gmail.com
           </p>
+          <br></br>
+          <br></br>
+          <h1>27,Queen St,Chennai,Tamilnadu</h1> <br></br> <br></br>
+          <div className="phone">
+            <h1>+91 8754954543</h1>
+          </div>
+          <br></br>
+          <br></br>
+          <br></br>
+          <h5 className="gmail">NishanthSebastinj24cseb@gmail.com</h5>
         </div>
         <div className="Contact-2">
           <h2>

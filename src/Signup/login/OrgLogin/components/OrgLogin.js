@@ -11,8 +11,11 @@ import logo from "../assets/rocket.png";
 import { Grid, Paper, Avatar, Typography, Button } from "@material-ui/core";
 import { AddCircleOutlineOutlined } from "@material-ui/icons";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import Checkbox from "@material-ui/core/Checkbox";
+import { Checkbox } from "@mui/material";
 import Axios from "axios";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { InputAdornment, IconButton } from "@material-ui/core";
 
 export const OrgLogin = () => {
   const paperStyle = {
@@ -56,7 +59,9 @@ export const OrgLogin = () => {
       }
     });
   };
-
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
   // useEffect(() => {
   //   Axios.get("http://localhost:8080/loginorg").then((response) => {
   //     console.log(response)
@@ -95,9 +100,38 @@ export const OrgLogin = () => {
             name="password"
             fullWidth
             label="Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter your password"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="start"
+                  style={{
+                    position: "relative",
+                    right: "130px",
+                    bottom: "35px",
+                  }}
+                >
+                  <IconButton
+                    disableRipple
+                    style={{ boxShadow: "none" }}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
+          {/* <Checkbox
+            sx={{
+              position: "relative",
+              bottom: "10px",
+              right: "30px",
+            }}
+          /> */}
           <br></br>
           <br></br>
           {/* <p style={{ color: 'red' }}>{loginstatus}</p> */}
