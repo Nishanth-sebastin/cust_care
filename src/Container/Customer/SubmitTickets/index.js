@@ -24,11 +24,11 @@ import Axios from "axios";
 export const CustLogin = () => {
   const paperStyle = {
     padding: "30px 20px",
-    height: "580px",
+    height: "550px",
     position: "relative",
     top: "70px",
     width: 1000,
-    margin: "30px auto",
+    margin: "60px auto",
   };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
@@ -85,10 +85,10 @@ export const CustLogin = () => {
       <Grid>
         <Paper elevation={20} style={paperStyle}>
           <Grid align="center">
-            <Avatar style={avatarStyle}>
+            {/* <Avatar style={avatarStyle}>
               <AddCircleOutlineOutlined />
-            </Avatar>
-            <h2 style={headerStyle}>Submit Query</h2>
+            </Avatar> */}
+            <h2 style={headerStyle}>Submit Tickets</h2>
           </Grid>
           
            

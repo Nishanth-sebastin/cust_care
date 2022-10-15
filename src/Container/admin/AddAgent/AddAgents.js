@@ -45,6 +45,13 @@ const AddAgents = () => {
   const orgname = localStorage.getItem("orgname");
   const logincust = (e) => {
     e.preventDefault();
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}-${month}-${year}`;
+    console.log(currentDate); // "17-6-2022"
     Axios.post("http://localhost:8080/addagents", {
       firstname: formik.values.firstname,
       lastname: formik.values.lastname,
@@ -52,6 +59,7 @@ const AddAgents = () => {
       email: formik.values.email,
       password: formik.values.password,
       orgname: orgname,
+      date: currentDate,
     }).then((response) => {
       console.log(response);
       if (response.data.message) {

@@ -8,10 +8,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const useStyles = makeStyles({
     profile: {
-        position: 'relative', left: '550px', bottom: '30px'
+        position: 'relative', left: '480px', bottom: '24px'
     },
     textfield: {
-        position: 'relative', left: '650px'
+        position: 'relative', left: '580px',top:"8px"
     }
 });
 
@@ -24,7 +24,7 @@ function NavBar() {
         <Grid sm='10' >
             <AppBar position='fixed' sx={{ backgroundColor: 'white', height: '80px', width: '1260px' }}  >
                 <Toolbar >
-                    <Typography variant='h5' sx={{ color: '#0D80D8', fontWeight: 'bold' }}>CustCare</Typography>
+                    <Typography variant='h5' sx={{ color: '#0D80D8', fontWeight: 'bold', position: 'relative', top:"7px",left:"20px" }}>Customer Care Registry</Typography>
                     <TextField label='Search here' size='small' className={style.textfield}>
 
                     </TextField>

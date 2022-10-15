@@ -200,7 +200,7 @@ function Tickets() {
                       </Grid>
                       <Grid
                         item
-                        sx={{ position: "relative", left: "10px" }}
+                        sx={{ position: "relative", left: "20px", top: "5px" }}
                         lg={10}
                       >
                         <Typography className={classes.name}>
@@ -232,14 +232,25 @@ function Tickets() {
                   </TableCell>
                   <TableCell>
                     <Button
-                      onClick={() => {
-                        Axios.post(
+                      onClick={async () => {
+                        await Axios.post(
                           "http://localhost:8080/organization/agent/tickets/takenupdate",
                           {
                             id: row.id,
                             agentname: agent,
                           }
                         );
+
+                        await Axios.post(
+                          "http://localhost:8080/organization/agent/tickets/takenemailupdate",
+                          {
+                            id: row.id,
+                            agentname: agent,
+                          }
+                        ).then((response) => {
+                          alert(response.data.message);
+                          console.log(response.data.message);
+                        });
                       }}
                       variant="contained"
                     >

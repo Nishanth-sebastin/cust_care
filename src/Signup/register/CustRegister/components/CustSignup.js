@@ -63,9 +63,10 @@ export const CustSignup = () => {
       localStorage.setItem('custname', response.data.name)
     })
   }
+
   const formik = useFormik({
     initialValues: {
-      firstname: '',
+      firstname: " ",
       lastname: '',
       email: '',
       password: '',
@@ -115,3 +116,4 @@ export const CustSignup = () => {
     </Grid>
   )
 }
+

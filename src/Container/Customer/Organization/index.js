@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 const styles = makeStyles({
     Grid: {
         position: 'relative',
-        top: '100px',
+        top: '80px',
 
         width: '100%',
         height: '650px',

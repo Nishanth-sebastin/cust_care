@@ -74,9 +74,11 @@ const styles = makeStyles({
     content: {
         position: 'relative',
         top: '100px',
-        width: '100%',        
+        width: '1200px',        
         padding: '18px',
-       display : "flex",
+        display : "flex",
+       left:"22px",
+      
 
     },
    
@@ -139,10 +141,10 @@ const styles = makeStyles({
   Grid1: {
     position: "relative",
     top: "100px",
-    width: "100%",
+    width: "1200px",
     height: "650px",
-    padding: "0px",
-    left :"17px"
+    left :"15px",
+   
   },
 
   link: {

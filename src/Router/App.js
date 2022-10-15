@@ -23,7 +23,6 @@ import TicketDetails from "../Container/agents/TicketDetails";
 // import CustomerDashboard from "../Container/Customer/Dashboard";
 import CustomerSubmitQuery from "../Container/Customer/SubmitTickets/index.js";
 import CustomerTickets from "../Container/Customer/Tickets/index.js";
-import CustomerCall from "../Container/Customer/Call/index.js";
 import CustomerProfile from "../Container/Customer/Profile/index.js";
 import CustomerOrganization from "../Container/Customer/Organization/index.js"
 
@@ -58,10 +57,7 @@ class Routerapp extends React.Component {
           <Route path="/organization/login" element={<OrgLogin />} />
           <Route path="/customer/login" element={<CustLogin />} />
           <Route path="/customer/register" element={<CustSignup />} />
-          <Route
-            path={`/customer/${customer}/main`}
-            element={<CustomerTickets />}
-          />
+          
           <Route
             path={`/organization/${admin}/admin/`}
             element={<DashboardAdmin />}
@@ -106,17 +102,14 @@ class Routerapp extends React.Component {
             element={<CustomerTickets />}
           />
           <Route
-            path={`/customer/${customer}/submitquery`}
+            path={`/customer/${customer}/submittickets`}
             element={<CustomerSubmitQuery />}
           />
           {/* <Route
             path={`/customer/${customer}/dashboard`}
             element={<CustomerDashboard />}
           /> */}
-          <Route
-            path={`/customer/${customer}/call`}
-            element={<CustomerCall />}
-          />
+
           <Route path={`/customer/${customer}/organizations`}
            element={<CustomerOrganization />}
            />

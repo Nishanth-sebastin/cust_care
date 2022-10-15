@@ -15,7 +15,7 @@ import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import Inbox from "@mui/icons-material/Inbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SportsKabaddiOutlinedIcon from "@mui/icons-material/SportsKabaddiOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import AodOutlinedIcon from "@mui/icons-material/AodOutlined";
@@ -30,7 +30,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useNavigate } from "react-router-dom";
+
 
 const useStyles = makeStyles({
   drawer: {
@@ -41,8 +41,8 @@ const useStyles = makeStyles({
       width: 240,
       backgroundColor: "#222223",
     },
-    marginTop: "20px",
-    marginLeft: "20px",
+    // marginTop: "20px",
+    marginLeft: "10px",
   },
 
   list: {
@@ -74,6 +74,7 @@ const useStyles = makeStyles({
 function AppBar() {
   const [open, setOpen] = React.useState(false);
 
+  const navigate = useNavigate();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -84,12 +85,8 @@ function AppBar() {
     setOpen(false);
   };
   const ClickHandler = () => {
-    return (
-      <Link
-        style={{ color: "white", textDecoration: "none" }}
-        to="/organization/login"
-      ></Link>
-    );
+    localStorage.removeItem("custname");
+    navigate("/customer/login");
   };
   const style = useStyles();
   return (
@@ -98,13 +95,15 @@ function AppBar() {
         classes={{ paper: style.drawerPaper }}
         sx={{
           width: 240,
-
+         
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 240,
+            width: 237,
             boxSizing: "border-box",
             height: " 700px",
             borderRadius: "15px",
+            position:"fixed",
+            right:"5px",
           },
         }}
         variant="permanent"
@@ -158,7 +157,7 @@ function AppBar() {
                 {" "}
                 <Link
                   style={{ color: "white", textDecoration: "none" }}
-                  to={`/customer/${customer}/submitquery`}
+                  to={`/customer/${customer}/submittickets`}
                 >
                   Submit Tickets
                 </Link>

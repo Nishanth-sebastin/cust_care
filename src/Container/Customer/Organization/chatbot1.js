@@ -82,13 +82,10 @@ useEffect (() =>{
   
   const [humanmsg,setHumanmsg] = useState("hi");
   const [data,setData] = useState([{
-    // botmsg:"",
-    // humanmsg:""
+    botmsg:"Hi, How can I help you",
+  
   }]);
  
-
-  
-  
 
   
 
@@ -523,7 +520,7 @@ useEffect (() =>{
    // console.log('success') ;
     setData(response.data.message) ;
       
-  })
+})
   
   
   return (
@@ -537,7 +534,7 @@ useEffect (() =>{
                    <img src={image} alt="" />
                  </div> 
                  <div className="right">
-                   <div className="name">ChatBot</div>
+                   <div className="name">{organization} ChatBot</div>
                    <div className="status">Active</div>
                  </div>
                </div>
