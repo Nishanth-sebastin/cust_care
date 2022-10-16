@@ -11,6 +11,9 @@ import { Grid, Paper, Avatar, Typography, Button } from "@material-ui/core";
 import { AddCircleOutlineOutlined } from "@material-ui/icons";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Checkbox from "@material-ui/core/Checkbox";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { InputAdornment, IconButton } from "@material-ui/core";
 import Axios from "axios";
 
 
@@ -27,6 +30,9 @@ export default function AgentLogin() {
 
   const [loginstatus, setLoginstatus] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -46,18 +52,17 @@ export default function AgentLogin() {
     Axios.post("http://localhost:8080/loginagent", {
       email: formik.values.email,
       password: formik.values.password,
-    })
-    .then((response) => {
-      localStorage.setItem("agentname", response.data.name);
-      localStorage.setItem("AgentOrgname", response.data.orgname);
-      const agentname = localStorage.getItem("agentname");
-      const agentOrgname = localStorage.getItem("AgentOrgname");
-      navigate(`/${agentOrgname}/agent/${agentname}/dashboard`);
-      navigate(0);
-      console.log(response.data.orgname);
-      navigate(`/${response.data.orgname}/agent/${response.data.name}/dashboard/`)
-      
-
+    }).then((response) => {
+      if (response.data.message == "Correct") {
+        localStorage.setItem("agentname", response.data.name);
+        localStorage.setItem("AgentOrgname", response.data.orgname);
+        const agentname = localStorage.getItem("agentname");
+        const agentOrgname = localStorage.getItem("AgentOrgname");
+        navigate(`/${agentOrgname}/agent/${agentname}/dashboard`);
+        navigate(0);
+      } else if (response.data.message == []) {
+        console.log("not connected");
+      }
       if (response.data.message) {
         setLoginstatus(response.data.message);
       }
@@ -95,10 +100,33 @@ export default function AgentLogin() {
           <TextField
             onChange={formik.handleChange}
             value={formik.values.password}
+            type={showPassword ? "text" : "password"}
             name="password"
             fullWidth
             label="Password"
             placeholder="Enter your password"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="start"
+                  style={{
+                    position: "relative",
+                    right: "130px",
+                    bottom: "35px",
+                  }}
+                >
+                  <IconButton
+                    disableRipple
+                    style={{ boxShadow: "none" }}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <br></br>
           <br></br>

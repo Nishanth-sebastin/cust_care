@@ -69,7 +69,7 @@ export const CustLogin = () => {
       status: "pending",
       taken: "NOT_TAKEN",
     }).then((response) => {
-      console.log("success");
+     
        setClear(true)
       localStorage.setItem("submitquerycust", response.data.name);
 

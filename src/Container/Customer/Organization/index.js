@@ -75,6 +75,9 @@ const styles = makeStyles({
     link: {
         textDecoration: 'none',
         color: 'black'
+    },
+    text:{
+        position:"relative",top:"5px"
     }
 });
 
@@ -104,7 +107,7 @@ function Customers() {
 
     useEffect (()=>{
         Axios.post("http://localhost:8080/organizations").then((response) => {
-            console.log(response.data.message);
+          
             setData(response.data.message);
           });
         },[]);
@@ -134,9 +137,18 @@ function Customers() {
                                 <TableRow key={row.name}>
                                     <TableCell>
                                         <Grid container>
-                                           
-                                            <Grid item lg={10}>
-                                                <Typography className={classes.content}>{row.org_name}</Typography>
+                                        <Grid item lg={2}>
+                        <Avatar
+                          alt={row.org_name}
+                          src=""
+                          className={classes.avatar}
+                          sx={{ bgcolor: "#0D80D8" }}
+                        >
+                          {row.org_name.charAt(0)}
+                        </Avatar>
+                      </Grid>
+                                            <Grid item lg={10} className={style.text}>
+                                                <Typography className={classes.content}  >{row.org_name} </Typography>
                                                 
                                             </Grid>
                                         </Grid>

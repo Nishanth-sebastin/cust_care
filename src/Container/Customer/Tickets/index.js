@@ -190,7 +190,7 @@ function Customers() {
     Axios.post("http://localhost:8080/customer/tickets", {
       customername,
     }).then((response) => {
-      console.log(response);
+     
       setTicketData(response.data.message);
     });
   });
@@ -206,21 +206,21 @@ function Customers() {
   Axios.post("http://localhost:8080/customer/dashboard/raisedtickets", {
       custname,
   }).then((response) => {
-    console.log(response.data.message);
+   
     setraisedTickets(response.data.message.length);
   });
 
   Axios.post("http://localhost:8080/customer/dashboard/solvedtickets", {
       custname,
   }).then((response) => {
-    console.log(response.data.message);
+  
     setsolvedTickets(response.data.message.length);
   });
 
   Axios.post("http://localhost:8080/customer/dashboard/unsolvedtickets", {
       custname,
   }).then((response) => {
-    console.log(response.data.message);
+   
     setunSolvedTickets(response.data.message.length);
   });
 }, []);

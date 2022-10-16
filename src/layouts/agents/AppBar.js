@@ -90,14 +90,16 @@ function AppBar() {
       <Drawer
         classes={{ paper: style.drawerPaper }}
         sx={{
-          width: 240,
+     
 
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 240,
+            width: 255,
             boxSizing: "border-box",
-            height: " 740px",
+            height: " 700px",
             borderRadius: "15px",
+            position:"fixed",
+            right:"5px",
           },
         }}
         variant="permanent"

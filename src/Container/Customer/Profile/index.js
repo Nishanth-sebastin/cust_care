@@ -62,8 +62,6 @@ useEffect(() => {
      custemail,
     }).then((response) => {
       
-     console.log(response);
-     console.log(response.data.message);
      setFirstname(response.data.message[0].firstname);
      setLastname(response.data.message[0].lastname);
      setEmail(response.data.message[0].email);
@@ -116,7 +114,7 @@ const updateProfileDB = () =>{
 
        }).then((response) => {
          
-         console.log(response);
+        
         
          
        }); 

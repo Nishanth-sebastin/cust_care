@@ -32,17 +32,22 @@
   right: 300px;
   padding: 30px;
 }
+.phone {
+  width: 100%;
+}
+.phone h1 {
+  position: relative;
+}
 .gmail {
   position: relative;
   bottom: 45px;
-  left: 50px;
 }
 .mail {
   height: 40px;
   width: 100%;
   position: relative;
   top: 30px;
-  right: 260px;
+  right: 300px;
 }
 .Contact-2 {
   margin-top: 90px;
@@ -56,7 +61,7 @@
   font-weight: 400;
 }
 .Contact-2 span {
-  color: #dc143c;
+  color: #3187e4;
 }
 .Contact-2 form {
   position: relative;
@@ -84,7 +89,7 @@
   color: white;
 }
 .Contact-2 button {
-  background: #dc143c;
+  background: #3187e4;
   color: white;
   padding: 5px;
   width: 130px;
@@ -179,7 +184,7 @@
     border-right: 1px solid transparent;
   }
   .Contact-2 button {
-    background: #dc143c;
+    background: #3187e4;
     color: white;
     padding: 5px;
     width: 120px;

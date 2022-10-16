@@ -11,15 +11,18 @@ import logo from "../assets/rocket.png";
 import { Grid, Paper, Avatar, Typography, Button } from "@material-ui/core";
 import { AddCircleOutlineOutlined } from "@material-ui/icons";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import Checkbox from "@material-ui/core/Checkbox";
+import { Checkbox } from "@mui/material";
 import Axios from "axios";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { InputAdornment, IconButton } from "@material-ui/core";
 
 export const OrgLogin = () => {
   const paperStyle = {
     padding: "30px 20px",
-    height: "750px",
+    height: "420px",
     width: 1000,
-    margin: "30px auto",
+    margin: "150px auto",
   };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
@@ -46,24 +49,25 @@ export const OrgLogin = () => {
       email: formik.values.email,
       password: formik.values.password,
     }).then((response) => {
-      localStorage.setItem("orgname", response.data.orgname);
-      const admin = localStorage.getItem("orgname");
-      navigate(`/organization/${admin}/admin/dashboard`);
-      navigate(0);
-      if (response.data.message) {
-        setLoginstatus(response.data.message);
+      if (response.data.message == "Correct") {
+        localStorage.setItem("orgname", response.data.orgname);
+        const admin = localStorage.getItem("orgname");
+        navigate(`/organization/${admin}/admin/dashboard`);
+        navigate(0);
+      } else if (response.data.message == []) {
+        console.log("not connected");
       }
     });
   };
-
-  useEffect(() => {});
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
   // useEffect(() => {
   //   Axios.get("http://localhost:8080/loginorg").then((response) => {
   //     console.log(response)
   //   })
   // }, [])
 
-  console.log(formik.values);
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle}>
@@ -73,22 +77,12 @@ export const OrgLogin = () => {
           </Avatar>
           <h2 style={headerStyle}>Organization Login</h2>
           <Typography variant="caption" gutterBottom>
-            Please fill this form to create an account !
+            Please fill this form !
           </Typography>
           <br></br>
           <br></br>
         </Grid>
         <form>
-          <TextField
-            onChange={formik.handleChange}
-            name="organizationName"
-            value={formik.values.organizationName}
-            fullWidth
-            label="Organization name"
-            placeholder="Enter Organization name"
-          />
-          <br></br>
-          <br></br>
           <TextField
             onChange={formik.handleChange}
             value={formik.values.email}
@@ -97,16 +91,7 @@ export const OrgLogin = () => {
             label="Email"
             placeholder="Enter your email"
           />
-          <br></br>
-          <br></br>
-          <TextField
-            onChange={formik.handleChange}
-            value={formik.values.phone}
-            name="phone"
-            fullWidth
-            label="Phone Number"
-            placeholder="Enter your phone number"
-          />
+
           <br></br>
           <br></br>
           <TextField
@@ -115,28 +100,38 @@ export const OrgLogin = () => {
             name="password"
             fullWidth
             label="Password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter your password"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="start"
+                  style={{
+                    position: "relative",
+                    right: "130px",
+                    bottom: "35px",
+                  }}
+                >
+                  <IconButton
+                    disableRipple
+                    style={{ boxShadow: "none" }}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
-          <br></br>
-          <br></br>
-          <TextField
-            onChange={formik.handleChange}
-            value={formik.values.confirmPassword}
-            name="confirmPassword"
-            fullWidth
-            label="Confirm password"
-            placeholder="Confirm your password"
-          />
-          <br></br>
-          <br></br>
-          <TextField
-            onChange={formik.handleChange}
-            value={formik.values.gstin}
-            name="gstin"
-            fullWidth
-            label="GSTIn"
-            placeholder="Enter GSTIn"
-          />
+          {/* <Checkbox
+            sx={{
+              position: "relative",
+              bottom: "10px",
+              right: "30px",
+            }}
+          /> */}
           <br></br>
           <br></br>
           {/* <p style={{ color: 'red' }}>{loginstatus}</p> */}

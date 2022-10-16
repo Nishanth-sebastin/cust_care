@@ -12,6 +12,9 @@ import { Grid, Paper, Avatar, Typography, Button } from "@material-ui/core";
 import { AddCircleOutlineOutlined } from "@material-ui/icons";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Checkbox from "@material-ui/core/Checkbox";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { InputAdornment, IconButton } from "@material-ui/core";
 import Axios from "axios";
 
 export const CustLogin = () => {
@@ -29,6 +32,9 @@ export const CustLogin = () => {
 
   const [loginstatus, setLoginstatus] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -48,7 +54,6 @@ export const CustLogin = () => {
       console.log(response.data.name);
 
       localStorage.setItem("custname", response.data.name);
-      localStorage.setItem("custemail", response.data.email);
       navigate(`/customer/${response.data.name}/submittickets`);
       navigate(0);
       if (response.data.message) {
@@ -89,10 +94,32 @@ export const CustLogin = () => {
           <TextField
             onChange={formik.handleChange}
             value={formik.values.password}
+            type={showPassword ? "text" : "password"}
             name="password"
             fullWidth
             label="Password"
             placeholder="Enter your password"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="start"
+                  style={{
+                    position: "relative",
+                    right: "130px",
+                    bottom: "35px",
+                  }}
+                >
+                  <IconButton
+                    disableRipple
+                    style={{ boxShadow: "none" }}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )}}
           />
           <br></br>
           <br></br>

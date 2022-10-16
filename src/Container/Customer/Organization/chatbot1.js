@@ -97,7 +97,7 @@ useEffect (() =>{
     const getBotMessage = botmessage.current;
     const inputRef = document.querySelector("#input");
 
-    if(customer == 'k2'){
+    if(customer == 'k5'){
 
     let badwords = ["fuck|bad|stupid|useless|bitch|crazy|nonsense"];
     let words = new RegExp(badwords);
@@ -117,18 +117,37 @@ useEffect (() =>{
           }).then((response) => {
                   
           })        
-
-         
+        
           inputRef.value = ""; // clear the input
-          console.log(customer,organization);
+         
 
         }, 500);
 
         
       }
+      else{
+        setTimeout(() => {
+          const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
+         
+          Axios.post("http://localhost:8080/chatbot1", {
+             botmsg : bmsg,
+             humanmsg : input,
+             customer: customer,
+             organization:organization
+        
+            }).then((response) => {
+                    
+            })        
+          
+            inputRef.value = ""; // clear the input
+           
+  
+          }, 500);
+  
+      }
 
        let welcome = [
-      "hi|hello|Hello|hey|sup|yo|wassup|whats up|howdy|greetings|good morning|good afternoon|good evening",
+      "hi|hello|Hello|hey|sup|yo|wassup|whats up|howdy|greetings|good morning|good afternoon|good evening|HI|Hi",
     ];
     let words2 = new RegExp(welcome);
     if (words2.test(document.querySelector("#input").value)) {
@@ -152,6 +171,29 @@ useEffect (() =>{
         }, 500);
 
     }
+
+    else{
+      setTimeout(() => {
+        const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
+       
+        Axios.post("http://localhost:8080/chatbot1", {
+           botmsg : bmsg,
+           humanmsg : input,
+           customer: customer,
+           organization:organization
+      
+          }).then((response) => {
+                  
+          })        
+        
+          inputRef.value = ""; // clear the input
+         
+
+        }, 500);
+
+    }
+
+
     let bye = ["bye|Bye|goodbye|see you later|cya|goodnight|goodbye"];
     let words3 = new RegExp(bye);
     if (words3.test(document.querySelector("#input").value)) {
@@ -175,6 +217,29 @@ useEffect (() =>{
         }, 500);
 
     }
+
+    else{
+      setTimeout(() => {
+        const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
+       
+        Axios.post("http://localhost:8080/chatbot1", {
+           botmsg : bmsg,
+           humanmsg : input,
+           customer: customer,
+           organization:organization
+      
+          }).then((response) => {
+                  
+          })        
+        
+          inputRef.value = ""; // clear the input
+         
+
+        }, 500);
+
+    }
+
+
     let thanks = [
       "Thanks|thanks|thank you|thank you very much|Thank you very much",
     ];
@@ -200,13 +265,36 @@ useEffect (() =>{
         }, 500);
 
     }
-    let how = [
-      "How are you|how are you doing|how are you doing today|how are you doing today|How are you|how are you",
+
+    else{
+      setTimeout(() => {
+        const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
+       
+        Axios.post("http://localhost:8080/chatbot1", {
+           botmsg : bmsg,
+           humanmsg : input,
+           customer: customer,
+           organization:organization
+      
+          }).then((response) => {
+                  
+          })        
+        
+          inputRef.value = ""; // clear the input
+         
+
+        }, 500);
+
+    }
+
+
+    let branches = [
+      "how many branches|branches|where are your branches located|Branches",
     ];
-    let words5 = new RegExp(how);
+    let words5 = new RegExp(branches);
     if (words5.test(document.querySelector("#input").value)) {
       setTimeout(() => {
-        const bmsg = "I am fine, thank you" // display the message
+        const bmsg = "Our company located in Chennai,Coimbatore,Bangalore" // display the message
        
         Axios.post("http://localhost:8080/chatbot1", {
            botmsg : bmsg,
@@ -225,13 +313,36 @@ useEffect (() =>{
         }, 500);
 
     }
-    let good = [
-      "That's good|Sound nice|that sounds awesome|that sounds great|Great|great|sounds great|that's sounds good|Nice|nice",
+
+    else{
+      setTimeout(() => {
+        const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
+       
+        Axios.post("http://localhost:8080/chatbot1", {
+           botmsg : bmsg,
+           humanmsg : input,
+           customer: customer,
+           organization:organization
+      
+          }).then((response) => {
+                  
+          })        
+        
+          inputRef.value = ""; // clear the input
+         
+
+        }, 500);
+
+    }
+
+
+    let products = [
+      "What kind of products are you making|products list|products|list your products",
     ];
-    let words6 = new RegExp(good);
+    let words6 = new RegExp(products);
     if (words6.test(document.querySelector("#input").value)) {
       setTimeout(() => {
-        const bmsg = "😁" // display the message
+        const bmsg = "Washing machines,Chimneys,Dishwashers,Fridges" // display the message
        
         Axios.post("http://localhost:8080/chatbot1", {
            botmsg : bmsg,
@@ -250,14 +361,9 @@ useEffect (() =>{
         }, 500);
 
     }
-
-    let response = [
-      "I'm fine|I am fine|I am fine today|I am fine today|i'm fine|i'm great|I'm fine|I'm great|I'm good|i'm good|great|Great",
-    ];
-    let words7 = new RegExp(response);
-    if (words7.test(document.querySelector("#input").value)) {
+    else{
       setTimeout(() => {
-        const bmsg = "That is good" // display the message
+        const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
        
         Axios.post("http://localhost:8080/chatbot1", {
            botmsg : bmsg,
@@ -268,131 +374,27 @@ useEffect (() =>{
           }).then((response) => {
                   
           })        
-
-       
+        
+          inputRef.value = ""; // clear the input
          
-          inputRef.value = ""; // clear the input
 
         }, 500);
 
     }
 
-    let nameAsk = [
-      "What's your name|what's your name|What is your name|what is your name",
-    ];
-    let words8 = new RegExp(nameAsk);
-    if (words8.test(document.querySelector("#input").value)) {
-      setTimeout(() => {
-        const bmsg = "My name is Bot" // display the message
-       
-        Axios.post("http://localhost:8080/chatbot1", {
-           botmsg : bmsg,
-           humanmsg : input,
-           customer: customer,
-           organization:organization
-      
-          }).then((response) => {
-               
-          })        
 
-         
-          inputRef.value = ""; // clear the input
-
-        }, 500);
-
-    }
-
-    let owner = [
-      "Who is the owner|who is the owner|Who is the owner of this bot|who is the owner of this bot|Who made you|who made you|Who is your maker|Who made you|who is your maker|who is your owner|Who is your owner",
-    ];
-    let words9 = new RegExp(owner);
-    if (words9.test(document.querySelector("#input").value)) {
-      setTimeout(() => {
-        const bmsg = "Ratan Tata" // display the message
-       
-        Axios.post("http://localhost:8080/chatbot1", {
-           botmsg : bmsg,
-           humanmsg : input,
-           customer: customer,
-           organization:organization
-      
-          }).then((response) => {
-               
-          })        
-
-       
-          inputRef.value = ""; // clear the input
-
-        }, 500);
-
-    }
-
-    let owner2 = [
-      "Who's Treasure|who's Treasure|Who is Treasure|who is Treasure",
-    ];
     
-    let words10 = new RegExp(owner2);
-    if (words10.test(document.querySelector("#input").value)) {
-      setTimeout(() => {
-        const bmsg = "Please do not use bad words" // display the message
-       
-        Axios.post("http://localhost:8080/chatbot1", {
-           botmsg : bmsg,
-           humanmsg : input,
-           customer: customer,
-           organization:organization
-      
-          }).then((response) => {
-                  
-          })        
-
-         
-         
-          inputRef.value = ""; // clear the input
-
-        }, 500);
-
-    }
-
-    let ageAsk = [
-      "What's your age|what's your age|What is your age|what is your age|How old are you|how old are you",
-    ]; //adding the age-question
-    let words11 = new RegExp(ageAsk);
-    if (words11.test(document.querySelector("#input").value)) {
-      setTimeout(() => {
-        const bmsg = "Please do not use bad words" // display the message
-       
-        Axios.post("http://localhost:8080/chatbot1", {
-           botmsg : bmsg,
-           humanmsg : input,
-           customer: customer,
-           organization:organization
-      
-          }).then((response) => {
-                    
-          })        
-
-       
-         
-          inputRef.value = ""; // clear the input
-
-        }, 500);
-
-    }
-      
-      
-  
     }
 
 
     if(customer == 'k3'){
       let response = [
-        "I'm fine|I am fine|I am fine today|I am fine today|i'm fine|i'm great|I'm fine|I'm great|I'm good|i'm good|great|Great",
+        "hi|hello|Hello|hey|sup|yo|wassup|whats up|howdy|greetings|good morning|good afternoon|good evening|HI|Hi",
       ];
       let words7 = new RegExp(response);
       if (words7.test(document.querySelector("#input").value)) {
         setTimeout(() => {
-          const bmsg = "That is good" // display the message
+          const bmsg = "Hi, How can I help you?" // display the message
          
           Axios.post("http://localhost:8080/chatbot1", {
              botmsg : bmsg,
@@ -411,6 +413,28 @@ useEffect (() =>{
           }, 500);
   
       }
+
+      else{
+        setTimeout(() => {
+          const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
+         
+          Axios.post("http://localhost:8080/chatbot1", {
+             botmsg : bmsg,
+             humanmsg : input,
+             customer: customer,
+             organization:organization
+        
+            }).then((response) => {
+                    
+            })        
+          
+            inputRef.value = ""; // clear the input
+           
+  
+          }, 500);
+  
+      }
+
   
       let nameAsk = [
         "What's your name|what's your name|What is your name|what is your name",
@@ -436,14 +460,36 @@ useEffect (() =>{
           }, 500);
   
       }
+      else{
+        setTimeout(() => {
+          const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
+         
+          Axios.post("http://localhost:8080/chatbot1", {
+             botmsg : bmsg,
+             humanmsg : input,
+             customer: customer,
+             organization:organization
+        
+            }).then((response) => {
+                    
+            })        
+          
+            inputRef.value = ""; // clear the input
+           
+  
+          }, 500);
+  
+      }
+      
+
   
       let owner = [
-        "Who is the owner|who is the owner|Who is the owner of this bot|who is the owner of this bot|Who made you|who made you|Who is your maker|Who made you|who is your maker|who is your owner|Who is your owner",
+        "Who is the owner of your company|who is the owner|owner of your comapny|Owner of your comapny|Who is the owner of this bot|who is the owner of this bot|Who made you|who made you|Who is your maker|Who made you|who is your maker|who is your owner|Who is your owner",
       ];
       let words9 = new RegExp(owner);
       if (words9.test(document.querySelector("#input").value)) {
         setTimeout(() => {
-          const bmsg = "Ratan Tata" // display the message
+          const bmsg = "Sundar Pichai" // display the message
          
           Axios.post("http://localhost:8080/chatbot1", {
              botmsg : bmsg,
@@ -461,15 +507,9 @@ useEffect (() =>{
           }, 500);
   
       }
-  
-      let owner2 = [
-        "Who's Treasure|who's Treasure|Who is Treasure|who is Treasure",
-      ];
-      
-      let words10 = new RegExp(owner2);
-      if (words10.test(document.querySelector("#input").value)) {
+      else{
         setTimeout(() => {
-          const bmsg = "Please do not use bad words" // display the message
+          const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
          
           Axios.post("http://localhost:8080/chatbot1", {
              botmsg : bmsg,
@@ -480,22 +520,24 @@ useEffect (() =>{
             }).then((response) => {
                     
             })        
-  
-           
-           
+          
             inputRef.value = ""; // clear the input
+           
   
           }, 500);
   
       }
+
   
-      let ageAsk = [
-        "What's your age|what's your age|What is your age|what is your age|How old are you|how old are you",
+      
+  
+      let cost = [
+        "website development packages|cost for developing website|package details for developing websites",
       ]; //adding the age-question
-      let words11 = new RegExp(ageAsk);
+      let words11 = new RegExp(cost);
       if (words11.test(document.querySelector("#input").value)) {
         setTimeout(() => {
-          const bmsg = "Please do not use bad words" // display the message
+          const bmsg = "One page Business Website : Rs.3000 , 5 page Business Website : Rs.5000 , Ecommerce website : Rs.9000 , Tour Packaging Selling Website : Rs.18000 , Course Selling Website : Rs.22000 " // display the message
          
           Axios.post("http://localhost:8080/chatbot1", {
              botmsg : bmsg,
@@ -514,6 +556,28 @@ useEffect (() =>{
           }, 500);
   
       }
+      else{
+        setTimeout(() => {
+          const bmsg = "I can't understand your query. Please submit your query/tickets in submit tickets panel; Our Agents will look forward to you " // display the message
+         
+          Axios.post("http://localhost:8080/chatbot1", {
+             botmsg : bmsg,
+             humanmsg : input,
+             customer: customer,
+             organization:organization
+        
+            }).then((response) => {
+                    
+            })        
+          
+            inputRef.value = ""; // clear the input
+           
+  
+          }, 500);
+  
+      }
+
+
     }
   }
     Axios.post("http://localhost:8080/chatbot1/get").then((response) => {

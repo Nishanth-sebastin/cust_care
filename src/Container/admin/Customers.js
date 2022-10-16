@@ -7,12 +7,12 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Avatar,
   Grid,
   Typography,
   TablePagination,
   TableFooter,
 } from "@material-ui/core";
+import { Avatar } from "@mui/material";
 import { makeStyles, styled } from "@material-ui/core";
 import LayoutAgent from "../../MainLayout/LayoutAgent";
 import { Search } from "@mui/icons-material";
@@ -146,9 +146,9 @@ function CustomersAdmin() {
                         <Avatar
                           alt={row.name}
                           src="."
-                          className={classes.avatar}
+                          sx={{ bgcolor: "#0D80D8" }}
                         >
-                          N
+                          {row.name.charAt(0)}
                         </Avatar>
                       </Grid>
                       <Grid

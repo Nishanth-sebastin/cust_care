@@ -23,6 +23,7 @@ import { TablePagination } from "@mui/material";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import CallIcon from "@mui/icons-material/Call";
 
 const styles = makeStyles({
   Grid: {
@@ -174,6 +175,11 @@ function MyTickets() {
                 </TableCell>
                 <TableCell className={classes.tableHeaderCell}>
                   <Typography style={{ color: "white", fontWeight: "bold" }}>
+                    Call
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.tableHeaderCell}>
+                  <Typography style={{ color: "white", fontWeight: "bold" }}>
                     Status Update
                   </Typography>
                 </TableCell>
@@ -204,8 +210,9 @@ function MyTickets() {
                           alt={row.name}
                           src=""
                           className={classes.avatar}
+                          sx={{ bgcolor: "#0D80D8" }}
                         >
-                          NS
+                          {row.name.charAt(0)}
                         </Avatar>
                       </Grid>
                       <Grid
@@ -239,6 +246,22 @@ function MyTickets() {
                      
                     </Link> */}
                     {row.query}
+                  </TableCell>
+                  <TableCell>
+                    <IconButton
+                      style={{
+                        position: "relative",
+                        right: "135px",
+                        bottom: "30px",
+                      }}
+                      onClick={async () => {
+                        await Axios.post("http://localhost:8080/call/", {
+                          number: row.phonenumber,
+                        });
+                      }}
+                    >
+                      <CallIcon />
+                    </IconButton>
                   </TableCell>
                   <TableCell>
                     <Button

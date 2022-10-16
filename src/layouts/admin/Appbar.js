@@ -15,7 +15,7 @@ import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import Inbox from "@mui/icons-material/Inbox";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import SportsKabaddiOutlinedIcon from "@mui/icons-material/SportsKabaddiOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import AodOutlinedIcon from "@mui/icons-material/AodOutlined";
@@ -26,6 +26,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 
 const admin = localStorage.getItem("orgname");
 
@@ -45,6 +47,9 @@ const useStyles = makeStyles({
   list: {
     marginBottom: "20px",
 
+    borderRadius: "10px",
+    position: "relative",
+    width: "200px",
     "&:hover": {
       backgroundColor: "#338CED",
       borderRadius: "10px",
@@ -70,7 +75,13 @@ const useStyles = makeStyles({
 
 function AppBar() {
   const [open, setOpen] = React.useState(false);
-
+  const [color1, setColor1] = React.useState("");
+  const [color2, setColor2] = React.useState("");
+  const [color3, setColor3] = React.useState("");
+  const [color4, setColor4] = React.useState("");
+  const [color5, setColor5] = React.useState("");
+  const [color6, setColor6] = React.useState("");
+  const [color7, setColor7] = React.useState("");
   const navigate = useNavigate();
   const handleClickOpen = () => {
     setOpen(true);
@@ -92,14 +103,14 @@ function AppBar() {
       <Drawer
         classes={{ paper: style.drawerPaper }}
         sx={{
-          width: 240,
-
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 240,
+            width: 255,
             boxSizing: "border-box",
-            height: " 740px",
+            height: " 700px",
             borderRadius: "15px",
+            position:"fixed",
+            right:"5px",
           },
         }}
         variant="permanent"
@@ -119,16 +130,25 @@ function AppBar() {
             >
               <ListItemIcon className={style.icons}>
                 {" "}
-                <DashboardOutlinedIcon className={style.icon} />
+                <li>
+                  <Link
+                    style={{ color: "white", textDecoration: "none" }}
+                    to={`/organization/${admin}/admin/dashboard`}
+                  >
+                    <DashboardOutlinedIcon className={style.icon} />
+                  </Link>
+                </li>
               </ListItemIcon>
               <ListItemText sx={{ color: "white" }}>
                 {" "}
-                <Link
-                  style={{ color: "white", textDecoration: "none" }}
-                  to={`/organization/${admin}/admin/dashboard`}
-                >
-                  Dashboard
-                </Link>
+                <li>
+                  <Link
+                    style={{ color: "white", textDecoration: "none" }}
+                    to={`/organization/${admin}/admin/dashboard`}
+                  >
+                    Dashboard
+                  </Link>
+                </li>
               </ListItemText>
             </ListItemButton>
           </ListItem>
@@ -143,7 +163,14 @@ function AppBar() {
             >
               <ListItemIcon className={style.icons}>
                 {" "}
-                <AodOutlinedIcon className={style.icon} />
+                <li>
+                  <Link
+                    style={{ color: "white", textDecoration: "none" }}
+                    to={`/organization/${admin}/admin/tickets/`}
+                  >
+                    <AodOutlinedIcon className={style.icon} />
+                  </Link>
+                </li>
               </ListItemIcon>
               <ListItemText sx={{ color: "white" }}>
                 {" "}
@@ -164,10 +191,24 @@ function AppBar() {
                 right: "10px",
                 padding: "0px",
               }}
+              // onClick={() =>
+              //   setColor3("#338CED") &&
+              //   setColor2("") &&
+              //   setColor1("") &&
+              //   setColor4("") &&
+              //   setColor5("") &&
+              //   setColor6("") &&
+              //   setColor7("")
+              // }
             >
               <ListItemIcon className={style.icons}>
                 {" "}
-                <SportsKabaddiOutlinedIcon className={style.icon} />
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/${admin}/admin/customers/`}
+                >
+                  <SportsKabaddiOutlinedIcon className={style.icon} />
+                </Link>
               </ListItemIcon>
               <ListItemText sx={{ color: "white" }}>
                 {" "}
@@ -188,10 +229,24 @@ function AppBar() {
                 right: "10px",
                 padding: "0px",
               }}
+              // onClick={() =>
+              //   setColor4("#338CED") &&
+              //   setColor2("") &&
+              //   setColor1("") &&
+              //   setColor3("") &&
+              //   setColor5("") &&
+              //   setColor6("") &&
+              //   setColor7("")
+              // }
             >
               <ListItemIcon className={style.icons}>
                 {" "}
-                <SportsKabaddiOutlinedIcon className={style.icon} />
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/${admin}/admin/agents/`}
+                >
+                  <SupportAgentIcon className={style.icon} />
+                </Link>
               </ListItemIcon>
               <ListItemText sx={{ color: "white" }}>
                 {" "}
@@ -215,7 +270,12 @@ function AppBar() {
             >
               <ListItemIcon className={style.icons}>
                 {" "}
-                <SportsKabaddiOutlinedIcon className={style.icon} />
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/${admin}/admin/addagents/`}
+                >
+                  <PersonAddAltIcon className={style.icon} />
+                </Link>
               </ListItemIcon>
               <ListItemText sx={{ color: "white" }}>
                 {" "}
@@ -236,10 +296,24 @@ function AppBar() {
                 right: "10px",
                 padding: "0px",
               }}
+              // onClick={() => {
+              //   setColor6("#338CED") &&
+              //     setColor3("") &&
+              //     setColor2("") &&
+              //     setColor1("") &&
+              //     setColor4("") &&
+              //     setColor5("") &&
+              //     setColor7("");
+              // }}
             >
               <ListItemIcon className={style.icons}>
                 {" "}
-                <NotificationsNoneOutlinedIcon className={style.icon} />
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/organization/${admin}/admin/notifications/`}
+                >
+                  <NotificationsNoneOutlinedIcon className={style.icon} />
+                </Link>
               </ListItemIcon>
               <ListItemText sx={{ color: "white" }}>
                 {" "}

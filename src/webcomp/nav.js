@@ -21,7 +21,7 @@ function Nav() {
   return (
     <div className="cont">
       <header className="navbar">
-        <div className="logo">CustCare</div>
+        <div className="logo">Cust Care</div>
         <ul className="nav-links">
           <input
             style={{ cursor: "pointer" }}
@@ -36,13 +36,10 @@ function Nav() {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/a">About</a>
+              <a href="/">About</a>
             </li>
             <li>
               <a href="/">Services</a>
-            </li>
-            <li>
-              <a href="/">Projects</a>
             </li>
 
             <li>
@@ -50,7 +47,13 @@ function Nav() {
             </li>
 
             <div className="dropdown">
-              <Button className="dropbtn" variant="contained">
+              <Button
+                sx={{
+                  backgroundColor: "#3187E4",
+                  "&:hover": { backgroundColor: "#3187E4" },
+                }}
+                variant="contained"
+              >
                 Login/SignUp
               </Button>
               <div className="dropdown-content">
