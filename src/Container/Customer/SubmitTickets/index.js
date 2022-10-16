@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, useFormik } from "formik";
 // import { TextField } from './TextField';
 import LayoutCustomer from "../../../MainLayout/LayoutCustomer";
 import { makeStyles, TextField } from "@material-ui/core";
 import * as Yup from "yup";
-import "bootstrap/dist/css/bootstrap.min.css";
+ 
 import { FormControl, FormControlLabel, FormLabel, Radio } from "@mui/material";
 import { Link } from "react-router-dom";
 import logo from "../assets/rocket.png";
@@ -49,8 +49,6 @@ export const CustLogin = () => {
       region: "",
     },
 
-
-
   });
 
  
@@ -64,7 +62,7 @@ export const CustLogin = () => {
       email: formik.values.email,
       orgname: formik.values.orgname,
       query: formik.values.query,
-      phonenumber: formik.values.phonenumber,
+     phonenumber: formik.values.phonenumber,
       region: formik.values.region,
       status: "pending",
       taken: "NOT_TAKEN",
@@ -72,7 +70,7 @@ export const CustLogin = () => {
      
        setClear(true)
       localStorage.setItem("submitquerycust", response.data.name);
-
+     
 
     });
 
@@ -80,14 +78,15 @@ export const CustLogin = () => {
 
   };
 
+ 
+ 
+
   return (
     <LayoutCustomer>
       <Grid>
         <Paper elevation={20} style={paperStyle}>
           <Grid align="center">
-            {/* <Avatar style={avatarStyle}>
-              <AddCircleOutlineOutlined />
-            </Avatar> */}
+          
             <h2 style={headerStyle}>Submit Tickets</h2>
           </Grid>
           
@@ -97,7 +96,7 @@ export const CustLogin = () => {
             <TextField
               onChange={formik.handleChange}
               value={clear ? "":formik.values.email }
-              // value={formik.values.email}
+              
               name="email"
               fullWidth
               label="Email "
@@ -127,10 +126,10 @@ export const CustLogin = () => {
             <br></br>
             <TextField
               onChange={formik.handleChange}
-              value={clear ? "":formik.values.phonenumber }
+              value={clear ? "":formik.values.phonenumber}
               name="phonenumber"
               fullWidth
-              label="PhoneNumber"
+              label="Number"
               placeholder="Enter your Phone Number"
             />
             <br></br>

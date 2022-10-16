@@ -147,7 +147,7 @@ function MyTickets() {
     <LayoutAgent>
       <ToastContainer />
       <Grid className={style.Grid}>
-        <Typography variant="h5">Tickets</Typography>
+        <Typography variant="h5"> My Tickets</Typography>
         <br></br>
         <TableContainer component={Paper} className={classes.tableContainer}>
           <Table className={classes.table} aria-label="simple table">

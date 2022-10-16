@@ -12,6 +12,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FormControl, FormControlLabel, FormLabel, Radio } from "@mui/material";
 import { Link } from "react-router-dom";
 import img from "../assets/rocket.png";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { InputAdornment, IconButton } from "@material-ui/core";
 
 
 // import { Link } from 'react-router-dom';
@@ -42,6 +45,9 @@ const AddAgents = () => {
   });
   console.log(formik.values);
 
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const orgname = localStorage.getItem("orgname");
   const logincust = (e) => {
     e.preventDefault();
@@ -127,16 +133,38 @@ const AddAgents = () => {
             <br></br>
             <br></br>
             <TextField
-              onChange={formik.handleChange}
-              value={clear ? "" : formik.values.password}
-              name="password"
-              fullWidth
-              label="Password"
-              placeholder="Enter Password "
+            onChange={formik.handleChange}
+            value={clear ? "" :formik.values.password}
+            type={showPassword ? "text" : "password"}
+            name="password"
+            fullWidth
+            label="Password"
+            placeholder="Enter your password"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="start"
+                  style={{
+                    position: "relative",
+                    right: "130px",
+                    bottom: "35px",
+                  }}
+                >
+                  <IconButton
+                    disableRipple
+                    style={{ boxShadow: "none" }}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )}}
             />
             <br></br>
             <br></br>
-            <p style={{ color: "red" }}>{addStatus}</p>
+            
             <Button
               onClick={logincust}
               type="submit"

@@ -83,9 +83,7 @@ export const CustLogin = () => {
             <AddCircleOutlineOutlined />
           </Avatar>
           <h2 style={headerStyle}>Customer Login</h2>
-          <Typography variant="caption" gutterBottom>
-            Please fill this form to create an account !
-          </Typography>
+         
           <br></br>
           <br></br>
         </Grid>

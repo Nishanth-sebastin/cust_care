@@ -105,12 +105,14 @@ function AppBar() {
         sx={{
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 255,
+            width: 220 ,
             boxSizing: "border-box",
-            height: " 700px",
+            height: "700px",
             borderRadius: "15px",
             position:"fixed",
-            right:"5px",
+            bottom:"30px",
+            right:"10px"
+           
           },
         }}
         variant="permanent"

@@ -198,7 +198,7 @@ function Tickets() {
                   </TableCell>
                   <TableCell>
                     <Typography color="black" variant="subtitle2">
-                      {row.phonenumber}
+                      {row.number}
                     </Typography>
                   </TableCell>
                   <TableCell>

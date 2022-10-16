@@ -26,6 +26,7 @@ import Axios from "axios";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import HourglassTopIcon from "@mui/icons-material/HourglassTop";
+import { FaBlackTie } from "react-icons/fa";
 const styles = makeStyles({
   Grid: {
     position: "relative",
@@ -82,7 +83,9 @@ const styles = makeStyles({
   },
   ChartGrid: {
     position: "relative",
+    border:"1px solid black",
     width: "100%",
+    // height:"800px"
   },
 });
 function DashboardAdmin() {
@@ -247,9 +250,10 @@ function DashboardAdmin() {
             </Paper>
           </Grid> */}
         </Grid>
-        <Grid container>
+        <Grid >
           <Grid item className={style.ChartGrid}>
-            <Paper>
+          
+            <Paper >
               <Card>
                 <Grid item xs={12}>
                   <Box>

@@ -49,6 +49,7 @@ export const OrgLogin = () => {
       email: formik.values.email,
       password: formik.values.password,
     }).then((response) => {
+      console.log(response.data.message);
       if (response.data.message == "Correct") {
         localStorage.setItem("orgname", response.data.orgname);
         const admin = localStorage.getItem("orgname");

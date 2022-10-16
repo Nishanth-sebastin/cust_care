@@ -17,7 +17,6 @@ const styles = makeStyles({
         top: '100px',
         width: '100%',
         height: '650px',
-
         padding: '18px',
 
     },
