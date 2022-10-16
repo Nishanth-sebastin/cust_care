@@ -249,6 +249,7 @@ function MyTickets() {
                   </TableCell>
                   <TableCell>
                     <IconButton
+                      disableRipple
                       style={{
                         position: "relative",
                         right: "135px",
