@@ -99,7 +99,7 @@ function AppBar() {
           "& .MuiDrawer-paper": {
             width: 255,
             boxSizing: "border-box",
-            height: " 700px",
+            height: " 720px",
             borderRadius: "15px",
             position:"fixed",
             right:"5px",

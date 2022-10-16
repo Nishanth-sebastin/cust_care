@@ -11,7 +11,7 @@ import { Box } from '@mui/system'
 function Chart(props) {
     return (
         <div className="chart">
-            <Grid container>
+            <Grid sx={{height:"500px", position:"relative",bottom:"100px"}}>
                 <Grid item sm={12}>
                     <Bar
                         width='1200px'
@@ -36,42 +36,7 @@ function Chart(props) {
 
             </Grid>
 
-            {/* <Line
-                width='1200px'
-                height='360px'
-                data={props.chartData}
-                options={{
-                    title: {
-                        display: props.displayTitle,
-                        text: 'Largest Cities in Massachusetts',
-                        fontSize: 25
-                    },
-                    legend: {
-                        display: props.displayLegend,
-                        position: props.legendPosition,
-                        labels: {
-                            fontColor: '#000'
-                        }
-                    }
-                }}
-            /> */}
-            {/*     <Pie
-                data={props.chartData}
-                options={{
-                    title: {
-                        display: props.displayTitle,
-                        text: 'Largest Cities in Massachusetts',
-                        fontSize: 25
-                    },
-                    legend: {
-                        display: props.displayLegend,
-                        position: props.legendPosition,
-                        labels: {
-                            fontColor: '#000'
-                        }
-                    }
-                }}
-            /> */}
+            
         </div>
     )
 }

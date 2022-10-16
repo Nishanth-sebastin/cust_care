@@ -35,8 +35,8 @@ const useStyles = makeStyles({
       width: 240,
       backgroundColor: "#222223",
     },
-    marginTop: "20px",
-    marginLeft: "20px",
+    // marginTop: "20px",
+    marginLeft: "13px",
   },
 
   list: {
@@ -86,7 +86,7 @@ function AppBar() {
 
   const style = useStyles();
   return (
-    <Grid>
+    <Grid >
       <Drawer
         classes={{ paper: style.drawerPaper }}
         sx={{
@@ -94,12 +94,13 @@ function AppBar() {
 
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 255,
+            width: 230,
             boxSizing: "border-box",
-            height: " 700px",
-            borderRadius: "15px",
+            height: " 720px",
+            borderRadius: "5px",
             position:"fixed",
-            right:"5px",
+            right:"10px",
+           
           },
         }}
         variant="permanent"

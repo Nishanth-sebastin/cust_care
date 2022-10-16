@@ -20,7 +20,7 @@ import { InputAdornment, IconButton } from "@material-ui/core";
 export const OrgLogin = () => {
   const paperStyle = {
     padding: "30px 20px",
-    height: "420px",
+    height: "460px",
     width: 1000,
     margin: "150px auto",
   };
@@ -57,6 +57,12 @@ export const OrgLogin = () => {
         navigate(0);
       } else if (response.data.message == []) {
         console.log("not connected");
+      }
+      if (response.data.message) {
+        setLoginstatus(response.data.message);
+      }
+      if (loginstatus == "Correct") {
+        setRedirect(true);
       }
     });
   };
@@ -150,6 +156,8 @@ export const OrgLogin = () => {
               }
             </a>
           </h5>
+        
+          <p style={{ color: "red", position:"relative", top:"10px"}}>{loginstatus}</p>
           <br></br>
           <Button
             onClick={orglogin}

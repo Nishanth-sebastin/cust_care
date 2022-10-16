@@ -30,11 +30,12 @@ import { FaBlackTie } from "react-icons/fa";
 const styles = makeStyles({
   Grid: {
     position: "relative",
-    top: "100px",
+    // top: "100px",
     width: "100%",
-    height: "650px",
+    height: "200px",
 
     padding: "18px",
+   
   },
   icon: {
     color: "white",
@@ -82,10 +83,7 @@ const styles = makeStyles({
     display: "flex",
   },
   ChartGrid: {
-    position: "relative",
-    border:"1px solid black",
-    width: "100%",
-    // height:"800px"
+   
   },
 });
 function DashboardAdmin() {
@@ -147,9 +145,7 @@ function DashboardAdmin() {
                 </Box>
                 <Divider />
 
-                {/* <CardContent sx={{ marginTop: "25px" }}>
-                  <Typography color="#9498AD">55% than lask week</Typography>
-                </CardContent> */}
+             
               </Card>
             </Paper>
           </Grid>
@@ -179,9 +175,6 @@ function DashboardAdmin() {
                 </Box>
                 <Divider />
 
-                {/* <CardContent sx={{ marginTop: "25px" }}>
-                  <Typography>55% than lask week</Typography>
-                </CardContent> */}
               </Card>
             </Paper>
           </Grid>
@@ -211,93 +204,47 @@ function DashboardAdmin() {
                 </Box>
                 <Divider />
 
-                {/* <CardContent sx={{ marginTop: "25px" }}>
-                  <Typography>Unsolved Tickets</Typography>
-                </CardContent> */}
+               
               </Card>
             </Paper>
           </Grid>
 
-          {/* <Grid item xs={3} sx={{ padding: "20px" }}>
-            <Paper>
-              <Card sx={{ height: "140px" }}>
-                <Box className={style.boxes}>
-                  <Box className={style.boxIcon4}>
-                    <AdUnitsIcon className={style.icon} />
-                  </Box>
-                  <Box>
-                    <Typography
-                      sx={{
-                        position: "relative",
-                        left: "65px",
-                        top: "15px",
-                        color: "#9498AD",
-                      }}
-                    >
-                      Suspended Tickets<br></br>
-                      <Typography sx={{ color: "black" }}>
-                        <strong>281</strong>
-                      </Typography>
-                    </Typography>
-                  </Box>
-                </Box>
-                <Divider />
-
-                <CardContent sx={{ marginTop: "25px" }}>
-                  <Typography>55% than lask week</Typography>
-                </CardContent>
-              </Card>
-            </Paper>
-          </Grid> */}
-        </Grid>
-        <Grid >
-          <Grid item className={style.ChartGrid}>
-          
-            <Paper >
-              <Card>
-                <Grid item xs={12}>
-                  <Box>
+         
+        </Grid>          
+        <Paper sx={{height:"1100px"}}>
+                 <Box>
                     <AppMain />
                   </Box>
-
-                  <Divider></Divider>
-                  <CardContent>
+      
+                  <CardContent sx={{position:"relative",bottom:"350px"}}>
                     <Typography sx={{ color: "black", fontWeight: "50px" }}>
                       <strong>Tickets Raised</strong>
                     </Typography>
-                    <Divider></Divider>
                     <Typography sx={{ color: "#9498AD" }}>
                       Past 7 days
                     </Typography>
+                    <Divider></Divider>
+                   
                   </CardContent>
-                </Grid>
-              </Card>
-            </Paper>
-            <div></div>
-            <div></div>
-            <Paper>
-              <Card>
-                <Grid item xs={12}>
                   <Box>
                     <AppMainLine />
                   </Box>
-
-                  <Divider></Divider>
-                  <CardContent>
+                 
+                  <CardContent sx={{position:"relative",bottom:"680px"}}>
                     <Typography sx={{ color: "black", fontWeight: "50px" }}>
                       <strong>Problems Solved by Agents</strong>
                     </Typography>
-                    <Divider></Divider>
+                   
                     <Typography sx={{ color: "#9498AD" }}>
                       Past 7 days
                     </Typography>
                   </CardContent>
+
+                  </Paper>
                 </Grid>
-              </Card>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Grid>
+         
+        
+      
     </LayoutAdmin>
   );
 }

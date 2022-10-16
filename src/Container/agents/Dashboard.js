@@ -79,8 +79,6 @@ const styles = makeStyles({
   },
   ChartGrid: {
     position: "relative",
-
-    height: "460px",
     width: "100%",
     padding: "20px",
   },
@@ -146,9 +144,7 @@ function Dashboard() {
                 </Box>
                 <Divider />
 
-                {/* <CardContent sx={{ marginTop: "25px" }}>
-                  <Typography>55% than lask week</Typography>
-                </CardContent> */}
+           
               </Card>
             </Paper>
           </Grid>
@@ -186,7 +182,7 @@ function Dashboard() {
           </Grid>
 
           <Grid item xs={4} sx={{ padding: "20px" }}>
-            <Paper>
+            <Paper >
               <Card sx={{ height: "110px" }}>
                 <Box className={style.boxes}>
                   <Box className={style.boxIcon3}>
@@ -210,56 +206,24 @@ function Dashboard() {
                 </Box>
                 <Divider />
 
-                {/* <CardContent sx={{ marginTop: "25px" }}>
-                  <Typography>55% than lask week</Typography>
-                </CardContent> */}
+                
               </Card>
             </Paper>
           </Grid>
 
-          {/* <Grid item xs={3} sx={{ padding: "20px" }}>
-            <Paper>
-              <Card sx={{ height: "140px" }}>
-                <Box className={style.boxes}>
-                  <Box className={style.boxIcon4}>
-                    <AdUnitsIcon className={style.icon} />
-                  </Box>
-                  <Box>
-                    <Typography
-                      sx={{
-                        position: "relative",
-                        left: "65px",
-                        top: "15px",
-                        color: "#9498AD",
-                      }}
-                    >
-                      Suspended Tickets<br></br>
-                      <Typography sx={{ color: "black" }}>
-                        <strong>281</strong>
-                      </Typography>
-                    </Typography>
-                  </Box>
-                </Box>
-                <Divider />
-
-                <CardContent sx={{ marginTop: "25px" }}>
-                  <Typography>55% than lask week</Typography>
-                </CardContent>
-              </Card>
-            </Paper>
-          </Grid> */}
+        
         </Grid>
         <Grid container>
           <Grid item className={style.ChartGrid}>
-            <Paper>
-              <Card>
-                <Grid item xs={12}>
+            <Paper  sx={{ height: "610px",width:"1200px" }}>
+            
+               
                   <Box>
                     <AppMain />
                   </Box>
 
                   <Divider></Divider>
-                  <CardContent>
+                  <CardContent sx={{ position:"relative",bottom:"300px"}}>
                     <Typography sx={{ color: "black", fontWeight: "50px" }}>
                       <strong> Your activity over the days</strong>
                     </Typography>
@@ -268,8 +232,8 @@ function Dashboard() {
                       Past 7 days
                     </Typography>
                   </CardContent>
-                </Grid>
-              </Card>
+               
+             
             </Paper>
           </Grid>
         </Grid>

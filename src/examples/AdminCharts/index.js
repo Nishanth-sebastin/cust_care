@@ -57,7 +57,7 @@ class AppMain extends React.Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="App" >
 
                 <Chart chartData={this.state.chartData} displayLegend={false} />
             </div>

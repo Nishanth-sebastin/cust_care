@@ -97,7 +97,7 @@ useEffect (() =>{
     const getBotMessage = botmessage.current;
     const inputRef = document.querySelector("#input");
 
-    if(customer == 'k5'){
+    if(organization == 'SwipeWire'){
 
     let badwords = ["fuck|bad|stupid|useless|bitch|crazy|nonsense"];
     let words = new RegExp(badwords);
@@ -287,6 +287,7 @@ useEffect (() =>{
 
     }
 
+   
 
     let branches = [
       "how many branches|branches|where are your branches located|Branches",
@@ -387,7 +388,7 @@ useEffect (() =>{
     }
 
 
-    if(customer == 'k3'){
+    if(organization == "Google"){
       let response = [
         "hi|hello|Hello|hey|sup|yo|wassup|whats up|howdy|greetings|good morning|good afternoon|good evening|HI|Hi",
       ];
@@ -576,7 +577,7 @@ useEffect (() =>{
           }, 500);
   
       }
-
+    
 
     }
   }

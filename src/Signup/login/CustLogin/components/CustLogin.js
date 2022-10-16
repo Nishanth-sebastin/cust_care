@@ -53,7 +53,7 @@ export const CustLogin = () => {
       email: formik.values.email,
       password: formik.values.password,
     }).then((response) => {
-        console.log("hi");
+       console.log(response.data.message);
       if (response.data.message == "Correct") {
         localStorage.setItem("custname", response.data.name);
         localStorage.setItem("custemail", response.data.email);
@@ -83,7 +83,7 @@ export const CustLogin = () => {
             <AddCircleOutlineOutlined />
           </Avatar>
           <h2 style={headerStyle}>Customer Login</h2>
-         
+          
           <br></br>
           <br></br>
         </Grid>
@@ -146,13 +146,14 @@ export const CustLogin = () => {
               }
             </a>
           </h5>
-          <br></br>
+         
           <p style={{ color: "red" }}>{loginstatus}</p>
           <Button
             onClick={logincust}
             type="submit"
             variant="contained"
             color="primary"
+            style={{ position:"relative",top:"10px" }}
           >
             {/* {
               redirect === true ? <Link style={{ color: 'white' }} to="/organization/admin/">Login</Link> : <>Login</>

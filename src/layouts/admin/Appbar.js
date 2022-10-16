@@ -40,8 +40,8 @@ const useStyles = makeStyles({
       width: 240,
       backgroundColor: "#222223",
     },
-    marginTop: "20px",
-    marginLeft: "20px",
+   
+    marginLeft: "13px",
   },
 
   list: {
@@ -105,12 +105,11 @@ function AppBar() {
         sx={{
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 220 ,
+            width: 230 ,
             boxSizing: "border-box",
-            height: "700px",
-            borderRadius: "15px",
+            height: "720px",
+            borderRadius: "5px",
             position:"fixed",
-            bottom:"30px",
             right:"10px"
            
           },
