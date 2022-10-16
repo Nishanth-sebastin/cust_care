@@ -46,16 +46,26 @@ export const CustLogin = () => {
   const navigate = useNavigate();
   // const customer = localStorage.getItem("custname")
   const logincust = (e) => {
+  
     e.preventDefault();
+
     Axios.post("http://localhost:8080/logincust", {
       email: formik.values.email,
       password: formik.values.password,
     }).then((response) => {
-      console.log(response.data.name);
-
-      localStorage.setItem("custname", response.data.name);
-      navigate(`/customer/${response.data.name}/submittickets`);
-      navigate(0);
+        console.log("hi");
+      if (response.data.message == "Correct") {
+        localStorage.setItem("custname", response.data.name);
+        localStorage.setItem("custemail", response.data.email);
+       
+        const custname = localStorage.getItem("custname");
+       
+        navigate(`/customer/${custname}/submittickets`);
+        navigate(0);
+      }
+      else if (response.data.message == []) {
+        console.log("not connected");
+      }
       if (response.data.message) {
         setLoginstatus(response.data.message);
       }
